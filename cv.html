@@ -5,77 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CV – François Ballet</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --c1:#6ec1ff;
-      --c2:#2a8cfb;
-      --c3:#0b5bd3;
-      --bg:#f0f6ff;
-      --ink:#0b0f18;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:"Poppins",sans-serif;
-      color:var(--ink);
-      background:linear-gradient(135deg, #dcecff, #ffffff 40%, #e0f0ff);
-      line-height:1.6;
-    }
-    .page{
-      max-width:1000px;
-      margin:24px auto;
-      background:linear-gradient(180deg,#ffffff 0%, #f8fbff 100%);
-      border-radius:20px;
-      overflow:hidden;
-      box-shadow:0 20px 60px rgba(9,35,66,.08);
-      display:grid;
-      grid-template-columns:340px 1fr;
-      min-height:1400px;
-      position:relative;
-    }
-    .blob{position:absolute;border-radius:50%;opacity:.25;pointer-events:none}
-    .b1{width:260px;height:260px;background:radial-gradient(circle at 30% 30%,#fff 0 20%,var(--c1) 21%,var(--c2) 60%,var(--c3) 100%);left:-120px;top:-120px}
-    .b2{width:220px;height:220px;background:radial-gradient(circle at 70% 30%,#fff 0 18%,var(--c2) 22%,var(--c3) 75%);right:-100px;top:-100px}
-    /* QR code placé au même endroit que le cercle rouge */
-    .qr-code{
-      position:absolute;
-      right:720px; /* ajuste la position horizontale */
-      top:900px;   /* ajuste la position verticale */
-      width:225px; /* taille du QR code */
-      height:245px;
-      z-index:10;  /* au-dessus du cercle */
-    }
-    aside{
-      background:linear-gradient(180deg,var(--c3),var(--c2),var(--c1));
-      color:#fff;
-      padding:42px 40px 50px;
-    }
-    h1{font-size:42px;font-weight:800;text-transform:uppercase;margin-bottom:8px}
-    .title{font-weight:600;font-size:20px;margin-top:4px}
-    .highlight{padding:2px 8px;border-radius:10px;background:linear-gradient(90deg,rgba(110,193,255,.35),rgba(42,140,251,.35));}
-    .section-h{margin:42px 0 18px;font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:.5px}
-    .section-h .bar{display:inline-block;width:64px;height:8px;background:linear-gradient(90deg,var(--c2),var(--c1));border-radius:999px;margin-left:10px;transform:translateY(-4px)}
-    .small{font-size:13px;opacity:.95}
-    .contact dt{font-weight:600;margin-top:12px}
-    .contact dd{margin-bottom:12px}
-    .meter{height:10px;background:rgba(255,255,255,.25);border-radius:999px;overflow:hidden;margin:8px 0 16px}
-    .meter>span{display:block;height:100%;background:linear-gradient(90deg,#fff,#d9ecff)}
-    main{padding:48px 60px}
-    .header{text-align:center;padding:28px 0 16px}
-    .two-col{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
-    .edu-item,.xp-item{margin:24px 0}
-    .place{font-weight:500;opacity:.85}
-    .bullets{margin-top:8px;padding-left:22px}
-    .xp-head{display:flex;justify-content:space-between;gap:18px}
-    .xp-title{font-weight:700}
-    .year{font-weight:800;white-space:nowrap}
-    .interests{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center;padding-top:28px}
-    .interest{display:grid;gap:10px;justify-items:center}
-    aside h3{font-size:20px;margin:28px 0 14px}
-
-    @media print{body{background:#fff}.page{box-shadow:none;margin:0}}
-    @media (max-width:900px){.page{grid-template-columns:1fr}aside{order:2}main{order:1}}
-  </style>
+  <link rel="stylesheet" href="style.css"> <!-- 🔗 Lien vers le CSS externe -->
 </head>
 <body>
 <div class="page">
@@ -98,14 +28,15 @@
     <div class="small">
       <div>Travail d'équipe</div><div class="meter"><span style="width:100%"></span></div>
       <div>Développement Web</div><div class="meter"><span style="width:80%"></span></div>
-      <div>Système Réseau</div><div class="meter"><span style="width:70%"></span></div>
+      <div>Système Réseau</div><div class="meter"><span style="width:80%"></span></div>
       <div>Communication</div><div class="meter"><span style="width:100%"></span></div>
     </div>
     <h3>🌍 Langues</h3>
     <div class="small">
       <div>Français</div><div class="meter"><span style="width:100%"></span></div>
-      <div>Anglais</div><div class="meter"><span style="width:50%"></span></div>
+      <div>Anglais B1</div><div class="meter"><span style="width:50%"></span></div>
   </aside>
+
   <main>
     <header class="header">
       <h1>François Ballet</h1>
@@ -128,6 +59,13 @@
           <div class="place small">Lycée Général et Technologique Jean-Rostand, 93420</div>
         </div>
         <div class="year">2023–2025</div>
+      </div>
+      <div class="edu-item two-col">
+        <div>
+          <div class="xp-title">Licence Professionnel Chef de projet dév,sécu et exploit </div>
+          <div class="place small">CFA CNAM, Stade de France</div>
+        </div>
+        <div class="year">2025–2026</div>
       </div>
     </section>
 
@@ -176,6 +114,7 @@
         </ul>
       </div>
       </section>
+
     <!-- PROJETS -->
     <section>
       <div class="section-h">🖥️ Projets Informatique <span class="bar"></span></div>
