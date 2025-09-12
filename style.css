@@ -32,11 +32,24 @@ body{
 .qr-code{
   position:absolute;
   right:720px;
-  top:900px;
-  width:225px;
-  height:245px;
+  top:970px;
+  width:205px;
+  height:225px;
+  z-index:10;
+  }
+
+  .qr-codeL{
+  position:absolute;
+  right:720px;
+  top:1300px;
+  width:205px;
+  height:225px;
   z-index:10;
 }
+.competences div {
+  margin-bottom: 8px; /* espace entre chaque compétence */
+}
+
 aside{
   background:linear-gradient(180deg,var(--c3),var(--c2),var(--c1));
   color:#fff;

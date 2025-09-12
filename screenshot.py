@@ -1,24 +1,23 @@
-import pdfkit
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import time
 
-def html_to_pdf(input_html, output_pdf, css_file=None):
-    """
-    Convertit un fichier HTML en PDF en conservant le design CSS.
-    Nécessite wkhtmltopdf installé sur la machine.
-    """
-    try:
-        if css_file:
-            pdfkit.from_file(input_html, output_pdf, css=css_file)
-        else:
-            pdfkit.from_file(input_html, output_pdf)
-        print(f"✅ Conversion réussie avec CSS : {output_pdf}")
-    except Exception as e:
-        print(f"❌ Erreur pendant la conversion : {e}")
+# Config navigateur sans interface
+options = Options()
+options.add_argument("--headless")  # Pas d'affichage
+options.add_argument("--window-size=1200,1600")  # Taille du screenshot
 
+service = Service("/usr/bin/chromedriver")  # chemin vers chromedriver
+driver = webdriver.Chrome(service=service, options=options)
 
-if __name__ == "__main__":
-    # Nom de ton fichier HTML, CSS et PDF généré
-    input_file = "cv.html"                  # ton fichier HTML
-    css_file = "style.css"                  # ton fichier CSS (même dossier)
-    output_file = "cv_francois_ballet.pdf"  # PDF final
+# Ouvre ton fichier HTML
+driver.get("file:///workspaces/SiteInternet/cv.html")
 
-    html_to_pdf(input_file, output_file, css_file)
+time.sleep(2)  # petit délai pour bien charger le CSS
+
+# Sauvegarde screenshot
+driver.save_screenshot("cv_screenshot.png")
+print("✅ Screenshot enregistré : cv_screenshot.png")
+
+driver.quit()
