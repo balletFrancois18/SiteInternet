@@ -11,7 +11,7 @@ from pathlib import Path
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER = "francois.balletpro@gmail.com"
-APP_PASSWORD = "Ballet255!"   # ⚠️ à remplacer par un mot de passe d'application Gmail
+APP_PASSWORD = "knsrpijllcqmfayd"   # ⚠️ à remplacer par un mot de passe d'application Gmail
 CV_IMAGE = Path("cv.jpg")     # Ton CV au format image (jpg ou png)
 CSV_FILE = "contacts.csv"
 
@@ -27,7 +27,7 @@ def send_mail(to_email, to_name, company):
     body_text = f"""Bonjour {to_name},
 
 Je me permets de vous envoyer ma candidature pour une opportunité chez {company} (Alternance/CDI).
-Veuillez trouver mon CV en pièce jointe (format image).
+Veuillez trouver mon CV en pièce jointe.
 
 Merci pour votre temps,
 François Ballet
