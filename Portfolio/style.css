@@ -1,0 +1,67 @@
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 3em 1em;
+  background: linear-gradient(120deg, #222, #444);
+  color: white;
+}
+.hero img.profil {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 1em;
+}
+.cta {
+  margin-top: 1em;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background: #ffd700;
+  color: #222;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.btn:hover {
+  background: #ffae00;
+}
+
+/* A PROPOS */
+#apropos {
+  padding: 2em;
+  background: #fff;
+  color: #333;
+}
+#apropos ul {
+  list-style: none;
+  padding: 0;
+}
+#apropos li {
+  margin: 0.5em 0;
+}
+
+/* INTERETS */
+#interets {
+  padding: 2em;
+  background: #f2f2f2;
+}
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+.card {
+  background: white;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 250px;
+}
+.card .icon {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
