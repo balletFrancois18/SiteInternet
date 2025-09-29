@@ -7,27 +7,74 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
   <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #f5f5f5;
+      background: url("Images/f.jpg") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: -1;
+    }
+    .hero {
+      text-align: center;
+      padding: 5em 2em 3em;
+      color: #FFD700;
+    }
+    .hero p { color: #ddd; max-width: 700px; margin: 0 auto; }
+    .profil {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      margin-bottom: 1.5em;
+      border: 3px solid #FFD700;
+    }
+    .cta-buttons { margin-top: 2em; }
+    .btn {
+      display: inline-block;
+      margin: 0.3em;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: #FFD700;
+      color: #111;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #ffae00; transform: scale(1.05); }
+    .btn.active {
+      border: 2px solid #FFD700;
+      background: transparent;
+      color: #FFD700;
+    }
+    footer {
+      background: #000;
+      color: #bbb;
+      text-align: center;
+      padding: 1em;
+      margin-top: 3em;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- HERO -->
   <section class="hero">
     <img src="images/profil.jpg" alt="Photo François Ballet" class="profil">
     <h1>François Ballet</h1>
     <p>Étudiant en informatique & candidat polyvalent pour alternance et missions professionnelles courtes.</p>
     <div class="cta-buttons">
       <a href="index.html" class="btn active">Accueil</a>
-      <a href="cv-etudes.html" class="btn">Voir CV Études</a>
-      <a href="cv-travail.html" class="btn">Voir CV Travail</a>
+      <a href="cv-etudes.html" class="btn">Parcours Scolaire</a>
+      <a href="cv-travail.html" class="btn">Parcours Professionnel</a>
       <a href="interets.html" class="btn">Centres d’intérêt</a>
       <a href="apropos.html" class="btn">À propos</a>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 — François Ballet | Portfolio</p>
-  </footer>
-
+  
 </body>
 </html>
