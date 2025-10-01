@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
   <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
-  <style>
-    /* === Fond avec image === */
+</head>
+<body>
+<style>
+   /* === Fond === */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -16,6 +18,9 @@
       background: url("Images/f.jpg") no-repeat center center fixed;
       background-size: cover;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     body::before {
@@ -30,7 +35,7 @@
     /* HERO */
     .hero {
       text-align: center;
-      padding: 4em 2em 2em;
+      padding: 2em 2em;
       color: #FFD700;
     }
     .hero p { color: #ddd; }
@@ -47,18 +52,14 @@
       transition: 0.3s;
     }
     .btn:hover { background: #ffae00; transform: scale(1.05); }
-    .btn.active {
-      border: 2px solid #FFD700;
-      background: transparent;
-      color: #FFD700;
-    }
+    .btn.active { border: 2px solid #FFD700; background: transparent; color: #FFD700; }
 
-    /* SECTION */
+    /* TITRE SECTION */
     .section-h {
       font-size: 1.5em;
       font-weight: bold;
       color: #FFD700;
-      margin: 2em 0 1em;
+      margin: 0 0 1em;
       text-align: center;
     }
     .section-h .bar {
@@ -69,42 +70,82 @@
       margin: 8px auto 0;
     }
 
-    /* INTEREST CARDS */
+    /* === INTERETS === */
     .interests {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5em;
-      max-width: 1000px;
-      margin: 2em auto;
-      padding: 0 1em;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      justify-content: center;
+      align-items: start;
+      padding: 20px 60px 60px;
     }
+
     .card {
       background: rgba(0, 0, 0, 0.6);
-      padding: 2em 1.5em;
-      border-radius: 12px;
+      border-radius: 18px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      transition: transform 0.3s;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card i {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-      color: #FFD700;
+    .card:hover { transform: scale(1.05); }
+
+    /* LED BORDER */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      padding: 3px;
+      background: linear-gradient(90deg, #ff0000, #ffcc00, #00ffea, #ff0000);
+      background-size: 300% 300%;
+      animation: ledBorder 6s linear infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
     }
-    .card h3 { margin: 0.5em 0; color: #fff; }
-    .card p { color: #bbb; font-size: 0.95em; }
+    @keyframes ledBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* SLIDER */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 250px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    .slider-track {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      transition: transform 0.8s ease-in-out;
+    }
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex: 0 0 100%;
+    }
 
     footer {
       background: #000;
       color: #bbb;
       text-align: center;
       padding: 1em;
-      margin-top: 3em;
+      margin-top: auto;
     }
-  </style>
-</head>
-<body>
+</style>
 
   <!-- HERO -->
   <section class="hero">
@@ -123,29 +164,99 @@
   <section>
     <div class="section-h">🎨 Mes centres d’intérêt <span class="bar"></span></div>
     <div class="interests">
+
+      <!-- Animé / Série -->
       <div class="card">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="Images/a.gif" alt="Programmation 1">
+            <img src="images/prog2.jpg" alt="Programmation 2">
+            <img src="images/prog3.jpg" alt="Programmation 3">
+            <img src="images/prog4.jpg" alt="Programmation 4">
+          </div>
+        </div>
         <i class="fas fa-code"></i>
-        <h3>Programmation</h3>
-        <p>Passionné par le code et l’innovation logicielle.</p>
+        <h3>Animé / Série</h3>
+        <p>Passionné par les séries et manga d'action</p>
       </div>
+
+      <!-- Jeux Vidéo -->
       <div class="card">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="images/game1.jpg" alt="Jeu vidéo 1">
+            <img src="images/game2.jpg" alt="Jeu vidéo 2">
+            <img src="images/game3.jpg" alt="Jeu vidéo 3">
+            <img src="images/game4.jpg" alt="Jeu vidéo 4">
+          </div>
+        </div>
         <i class="fas fa-gamepad"></i>
         <h3>Jeux Vidéo</h3>
-        <p>Analyse des mécaniques et développement de mini-jeux.</p>
+        <p>Grand fan de FPS/Battle Royale/Jeu d'affrontement</p>
       </div>
+
+      <!-- Sport -->
       <div class="card">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="images/sport1.jpg" alt="Sport 1">
+            <img src="images/sport2.jpg" alt="Sport 2">
+            <img src="images/sport3.jpg" alt="Sport 3">
+            <img src="images/sport4.jpg" alt="Sport 4">
+          </div>
+        </div>
         <i class="fas fa-dumbbell"></i>
         <h3>Sport</h3>
-        <p>Pratique régulière pour rester discipliné et motivé.</p>
+        <p>Musculation/Kickboxing/Boxe Anglaise/Muay thai</p>
       </div>
+
+      <!-- Photographie -->
       <div class="card">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="Images/c.jpg" alt="Photographie 1">
+            <img src="Images/b.jpg" alt="Photographie 2">
+            <img src="Images/a.gif" alt="Photographie 3">
+            <img src="Images/b.jpg" alt="Photographie 4">
+          </div>
+        </div>
         <i class="fas fa-camera"></i>
         <h3>Photographie</h3>
         <p>Capturer des moments uniques et développer un œil créatif.</p>
       </div>
+
+      <!-- 🎶 Musique -->
+      <div class="card">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="Images/music1.jpg" alt="Musique 1">
+            <img src="Images/music2.jpg" alt="Musique 2">
+            <img src="Images/music3.jpg" alt="Musique 3">
+            <img src="Images/music4.jpg" alt="Musique 4">
+          </div>
+        </div>
+        <i class="fas fa-music"></i>
+        <h3>Musique</h3>
+        <p>Explorer différents genres et jouer d’instruments.</p>
+      </div>
+
+      <!-- ✈️ Voyage -->
+      <div class="card">
+        <div class="slider">
+          <div class="slider-track">
+            <img src="Images/travel1.jpg" alt="Voyage 1">
+            <img src="Images/travel2.jpg" alt="Voyage 2">
+            <img src="Images/travel3.jpg" alt="Voyage 3">
+            <img src="Images/travel4.jpg" alt="Voyage 4">
+          </div>
+        </div>
+        <i class="fas fa-plane"></i>
+        <h3>Voyage</h3>
+        <p>Découvrir de nouvelles cultures et paysages.</p>
+      </div>
+
     </div>
   </section>
-
 
 </body>
 </html>

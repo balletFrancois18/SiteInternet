@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>À propos - Portfolio François Ballet</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>À propos - François Ballet</title>
+  <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
   <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
   <style>
@@ -15,20 +15,109 @@
       background: url("Images/f.jpg") no-repeat center center fixed;
       background-size: cover;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     body::before {
       content: "";
-      position: fixed; top: 0; left: 0;
+      position: fixed;
+      top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.75);
       z-index: -1;
     }
     .hero {
       text-align: center;
-      padding: 4em 2em 2em;
+      padding: 2em 2em;
       color: #FFD700;
     }
     .hero p { color: #ddd; }
-    .profil {
-      
+
+    .cta-buttons { margin-top: 1.5em; }
+    .btn {
+      display: inline-block;
+      margin: 0.3em;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: #FFD700;
+      color: #111;
+      font-weight: bold;
+      transition: 0.3s;
+      text-decoration: none;
     }
+    .btn:hover { background: #ffae00; transform: scale(1.05); }
+    .btn.active { border: 2px solid #FFD700; background: transparent; color: #FFD700; }
+
+    .section-h {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #FFD700;
+      margin: 0 0 1em;
+      text-align: center;
+    }
+    .section-h .bar {
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #FFD700;
+      margin: 8px auto 0;
+    }
+
+    .content-about {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(0,0,0,0.6);
+      border-radius: 18px;
+      padding: 30px;
+      box-sizing: border-box;
+      color: #ddd;
+      font-size: 1.1em;
+      line-height: 1.5em;
+    }
+
+    footer {
+      background: #000;
+      color: #bbb;
+      text-align: center;
+      padding: 1em;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>À propos</h1>
+    <p>Découvrez qui je suis, mon parcours et mes valeurs.</p>
+    <div class="cta-buttons">
+      <a href="index.html" class="btn">Accueil</a>
+      <a href="cv-etudes.html" class="btn">Parcours Scolaire</a>
+      <a href="cv-travail.html" class="btn">Parcours Professionnel</a>
+      <a href="interets.html" class="btn">Centres d’intérêt</a>
+      <a href="apropos.html" class="btn active">À propos</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-h">🧑‍💼 Mon histoire<span class="bar"></span></div>
+    <div class="content-about">
+      <p>
+        Bonjour, je m’appelle François Ballet, étudiant passionné par le développement web,
+        la cybersécurité et les nouvelles technologies. Je suis à la recherche d’un emploi,
+        alternance ou mission intérim pour mettre en pratique mes compétences et apprendre davantage.
+      </p>
+      <p>
+        Mon parcours m’a permis de travailler sur divers projets web, en programmation
+        et en administration réseau. Curieux, impliqué et autonome, j’aime relever des défis
+        techniques stimulants.
+      </p>
+      <p>  
+        En dehors du travail, je suis également passionné par la musique, le sport et la photographie,
+        ce qui enrichit ma créativité au quotidien.
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>
