@@ -10,7 +10,7 @@ document.querySelectorAll(".card").forEach(card => {
         images[index].classList.remove("active");
         index = (index + 1) % images.length;
         images[index].classList.add("active");
-      }, 1500);
+      }, 3000); // toutes les 3 secondes
     }
   });
 
@@ -21,15 +21,3 @@ document.querySelectorAll(".card").forEach(card => {
     index = 0;
   });
 });
-
-// === REVEAL AU SCROLL ===
-const reveals = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.2 });
-
-reveals.forEach(rev => observer.observe(rev));
