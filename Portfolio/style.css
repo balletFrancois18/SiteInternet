@@ -1,0 +1,175 @@
+/* === GLOBAL === */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: linear-gradient(-45deg, #1e1e2f, #2a2a40, #343454, #1e1e2f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animation fond */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === HERO === */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero .profil {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #ffcc00;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* === BOUTONS === */
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  background: #ffcc00;
+  color: #1e1e2f;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: #ffaa00;
+  transform: translateY(-3px);
+}
+
+.btn.active {
+  background: #ffaa00;
+}
+
+/* === CONTENU === */
+.content {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.content h2 {
+  margin-bottom: 20px;
+  border-left: 4px solid #ffcc00;
+  padding-left: 10px;
+}
+
+.content p, .content ul {
+  line-height: 1.6;
+}
+
+.content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content li {
+  margin-bottom: 10px;
+}
+
+/* === INTERETS === */
+.interests {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
+  gap: 60px;
+  justify-items: center;
+  align-items: center;
+  padding: 20px 60px 60px;
+}
+
+/* Taille des cartes (beaucoup plus grandes) */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;  /* largeur augmentée */
+  height: 520px;     /* hauteur augmentée */
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  border: 3px solid transparent;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7); /* LED autour */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 55px rgba(255, 215, 0, 1);
+}
+
+/* Images dans les sliders */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 75%; /* images prennent plus de place */
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+/* Texte sous l’image */
+.card h3 {
+  margin: 12px 0 5px;
+  color: #FFD700;
+  font-size: 1.6em;
+}
+
+.card p {
+  font-size: 1.1em;
+  color: #ddd;
+}
+
+/* Organisation de la 2ème rangée */
+.interests .card:nth-child(5) {
+  grid-column: 2;
+}
+.interests .card:nth-child(6) {
+  grid-column: 3;
+}
+
+

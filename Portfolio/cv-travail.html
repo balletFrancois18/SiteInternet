@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Travail - François Ballet</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
+  <style>
+    
+    /* === Fond avec image informatique === */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #f5f5f5;
+      background: url("Images/f.jpg") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    
+     /* Superposition sombre */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
+    }
+  /* Superposition sombre pour améliorer la lisibilité */
+     /* HERO */
+    .hero {
+      text-align: center;
+      padding: 4em 2em 2em;
+      color: #FFD700;
+    }
+    .hero p {
+      color: #ddd;
+    }
+
+    .cta-buttons {
+      margin-top: 1.5em;
+    }
+    .btn {
+      display: inline-block;
+      margin: 0.3em;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: #FFD700;
+      color: #111;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ffae00;
+      transform: scale(1.05);
+    }
+    .btn.active {
+      border: 2px solid #FFD700;
+      background: transparent;
+      color: #FFD700;
+    }
+
+
+    .xp-item {
+      margin-bottom: 2.5em;
+      padding-bottom: 1.5em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .xp-item h3 {
+      margin-bottom: 0.6em;
+      font-size: 1.3em;
+      color: #fff;
+    }
+
+    .xp-item .place {
+      font-style: italic;
+      color: #bbb; /* sous-texte gris clair */
+      font-size: 0.9em;
+    }
+
+    .xp-item .year {
+      float: right;
+      font-weight: bold;
+      color: #FFD700;
+    }
+
+    .xp-item ul {
+      margin: 0.5em 0 0 1em;
+      padding-left: 1em;
+      color: #ddd; /* missions en gris clair */
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .xp-item ul li::marker {
+      color: #FFD700; /* puces dorées */
+    }
+
+    footer {
+      background: #000;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Expériences Professionnelles</h1>
+    <p>Mon parcours en entreprise, stages et missions.</p>
+    <div class="cta-buttons">
+      <a href="index.html" class="btn">Accueil</a>
+      <a href="cv-etudes.html" class="btn">Parcours Scolaire</a>
+      <a href="cv-travail.html" class="btn active">Parcours Professionnel</a>
+      <a href="interets.html" class="btn">Centres d’intérêt</a>
+      <a href="apropos.html" class="btn">À propos</a>
+    </div>
+  </section>
+
+  <!-- CONTENU -->
+  <section class="content">
+    <h2>💼 Expériences professionnelles</h2>
+
+    <div class="xp-item">
+      <h3>Conception de site Web <span class="year">2025</span></h3>
+      <div class="place">Auto-entrepreneur</div>
+      <ul>
+        <li>Support technique dédié aux demandes du site web.</li>
+        <li>Accompagnement client pour répondre à ses besoins spécifiques.</li>
+        <li>Gestion des utilisateurs.</li>
+      </ul>
+    </div>
+
+    <div class="xp-item">
+      <h3>Déménageur / Assistant déménageur <span class="year">2025</span></h3>
+      <div class="place">Movie Express (intérim)</div>
+      <ul>
+        <li>Mission courte d’une semaine, manutention et logistique.</li>
+      </ul>
+    </div>
+
+    <div class="xp-item">
+      <h3>Installateur réseaux & outils connectés <span class="year">2024</span></h3>
+      <div class="place">Safety Systems 77, Paris</div>
+      <ul>
+        <li>Installation et configuration de caméras de surveillance et systèmes d’alarme.</li>
+        <li>Configuration IP/ports/flux caméra.</li>
+        <li>Mise en place d’applications mobiles pour les clients.</li>
+        <li>Stage de 6 semaines.</li>
+      </ul>
+    </div>
+
+    <div class="xp-item">
+      <h3>Préparateur de commandes <span class="year">2023</span></h3>
+      <div class="place">VSM Impavide, Villepinte</div>
+      <ul>
+        <li>CDD de 2 mois (organisation, respect des délais et rigueur).</li>
+      </ul>
+    </div>
+
+    <div class="xp-item">
+      <h3>Assistant vendeur / Réparateur outils connectés <span class="year">2022</span></h3>
+      <div class="place">Momo Phone, Barbès</div>
+      <ul>
+        <li>Stage de 8 semaines, réparation de smartphones et assistance client.</li>
+      </ul>
+    </div>
+
+    <div class="xp-item">
+      <h3>Assistant rayon électroménager / bureautique <span class="year">2021</span></h3>
+      <div class="place">Carrefour, Sevran Beaudottes</div>
+      <ul>
+        <li>Stage de 6 semaines, conseil client et gestion de rayon.</li>
+      </ul>
+    </div>
+
+    <h2>⚙️ Compétences professionnelles</h2>
+    <ul>
+      <li>Développement Web : création de sites vitrine & gestion utilisateurs.</li>
+      <li>Installation réseaux & sécurité : configuration IP, systèmes de surveillance.</li>
+      <li>Service client & communication : accompagnement et conseil personnalisé.</li>
+      <li>Logistique & organisation : gestion des commandes et manutention.</li>
+      <li>Réparation & maintenance : diagnostic et réparation d’outils connectés.</li>
+    </ul>
+  </section>
+
+  
+
+</body>
+</html>
