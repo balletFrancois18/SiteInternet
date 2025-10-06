@@ -15,8 +15,8 @@ SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER = "francois.balletpro@gmail.com"
 APP_PASSWORD = "knsrpijllcqmfayd"   # ⚠️ Mets ici ton mot de passe d’application Gmail
-CV_IMAGE = Path("cv.jpg")
-CV_PDF = Path("cv.pdf")
+CV_IMAGE = Path("cv2.jpg")
+CV_PDF = Path("cv2.png")
 CSV_FILE = "contacts_interim.csv"   # Fichier CSV spécifique pour les agences d’intérim
 
 # PARAMÈTRES
