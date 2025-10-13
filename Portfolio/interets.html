@@ -116,7 +116,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* SLIDER */
+    /* SLIDER - Amélioré */
     .slider {
       position: relative;
       overflow: hidden;
@@ -124,18 +124,42 @@
       height: 250px;
       border-radius: 12px;
       margin-bottom: 15px;
+      background-color: rgba(0, 0, 0, 0.5); /* Fallback si images ne chargent pas */
     }
     .slider-track {
       display: flex;
-      width: 400%;
+      width: 400%; /* Pour 4 images ; ajuste si tu en as plus/moins */
       height: 100%;
       transition: transform 0.8s ease-in-out;
+      will-change: transform; /* Optimisation perf */
     }
     .slider img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       flex: 0 0 100%;
+      display: block; /* Évite les espaces indésirables */
+    }
+    .slider img:not([src]) {
+      background-color: #333; /* Fallback visuel si path erroné */
+    }
+
+    /* Icônes et contenu card */
+    .card i {
+      font-size: 2.5em;
+      color: #FFD700;
+      margin: 10px 0;
+    }
+    .card h3 {
+      color: #FFD700;
+      margin: 10px 0;
+    }
+    .card p {
+      color: #ddd;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     footer {
@@ -169,13 +193,13 @@
       <div class="card">
         <div class="slider">
           <div class="slider-track">
-            <img src="Images/a.gif" alt="Programmation 1">
-            <img src="images/prog2.jpg" alt="Programmation 2">
-            <img src="images/prog3.jpg" alt="Programmation 3">
-            <img src="images/prog4.jpg" alt="Programmation 4">
+            <img src="images/anime1.gif" alt="Animé 1"> <!-- Changé pour cohérence ; adapte ton fichier réel -->
+            <img src="images/anime2.jpg" alt="Animé 2">
+            <img src="images/anime3.jpg" alt="Animé 3">
+            <img src="images/anime4.jpg" alt="Animé 4">
           </div>
         </div>
-        <i class="fas fa-code"></i>
+        <i class="fas fa-tv"></i> <!-- Icône corrigée pour animés/séries -->
         <h3>Animé / Série</h3>
         <p>Passionné par les séries et manga d'action</p>
       </div>
@@ -214,10 +238,10 @@
       <div class="card">
         <div class="slider">
           <div class="slider-track">
-            <img src="Images/c.jpg" alt="Photographie 1">
-            <img src="Images/b.jpg" alt="Photographie 2">
-            <img src="Images/a.gif" alt="Photographie 3">
-            <img src="Images/b.jpg" alt="Photographie 4">
+            <img src="images/c.jpg" alt="Photographie 1"> <!-- Changé en minuscule pour cohérence -->
+            <img src="images/b.jpg" alt="Photographie 2">
+            <img src="images/a.gif" alt="Photographie 3">
+            <img src="images/b.jpg" alt="Photographie 4">
           </div>
         </div>
         <i class="fas fa-camera"></i>
@@ -229,10 +253,10 @@
       <div class="card">
         <div class="slider">
           <div class="slider-track">
-            <img src="Images/music1.jpg" alt="Musique 1">
-            <img src="Images/music2.jpg" alt="Musique 2">
-            <img src="Images/music3.jpg" alt="Musique 3">
-            <img src="Images/music4.jpg" alt="Musique 4">
+            <img src="images/music1.jpg" alt="Musique 1">
+            <img src="images/music2.jpg" alt="Musique 2">
+            <img src="images/music3.jpg" alt="Musique 3">
+            <img src="images/music4.jpg" alt="Musique 4">
           </div>
         </div>
         <i class="fas fa-music"></i>
@@ -244,10 +268,10 @@
       <div class="card">
         <div class="slider">
           <div class="slider-track">
-            <img src="Images/travel1.jpg" alt="Voyage 1">
-            <img src="Images/travel2.jpg" alt="Voyage 2">
-            <img src="Images/travel3.jpg" alt="Voyage 3">
-            <img src="Images/travel4.jpg" alt="Voyage 4">
+            <img src="images/travel1.jpg" alt="Voyage 1">
+            <img src="images/travel2.jpg" alt="Voyage 2">
+            <img src="images/travel3.jpg" alt="Voyage 3">
+            <img src="images/travel4.jpg" alt="Voyage 4">
           </div>
         </div>
         <i class="fas fa-plane"></i>
