@@ -15,8 +15,13 @@ SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER = "francois.balletpro@gmail.com"
 APP_PASSWORD = "knsrpijllcqmfayd"   # ⚠️ Mets ici ton mot de passe d’application Gmail
+<<<<<<< HEAD
 CV_IMAGE = Path("cv.jpg")
 CV_PDF = Path("cv.pdf")
+=======
+CV_IMAGE = Path("cv2.jpg")
+CV_PDF = Path("cv2.png")
+>>>>>>> refs/remotes/origin/main
 CSV_FILE = "contacts_interim.csv"   # Fichier CSV spécifique pour les agences d’intérim
 
 # PARAMÈTRES
@@ -144,4 +149,8 @@ with open(CSV_FILE, newline="", encoding="utf-8") as csvfile:
 
         delay = random.uniform(MIN_DELAY, MAX_DELAY)
         print(f"⏳ Pause de {int(delay)}s avant le prochain envoi...")
+<<<<<<< HEAD
         time.sleep(delay)
+=======
+        time.sleep(delay)
+>>>>>>> refs/remotes/origin/main
