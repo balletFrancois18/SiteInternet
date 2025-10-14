@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Centres d’intérêt - François Ballet</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
   <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,7 +14,7 @@
       margin: 0;
       font-family: 'Poppins', sans-serif;
       color: #f5f5f5;
-      background: url("Images/f.jpg") no-repeat center center fixed;
+      background: url("images/f.jpg") no-repeat center center fixed;
       background-size: cover;
       position: relative;
       display: flex;
@@ -95,7 +94,7 @@
     }
     .card:hover { transform: scale(1.05); }
 
-    /* LED BORDER */
+    /* LED BORDER (resté inchangé) */
     .card::before {
       content: "";
       position: absolute;
@@ -116,50 +115,36 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* SLIDER - Amélioré */
-    .slider {
+    /* Nouvelle section pour l'image unique avec dégradé */
+    .single-image {
       position: relative;
-      overflow: hidden;
       width: 100%;
-      height: 250px;
+      height: 250px; /* Même hauteur que le slider original */
       border-radius: 12px;
+      overflow: hidden;
       margin-bottom: 15px;
-      background-color: rgba(0, 0, 0, 0.5); /* Fallback si images ne chargent pas */
     }
-    .slider-track {
-      display: flex;
-      width: 400%; /* Pour 4 images ; ajuste si tu en as plus/moins */
-      height: 100%;
-      transition: transform 0.8s ease-in-out;
-      will-change: transform; /* Optimisation perf */
+    .single-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 3px; /* Bordure fine */
+      background: linear-gradient(90deg, #ff0000, #ffcc00, #00ffea, #ff0000); /* Même gradient que les cartes */
+      background-size: 300% 300%;
+      animation: ledBorder 6s linear infinite; /* Utilise l'animation existante */
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 1; /* Assure que le dégradé est au-dessus de l'image si nécessaire */
     }
-    .slider img {
+    .single-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      flex: 0 0 100%;
-      display: block; /* Évite les espaces indésirables */
-    }
-    .slider img:not([src]) {
-      background-color: #333; /* Fallback visuel si path erroné */
-    }
-
-    /* Icônes et contenu card */
-    .card i {
-      font-size: 2.5em;
-      color: #FFD700;
-      margin: 10px 0;
-    }
-    .card h3 {
-      color: #FFD700;
-      margin: 10px 0;
-    }
-    .card p {
-      color: #ddd;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      object-fit: cover; /* L'image couvre tout l'espace */
+      position: relative;
+      z-index: 0; /* L'image est derrière le dégradé si appliqué */
     }
 
     footer {
@@ -191,28 +176,18 @@
 
       <!-- Animé / Série -->
       <div class="card">
-        <div class="slider">
-          <div class="slider-track">
-            <img src="images/anime1.gif" alt="Animé 1"> <!-- Changé pour cohérence ; adapte ton fichier réel -->
-            <img src="images/anime2.jpg" alt="Animé 2">
-            <img src="images/anime3.jpg" alt="Animé 3">
-            <img src="images/anime4.jpg" alt="Animé 4">
-          </div>
+        <div class="single-image">
+          <img src="images/Rickgrimes.gif" alt="Animé principal">
         </div>
-        <i class="fas fa-tv"></i> <!-- Icône corrigée pour animés/séries -->
+        <i class="fas fa-tv"></i>
         <h3>Animé / Série</h3>
         <p>Passionné par les séries et manga d'action</p>
       </div>
 
       <!-- Jeux Vidéo -->
       <div class="card">
-        <div class="slider">
-          <div class="slider-track">
-            <img src="images/game1.jpg" alt="Jeu vidéo 1">
-            <img src="images/game2.jpg" alt="Jeu vidéo 2">
-            <img src="images/game3.jpg" alt="Jeu vidéo 3">
-            <img src="images/game4.jpg" alt="Jeu vidéo 4">
-          </div>
+        <div class="single-image">
+          <img src="images/bo3.gif" alt="Jeu vidéo principal">
         </div>
         <i class="fas fa-gamepad"></i>
         <h3>Jeux Vidéo</h3>
@@ -221,28 +196,18 @@
 
       <!-- Sport -->
       <div class="card">
-        <div class="slider">
-          <div class="slider-track">
-            <img src="images/sport1.jpg" alt="Sport 1">
-            <img src="images/sport2.jpg" alt="Sport 2">
-            <img src="images/sport3.jpg" alt="Sport 3">
-            <img src="images/sport4.jpg" alt="Sport 4">
-          </div>
+        <div class="single-image">
+          <img src="images/sport1.jpg" alt="Sport principal">
         </div>
         <i class="fas fa-dumbbell"></i>
         <h3>Sport</h3>
-        <p>Musculation/Kickboxing/Boxe Anglaise/Muay thai</p>
+        <p>Street-Workout/Kickboxing/Boxe Anglaise/Muay thai</p>
       </div>
 
       <!-- Photographie -->
       <div class="card">
-        <div class="slider">
-          <div class="slider-track">
-            <img src="images/c.jpg" alt="Photographie 1"> <!-- Changé en minuscule pour cohérence -->
-            <img src="images/b.jpg" alt="Photographie 2">
-            <img src="images/a.gif" alt="Photographie 3">
-            <img src="images/b.jpg" alt="Photographie 4">
-          </div>
+        <div class="single-image">
+          <img src="images/c.jpg" alt="Photographie principale">
         </div>
         <i class="fas fa-camera"></i>
         <h3>Photographie</h3>
@@ -251,13 +216,8 @@
 
       <!-- 🎶 Musique -->
       <div class="card">
-        <div class="slider">
-          <div class="slider-track">
-            <img src="images/music1.jpg" alt="Musique 1">
-            <img src="images/music2.jpg" alt="Musique 2">
-            <img src="images/music3.jpg" alt="Musique 3">
-            <img src="images/music4.jpg" alt="Musique 4">
-          </div>
+        <div class="single-image">
+          <img src="images/kaaris.gif" alt="Musique principale">
         </div>
         <i class="fas fa-music"></i>
         <h3>Musique</h3>
@@ -266,13 +226,8 @@
 
       <!-- ✈️ Voyage -->
       <div class="card">
-        <div class="slider">
-          <div class="slider-track">
-            <img src="images/travel1.jpg" alt="Voyage 1">
-            <img src="images/travel2.jpg" alt="Voyage 2">
-            <img src="images/travel3.jpg" alt="Voyage 3">
-            <img src="images/travel4.jpg" alt="Voyage 4">
-          </div>
+        <div class="single-image">
+          <img src="images/travel1.jpg" alt="Voyage principal">
         </div>
         <i class="fas fa-plane"></i>
         <h3>Voyage</h3>
