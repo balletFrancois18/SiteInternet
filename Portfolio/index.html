@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio François Ballet</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
   <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
   <style>
+    /* --- Style général --- */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -24,6 +23,8 @@
       background: rgba(0,0,0,0.75);
       z-index: -1;
     }
+
+    /* --- Section principale --- */
     .hero {
       text-align: center;
       padding: 5em 2em 3em;
@@ -46,6 +47,7 @@
       color: #111;
       font-weight: bold;
       transition: 0.3s;
+      text-decoration: none;
     }
     .btn:hover { background: #ffae00; transform: scale(1.05); }
     .btn.active {
@@ -53,6 +55,125 @@
       background: transparent;
       color: #FFD700;
     }
+
+    /* --- Section Projets --- */
+    .projets-container {
+      margin: 3em auto;
+      text-align: center;
+      max-width: 1100px;
+    }
+
+    .folder-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(20, 20, 20, 0.7);
+      border-radius: 12px;
+      padding: 1em 2em;
+      cursor: pointer;
+      color: #FFD700;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+    }
+    .folder-btn:hover {
+      background: rgba(255, 215, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .projets-list {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5em;
+      margin-top: 2em;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .projets-list.active { display: flex; }
+
+    /* --- Cartes de projet --- */
+    .projet-card {
+      background: rgba(10, 10, 10, 0.7);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+      width: 300px;
+      padding: 1em;
+      transition: 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .projet-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .projet-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1em;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .projet-card h3 {
+      color: #FFD700;
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-bottom: 0.4em;
+    }
+    .projet-card p {
+      color: #ccc;
+      font-size: 0.9em;
+      margin: 0.5em 0;
+    }
+
+    /* --- Sous-dossier de chaque projet --- */
+    .details-btn {
+      margin-top: 1em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 215, 0, 0.2);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 20px;
+      color: #FFD700;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9em;
+    }
+    .details-btn:hover {
+      background: rgba(255, 215, 0, 0.35);
+      transform: scale(1.05);
+    }
+
+    /* --- Animation fluide ouverture/fermeture --- */
+    .details-content {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 10px;
+      padding: 0 0.8em;
+      text-align: left;
+      font-size: 0.85em;
+      color: #ccc;
+      transition: all 0.4s ease;
+    }
+    .details-content.active {
+      opacity: 1;
+      margin-top: 1em;
+      padding: 0.8em;
+      max-height: 400px; /* hauteur max pour animation fluide */
+    }
+
     footer {
       background: #000;
       color: #bbb;
@@ -60,9 +181,15 @@
       padding: 1em;
       margin-top: 3em;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+
   <section class="hero">
     <img src="images/profil.jpg" alt="Photo François Ballet" class="profil">
     <h1>François Ballet</h1>
@@ -75,6 +202,96 @@
       <a href="apropos.html" class="btn">À propos</a>
     </div>
   </section>
-  
+
+  <!-- Section Dossier Projets -->
+  <section class="projets-container">
+    <div class="folder-btn" id="toggleProjets">
+      <i class="fa-solid fa-folder-open"></i> Projets
+    </div>
+
+    <div class="projets-list" id="projetsList">
+      <!-- Projet 1 -->
+      <div class="projet-card">
+        <img src="images/running.png" alt="Site vitrine">
+        <h3>Site-web Running</h3>
+        <p>Création d'un petit site web vitrine pour une boutique de running.</p>
+        <div class="details-btn"><i class="fa-solid fa-folder-open"></i> Détails</div>
+        <div class="details-content">
+          <p><strong>Langages utilisés :</strong> HTML, CSS, JavaScript, ?</p>
+          <p><strong>Effectif :</strong> 1 personne</p>
+          <p><strong>Durée :</strong></p>
+          <p><strong>Objectif :</strong> Présenter les produits,s'authentifier et montrer les fonctionnalités de la
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="projet-card">
+        <img src="images/easy.png" alt="Easy-Portal">
+        <h3>Easy-Portal</h3>
+        <p>Projet commun 2ème année de BTS CIEL.</p>
+        <div class="details-btn"><i class="fa-solid fa-folder-open"></i> Détails</div>
+        <div class="details-content">
+          <p><strong>Langages utilisés :</strong> HTML, CSS, PHP, MySQL</p>
+          <p><strong>Effectif :</strong> 5 personnes</p>
+          <p><strong>Durée :</strong> 2 mois</p>
+          <p><strong>Objectif :</strong> Créer un portail web multi-utilisateurs (étudiants, enseignants, administrateurs) pour centraliser les informations scolaires.</p>
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="projet-card">
+        <img src="images/projet3.jpg" alt="IHM Cryptage/Décryptage">
+        <h3>IHM Cryptage/Décryptage</h3>
+        <p>Projet de fin d'année de BTS CIEL 1ère année.</p>
+        <div class="details-btn"><i class="fa-solid fa-folder-open"></i> Détails</div>
+        <div class="details-content">
+          <p><strong>Langages utilisés :</strong> Python (Tkinter)</p>
+          <p><strong>Effectif :</strong> 2 personnes</p>
+          <p><strong>Durée :</strong> 3 semaines</p>
+          <p><strong>Objectif :</strong> Créer une interface graphique permettant de chiffrer et déchiffrer des textes via différents algorithmes de cryptage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 François Ballet – Portfolio | Contact : francois.ballet@example.com
+  </footer>
+
+  <script>
+    // --- Dossier principal ---
+    const toggleBtn = document.getElementById('toggleProjets');
+    const projetsList = document.getElementById('projetsList');
+    toggleBtn.addEventListener('click', () => {
+      projetsList.classList.toggle('active');
+      toggleBtn.innerHTML = projetsList.classList.contains('active')
+        ? '<i class="fa-solid fa-folder"></i> Fermer les projets'
+        : '<i class="fa-solid fa-folder-open"></i> Projets';
+    });
+
+    // --- Sous-dossiers avec transition fluide ---
+    document.querySelectorAll('.details-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const isActive = content.classList.contains('active');
+        if (isActive) {
+          // Fermeture douce
+          content.style.maxHeight = content.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            content.style.maxHeight = '0';
+            content.style.opacity = '0';
+          });
+          setTimeout(() => content.classList.remove('active'), 400);
+          btn.innerHTML = '<i class="fa-solid fa-folder-open"></i> Détails';
+        } else {
+          // Ouverture
+          content.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+          btn.innerHTML = '<i class="fa-solid fa-folder"></i> Fermer';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
