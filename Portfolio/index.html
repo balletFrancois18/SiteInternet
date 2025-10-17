@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio François Ballet</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
   <style>
-    /* --- Style général --- */
+    /* --- STYLE GLOBAL --- */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -23,8 +24,6 @@
       background: rgba(0,0,0,0.75);
       z-index: -1;
     }
-
-    /* --- Section principale --- */
     .hero {
       text-align: center;
       padding: 5em 2em 3em;
@@ -56,11 +55,11 @@
       color: #FFD700;
     }
 
-    /* --- Section Projets --- */
+    /* --- DOSSIER PROJETS --- */
     .projets-container {
       margin: 3em auto;
       text-align: center;
-      max-width: 1100px;
+      max-width: 900px;
     }
 
     .folder-btn {
@@ -84,94 +83,87 @@
     }
 
     .projets-list {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5em;
-      margin-top: 2em;
-      animation: fadeIn 0.5s ease-in-out;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease-in-out, opacity 0.4s ease;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin-top: 1.5em;
     }
-    .projets-list.active { display: flex; }
+    .projets-list.active {
+      max-height: 2000px;
+      opacity: 1;
+    }
 
-    /* --- Cartes de projet --- */
+    /* --- CARTES DE PROJET --- */
     .projet-card {
       background: rgba(10, 10, 10, 0.7);
-      border: 1px solid rgba(255, 215, 0, 0.3);
       border-radius: 15px;
+      padding: 1.2em 1.5em;
+      border: 1px solid rgba(255, 215, 0, 0.3);
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
-      width: 300px;
-      padding: 1em;
       transition: 0.3s;
-      text-align: center;
-      position: relative;
+      text-align: left;
     }
     .projet-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       background: rgba(255, 215, 0, 0.1);
     }
 
     .projet-card img {
       width: 100%;
-      height: 160px;
       object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 1em;
+      margin-bottom: 0.8em;
       border: 1px solid rgba(255, 215, 0, 0.3);
     }
 
     .projet-card h3 {
       color: #FFD700;
-      font-weight: 600;
-      font-size: 1.1em;
-      margin-bottom: 0.4em;
+      margin: 0.3em 0;
+      font-size: 1.2em;
     }
+
     .projet-card p {
       color: #ccc;
-      font-size: 0.9em;
-      margin: 0.5em 0;
+      font-size: 0.95em;
+      margin: 0;
     }
 
-    /* --- Sous-dossier de chaque projet --- */
+    /* --- SOUS-DOSSIERS --- */
     .details-btn {
       margin-top: 1em;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: rgba(255, 215, 0, 0.2);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      border-radius: 20px;
+      background: none;
+      border: none;
       color: #FFD700;
-      padding: 6px 14px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9em;
+      font-weight: 600;
+      font-size: 0.95em;
+      transition: 0.3s;
     }
     .details-btn:hover {
-      background: rgba(255, 215, 0, 0.35);
-      transform: scale(1.05);
+      color: #ffb300;
+      text-decoration: underline;
     }
 
-    /* --- Animation fluide ouverture/fermeture --- */
-    .details-content {
+    .details {
       overflow: hidden;
       max-height: 0;
       opacity: 0;
-      margin-top: 0;
-      background: rgba(20, 20, 20, 0.7);
-      border: 1px solid rgba(255, 215, 0, 0.2);
-      border-radius: 10px;
-      padding: 0 0.8em;
-      text-align: left;
-      font-size: 0.85em;
-      color: #ccc;
-      transition: all 0.4s ease;
+      transition: max-height 0.6s ease-in-out, opacity 0.4s ease;
+      margin-top: 0.8em;
     }
-    .details-content.active {
+    .details.active {
+      max-height: 500px;
       opacity: 1;
-      margin-top: 1em;
-      padding: 0.8em;
-      max-height: 400px; /* hauteur max pour animation fluide */
+    }
+
+    .details p {
+      color: #bbb;
+      font-size: 0.9em;
+      margin-bottom: 0.6em;
     }
 
     footer {
@@ -182,14 +174,14 @@
       margin-top: 3em;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* --- PERSONNALISATION PAR PROJET --- */
+    .projet1 img { height: 300px;}
+    .projet2 img { height: 200px; object-position: center; }
+    .projet3 img { height: 300px; object-position: top; }
+
   </style>
 </head>
 <body>
-
   <section class="hero">
     <img src="images/profil.jpg" alt="Photo François Ballet" class="profil">
     <h1>François Ballet</h1>
@@ -203,7 +195,7 @@
     </div>
   </section>
 
-  <!-- Section Dossier Projets -->
+  <!-- SECTION PROJETS -->
   <section class="projets-container">
     <div class="folder-btn" id="toggleProjets">
       <i class="fa-solid fa-folder-open"></i> Projets
@@ -211,44 +203,44 @@
 
     <div class="projets-list" id="projetsList">
       <!-- Projet 1 -->
-      <div class="projet-card">
-        <img src="images/running.png" alt="Site vitrine">
+      <div class="projet-card projet1">
+        <img src="images/running.png" alt="Site vitrine Running">
         <h3>Site-web Running</h3>
         <p>Création d'un petit site web vitrine pour une boutique de running.</p>
-        <div class="details-btn"><i class="fa-solid fa-folder-open"></i> Détails</div>
-        <div class="details-content">
-          <p><strong>Langages utilisés :</strong> HTML, CSS, JavaScript, ?</p>
-          <p><strong>Effectif :</strong> 1 personne</p>
-          <p><strong>Durée :</strong></p>
-          <p><strong>Objectif :</strong> Présenter les produits,s'authentifier et montrer les fonctionnalités de la
+        <button class="details-btn">Voir les détails</button>
+        <div class="details">
+          <p><strong>Langages :</strong> HTML, CSS, JavaScript</p>
+          <p><strong>Objectif :</strong> Présenter les produits et événements running.</p>
+          <p><strong>Durée :</strong> 2 semaines – Travail individuel</p>
+          <img src="images/details1.jpg" alt="Aperçu site running" style="width:100%; border-radius:10px; margin-top:0.5em;">
         </div>
       </div>
 
       <!-- Projet 2 -->
-      <div class="projet-card">
+      <div class="projet-card projet2">
         <img src="images/easy.png" alt="Easy-Portal">
         <h3>Easy-Portal</h3>
-        <p>Projet commun 2ème année de BTS CIEL.</p>
-        <div class="details-btn"><i class="fa-solid fa-folder-open"></i> Détails</div>
-        <div class="details-content">
-          <p><strong>Langages utilisés :</strong> HTML, CSS, PHP, MySQL</p>
-          <p><strong>Effectif :</strong> 5 personnes</p>
-          <p><strong>Durée :</strong> 2 mois</p>
-          <p><strong>Objectif :</strong> Créer un portail web multi-utilisateurs (étudiants, enseignants, administrateurs) pour centraliser les informations scolaires.</p>
+        <p>Projet commun 2ème Année de BTS CIEL</p>
+        <button class="details-btn">Voir les détails</button>
+        <div class="details">
+          <p><strong>Technologies :</strong> PHP, MySQL, JavaScript, Bootstrap</p>
+          <p><strong>Équipe :</strong> 4 étudiants</p>
+          <p><strong>Objectif :</strong> Créer un portail de gestion pour les utilisateurs et les données internes.</p>
+          <img src="images/details2.jpg" alt="Easy Portal interface" style="width:100%; border-radius:10px; margin-top:0.5em;">
         </div>
       </div>
 
       <!-- Projet 3 -->
-      <div class="projet-card">
-        <img src="images/projet3.jpg" alt="IHM Cryptage/Décryptage">
+      <div class="projet-card projet3">
+        <img src="images/decryptage.png" alt="IHM Cryptage/Décryptage">
         <h3>IHM Cryptage/Décryptage</h3>
-        <p>Projet de fin d'année de BTS CIEL 1ère année.</p>
-        <div class="details-btn"><i class="fa-solid fa-folder-open"></i> Détails</div>
-        <div class="details-content">
-          <p><strong>Langages utilisés :</strong> Python (Tkinter)</p>
-          <p><strong>Effectif :</strong> 2 personnes</p>
-          <p><strong>Durée :</strong> 3 semaines</p>
-          <p><strong>Objectif :</strong> Créer une interface graphique permettant de chiffrer et déchiffrer des textes via différents algorithmes de cryptage.</p>
+        <p>Projet de fin d'année de BTS CIEL 1ère année</p>
+        <button class="details-btn">Voir les détails</button>
+        <div class="details">
+          <p><strong>Langages :</strong> Python (Tkinter)</p>
+          <p><strong>But :</strong> Créer une interface pour chiffrer et déchiffrer des textes avec différents algorithmes.</p>
+          <p><strong>Durée :</strong> 1 mois – Travail individuel</p>
+          <img src="images/details3.jpg" alt="Interface IHM cryptage" style="width:100%; border-radius:10px; margin-top:0.5em;">
         </div>
       </div>
     </div>
@@ -259,9 +251,10 @@
   </footer>
 
   <script>
-    // --- Dossier principal ---
+    // Ouverture/fermeture du dossier principal
     const toggleBtn = document.getElementById('toggleProjets');
     const projetsList = document.getElementById('projetsList');
+
     toggleBtn.addEventListener('click', () => {
       projetsList.classList.toggle('active');
       toggleBtn.innerHTML = projetsList.classList.contains('active')
@@ -269,27 +262,15 @@
         : '<i class="fa-solid fa-folder-open"></i> Projets';
     });
 
-    // --- Sous-dossiers avec transition fluide ---
-    document.querySelectorAll('.details-btn').forEach((btn) => {
+    // Sous-dossiers (détails)
+    const detailsButtons = document.querySelectorAll('.details-btn');
+    detailsButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        const isActive = content.classList.contains('active');
-        if (isActive) {
-          // Fermeture douce
-          content.style.maxHeight = content.scrollHeight + 'px';
-          requestAnimationFrame(() => {
-            content.style.maxHeight = '0';
-            content.style.opacity = '0';
-          });
-          setTimeout(() => content.classList.remove('active'), 400);
-          btn.innerHTML = '<i class="fa-solid fa-folder-open"></i> Détails';
-        } else {
-          // Ouverture
-          content.classList.add('active');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          content.style.opacity = '1';
-          btn.innerHTML = '<i class="fa-solid fa-folder"></i> Fermer';
-        }
+        const details = btn.nextElementSibling;
+        details.classList.toggle('active');
+        btn.textContent = details.classList.contains('active')
+          ? 'Fermer les détails'
+          : 'Voir les détails';
       });
     });
   </script>
