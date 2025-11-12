@@ -93,7 +93,7 @@
       margin-top: 1.5em;
     }
     .projets-list.active {
-      max-height: 2000px;
+      max-height: 4000px;
       opacity: 1;
     }
 
@@ -132,7 +132,7 @@
       margin: 0;
     }
 
-    /* --- SOUS-DOSSIERS --- */
+    /* --- BOUTON DÉTAILS --- */
     .details-btn {
       margin-top: 1em;
       background: none;
@@ -148,6 +148,7 @@
       text-decoration: underline;
     }
 
+    /* --- DÉTAILS PROJET --- */
     .details {
       overflow: hidden;
       max-height: 0;
@@ -156,7 +157,7 @@
       margin-top: 0.8em;
     }
     .details.active {
-      max-height: 500px;
+      max-height: 1200px;
       opacity: 1;
     }
 
@@ -174,8 +175,43 @@
       margin-top: 3em;
     }
 
+    /* --- GALERIES AVEC LÉGENDES --- */
+    .preview-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      margin-top: 1em;
+      flex-wrap: wrap;
+    }
+
+    .preview-gallery figure {
+      width: 30%;
+      min-width: 220px;
+      text-align: center;
+    }
+
+    .preview-gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .preview-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+    }
+
+    .preview-gallery figcaption {
+      margin-top: 0.5em;
+      font-size: 0.9em;
+      color: #FFD700;
+      font-weight: 500;
+    }
+
     /* --- PERSONNALISATION PAR PROJET --- */
-    .projet1 img { height: 300px;}
+    .projet1 img { height: 300px; }
     .projet2 img { height: 200px; object-position: center; }
     .projet3 img { height: 300px; object-position: top; }
 
@@ -202,7 +238,7 @@
     </div>
 
     <div class="projets-list" id="projetsList">
-      <!-- Projet 1 -->
+      <!-- PROJET 1 -->
       <div class="projet-card projet1">
         <img src="images/running.png" alt="Site vitrine Running">
         <h3>Site-web Running</h3>
@@ -212,35 +248,77 @@
           <p><strong>Langages :</strong> HTML, CSS, JavaScript</p>
           <p><strong>Objectif :</strong> Présenter les produits et événements running.</p>
           <p><strong>Durée :</strong> 2 semaines – Travail individuel</p>
-          <img src="images/details1.jpg" alt="Aperçu site running" style="width:100%; border-radius:10px; margin-top:0.5em;">
+
+          <div class="preview-gallery">
+            <figure>
+              <img src="images/apercu1.png" alt="Page d’accueil site running">
+              <figcaption>Page d’accueil</figcaption>
+            </figure>
+            <figure>
+              <img src="images/apercu2.png" alt="Catalogue produits site running">
+              <figcaption>Catalogue produits</figcaption>
+            </figure>
+            <figure>
+              <img src="images/apercu3.png" alt="Événements running">
+              <figcaption>Événements</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
-      <!-- Projet 2 -->
+      <!-- PROJET 2 -->
       <div class="projet-card projet2">
         <img src="images/easy.png" alt="Easy-Portal">
         <h3>Easy-Portal</h3>
-        <p>Projet commun 2ème Année de BTS CIEL</p>
+        <p>Projet commun 2ème Année de BTS CIEL.</p>
         <button class="details-btn">Voir les détails</button>
         <div class="details">
           <p><strong>Technologies :</strong> PHP, MySQL, JavaScript, Bootstrap</p>
           <p><strong>Équipe :</strong> 4 étudiants</p>
           <p><strong>Objectif :</strong> Créer un portail de gestion pour les utilisateurs et les données internes.</p>
-          <img src="images/details2.jpg" alt="Easy Portal interface" style="width:100%; border-radius:10px; margin-top:0.5em;">
+
+          <div class="preview-gallery">
+            <figure>
+              <img src="images/easy_apercu1.png" alt="Page de connexion Easy-Portal">
+              <figcaption>Page de connexion</figcaption>
+            </figure>
+            <figure>
+              <img src="images/easy_apercu2.png" alt="Tableau de bord Easy-Portal">
+              <figcaption>Tableau de bord</figcaption>
+            </figure>
+            <figure>
+              <img src="images/easy_apercu3.png" alt="Gestion des utilisateurs">
+              <figcaption>Gestion des utilisateurs</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
 
-      <!-- Projet 3 -->
+      <!-- PROJET 3 -->
       <div class="projet-card projet3">
         <img src="images/cryptage_chiffrement.png" alt="IHM Cryptage/Décryptage">
         <h3>IHM Cryptage/Décryptage</h3>
-        <p>Projet de fin d'année de BTS CIEL 1ère année</p>
+        <p>Projet de fin d'année de BTS CIEL 1ère année.</p>
         <button class="details-btn">Voir les détails</button>
         <div class="details">
           <p><strong>Langages :</strong> Python (Tkinter)</p>
           <p><strong>But :</strong> Créer une interface pour chiffrer et déchiffrer des textes avec différents algorithmes.</p>
           <p><strong>Durée :</strong> 1 mois – Travail individuel</p>
-          <img src="images/details3.jpg" alt="Interface IHM cryptage" style="width:100%; border-radius:10px; margin-top:0.5em;">
+
+          <div class="preview-gallery">
+            <figure>
+              <img src="images/crypto_apercu1.png" alt="Interface principale du programme">
+              <figcaption>Interface principale</figcaption>
+            </figure>
+            <figure>
+              <img src="images/crypto_apercu2.png" alt="Section chiffrement de texte">
+              <figcaption>Chiffrement</figcaption>
+            </figure>
+            <figure>
+              <img src="images/crypto_apercu3.png" alt="Section déchiffrement">
+              <figcaption>Déchiffrement</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>
