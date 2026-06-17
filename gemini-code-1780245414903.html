@@ -3,383 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>François Ballet - CV Étudiant Polyvalent</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>CV - François Ballet</title>
     <style>
         :root {
-            --sidebar-blue: linear-gradient(180deg, #1d4ed8 0%, #3b82f6 100%);
-            --text-dark: #1e293b;
-            --text-light: #ffffff;
-            --accent-blue: #3b82f6;
-            --bg-pill: #dbeafe;
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --border-color: #e2e8f0;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f8fafc;
+            font-family: Arial, Helvetica, sans-serif;
             color: var(--text-dark);
-            padding: 20px;
+            line-height: 1.5;
+            background-color: #ffffff;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* En-tête */
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
-        .cv-container {
-            width: 850px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            min-height: 1100px;
-        }
-
-        /* --- BARRE LATERALE --- */
-        .sidebar {
-            background: var(--sidebar-blue);
-            color: var(--text-light);
-            padding: 40px 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .sidebar-section h3 {
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 5px;
-        }
-
-        .info-block {
-            margin-bottom: 12px;
-            font-size: 12px;
-        }
-
-        .info-block label {
-            font-weight: 600;
-            display: block;
-            opacity: 0.9;
-        }
-
-        .info-block p, .info-block a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 300;
-        }
-
-        .comp-item {
-            margin-bottom: 15px;
-            font-size: 12px;
-        }
-        .comp-item h4 {
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-        .comp-item p {
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        /* --- CONTENU PRINCIPAL --- */
-        .main-content {
-            padding: 50px 40px;
-        }
-
-        .header-main {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .header-main h1 {
-            font-size: 32px;
-            font-weight: 700;
+        .header-title h1 {
+            font-size: 28px;
+            color: var(--primary-color);
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #0f172a;
+            margin-bottom: 5px;
         }
 
-        .target-pill {
-            display: inline-block;
-            background-color: var(--bg-pill);
-            color: #1e40af;
-            font-weight: 600;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-top: 10px;
-        }
-
-        .dispo-text {
-            font-size: 12px;
-            color: #ef4444;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-
-        .section-title {
+        .header-title h2 {
             font-size: 16px;
+            color: var(--secondary-color);
+            font-weight: 600;
             text-transform: uppercase;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 25px;
+        }
+
+        .header-contact {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .header-contact p {
+            margin-bottom: 3px;
+        }
+
+        .header-contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 25px;
+        }
+
+        h3.section-title {
+            font-size: 16px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Compétences (Grille ATS-friendly) */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background-color: var(--bg-light);
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .skill-category strong {
+            display: block;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .skill-category p {
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        /* Éléments de liste (Expériences, Formations, Projets) */
+        .item {
             margin-bottom: 15px;
         }
 
-        .section-title i {
-            color: #475569;
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
         }
 
-        .title-line {
-            flex-grow: 1;
-            height: 3px;
-            background-color: #93c5fd;
-            border-radius: 2px;
+        .item-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-dark);
         }
 
-        .item-row {
-            display: grid;
-            grid-template-columns: 1fr 130px;
-            margin-bottom: 18px;
+        .item-subtitle {
+            font-size: 13px;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .item-date {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .item-details {
+            font-size: 13px;
+            padding-left: 15px;
+        }
+
+        .item-details li {
+            margin-bottom: 3px;
+        }
+
+        .tech-tags {
+            font-size: 12px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        /* Loisirs */
+        .interests-text {
             font-size: 13px;
         }
 
-        .item-left h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .item-left .sub {
-            color: #64748b;
-            font-size: 12px;
-            margin-bottom: 4px;
-        }
-
-        .item-left ul {
-            margin-left: 15px;
-            color: #334155;
-            font-size: 12px;
-        }
-
-        .item-right {
-            text-align: right;
-            font-weight: 600;
-            color: #2563eb;
-            font-size: 12px;
-        }
-
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            text-align: center;
-            font-size: 12px;
-            margin-top: 15px;
-            gap: 10px;
-        }
-        .interest-icon-box i {
-            font-size: 18px;
-            color: #475569;
-            margin-bottom: 5px;
-            display: block;
+        /* Optimisation pour l'impression PDF */
+        @media print {
+            body {
+                padding: 20px;
+                font-size: 12px;
+            }
+            .skill-category {
+                background-color: #f8f9fa !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="cv-container">
-        <!-- BARRE LATERALE -->
-        <aside class="sidebar">
-            <div class="sidebar-section">
-                <h3><i class="fa-solid fa-address-book"></i> Contact</h3>
-                <div class="info-block">
-                    <label>Téléphone</label>
-                    <p>06 27 66 78 65</p>
-                </div>
-                <div class="info-block">
-                    <label>Mail</label>
-                    <p><a href="mailto:francois.balletpro@gmail.com">francois.balletpro@gmail.com</a></p>
-                </div>
-                <div class="info-block">
-                    <label>Adresse</label>
-                    <p>93420 Villepinte</p>
-                </div>
-            </div>
+    <header>
+        <div class="header-title">
+            <h1>François Ballet</h1>
+            <h2>Étudiant en Licence Pro — Chef de projet dével., sécurité et exploitation</h2>
+        </div>
+        <div class="header-contact">
+            <p>06 27 66 78 65</p>
+            <p><a href="mailto:francois.balletpro@gmail.com">francois.balletpro@gmail.com</a></p>
+            <p>93420 Villepinte</p>
+            <p>GitHub: <a href="https://github.com/balletfrancois18" target="_blank">balletfrancois18</a></p>
+            <p>LinkedIn: <a href="#" target="_blank">Francois Ballet</a></p>
+        </div>
+    </header>
 
-            <div class="sidebar-section">
-                <h3><i class="fa-solid fa-lightbulb"></i> Qualités & Atouts</h3>
-                <div class="comp-item">
-                    <h4>- Polyvalence & Dynamisme</h4>
-                    <p>Capacité à enchaîner les tâches variées (caisse, manutention, nettoyage) à un rythme soutenu.</p>
-                </div>
-                <div class="comp-item">
-                    <h4>- Relation Client</h4>
-                    <p>Excellent contact commercial, sens du service, esprit souriant et accueillant.</p>
-                </div>
-                <div class="comp-item">
-                    <h4>- Endurance Physique</h4>
-                    <p>Habitué au port de charges, aux déplacements continus et au travail debout.</p>
-                </div>
-                <div class="comp-item">
-                    <h4>- Ponctualité & Rigueur</h4>
-                    <p>Respect de la hiérarchie, des horaires de shift et des règles de sécurité.</p>
-                </div>
+    <section>
+        <h3 class="section-title">Compétences Techniques</h3>
+        <div class="skills-container">
+            <div class="skill-category">
+                <strong>Big Data & DevOps</strong>
+                <p>Hadoop, Docker, Kubernetes</p>
             </div>
+            <div class="skill-category">
+                <strong>Développement Logiciel & Web</strong>
+                <p>Python, C, PHP, JavaScript, HTML5, CSS3, SQL, Git / GitHub, VS Code</p>
+            </div>
+            <div class="skill-category">
+                <strong>Systèmes & Réseaux</strong>
+                <p>Virtualisation (VMware), Windows Server, Adressage IP, Gestion de flux & ports</p>
+            </div>
+            <div class="skill-category">
+                <strong>Sécurité & Matériels connectés</strong>
+                <p>Caméras IP, Systèmes d'alarmes, Diagnostic & Réparation de terminaux</p>
+            </div>
+            <div class="skill-category">
+                <strong>Gestion de Projet & Outils</strong>
+                <p>Méthodes agiles, Trello, Travail en équipe</p>
+            </div>
+            <div class="skill-category">
+                <strong>Langues</strong>
+                <p>Français (Natif) | Anglais (Niveau B1)</p>
+            </div>
+        </div>
+    </section>
 
-            <div class="sidebar-section">
-                <h3><i class="fa-solid fa-earth-americas"></i> Langues</h3>
-                <div class="comp-item">
-                    <h4>Français</h4>
-                    <p>Langue maternelle</p>
+    <section>
+        <h3 class="section-title">Projets Informatiques</h3>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Gestionnaire de rangement de fichiers automatisé</span>
+                    <div class="item-subtitle">Projet Académique — Licence Professionnelle</div>
                 </div>
-                <div class="comp-item">
-                    <h4>Anglais (B1)</h4>
-                    <p>Opérationnel (accueil et orientation clients)</p>
+                <span class="item-date">2025 - 2026</span>
+            </div>
+            <ul class="item-details">
+                <li>Conception et développement complet d'une solution d'automatisation de tri et de stockage de fichiers.</li>
+                <li>Création d'une interface graphique complète (GUI) et performante en <strong>Python</strong>.</li>
+                <li>Développement d'un outil complémentaire en ligne de commande (CLI) optimisé en <strong>Langage C</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Easy-Portal — Application Web de Gestion des Utilisateurs</span>
+                    <div class="item-subtitle">Projet de fin d'études BTS CIEL (6 mois)</div>
                 </div>
+                <span class="item-date">2025</span>
             </div>
-        </aside>
+            <ul class="item-details">
+                <li>Développement d'une plateforme web sur mesure destinée à la gestion des utilisateurs d'un établissement scolaire.</li>
+                <li>Modélisation et requêtage de base de données SQL.</li>
+                <div class="tech-tags">Technologies : HTML, CSS, JavaScript, PHP, SQL | Code source disponible sur GitHub</div>
+            </ul>
+        </div>
 
-        <!-- CONTENU PRINCIPAL -->
-        <main class="main-content">
-            <div class="header-main">
-                <h1>François Ballet</h1>
-                <div class="target-pill">Étudiant</div>
-                <div class="dispo-text">Disponible pour contrat partiel (18h-21h/semaine),CDD (35h/semaine) ou missions intérim du 08/06/2026 au 07/08/2026</div>
-            </div>
-
-            <!-- EXPERIENCES PROFESSIONNELLES -->
-            <div class="section-title">
-                <i class="fa-solid fa-briefcase"></i> Expériences Professionnelles <span class="title-line"></span>
-            </div>
-
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Équipier Polyvalent de Restauration Rapide</h4>
-                    <div class="sub">Restauration rapide / Vente à emporter</div>
-                    <ul>
-                        <li>Accueil des clients, prise de commande et encaissement en caisse.</li>
-                        <li>Préparation des commandes en cuisine et respect strict des normes d'hygiène.</li>
-                        <li>Gestion du rush et maintien de la propreté des espaces de vente.</li>
-                    </ul>
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Application de Chiffrement & Déchiffrement</span>
+                    <div class="item-subtitle">Projet Académique BTS CIEL</div>
                 </div>
-                <div class="item-right">2024 - 2025<br><span style="font-size:11px; color:#64748b;">Job Étudiant</span></div>
+                <span class="item-date">2 mois</span>
             </div>
+            <ul class="item-details">
+                <li>Développement d'une Interface Homme-Machine (IHM) dédiée à la sécurité des données.</li>
+                <li>Implémentation d'algorithmes de cryptage et décryptage de messages textuels.</li>
+                <div class="tech-tags">Technologie : Python</div>
+            </ul>
+        </div>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Conseiller de Vente / Employé de magasin</h4>
-                    <div class="sub">Prêt-à-porter & Boutiques spécialisées (Momo Phone...)</div>
-                    <ul>
-                        <li>Accueil, conseil de la clientèle et ventes complémentaires.</li>
-                        <li>Réception des livraisons, déballage, étiquetage et mise en rayon (facing).</li>
-                        <li>Maintien de la tenue du magasin et encaissement.</li>
-                    </ul>
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Morpion MANGA Ultimate & Interface Coloc Manager</span>
+                    <div class="item-subtitle">Projets Personnels (Side Projects)</div>
                 </div>
-                <div class="item-right">2022 - 2025<br><span style="font-size:11px; color:#64748b;">Saisonnier</span></div>
+                <span class="item-date">En cours</span>
             </div>
+            <ul class="item-details">
+                <li>Création d'un jeu de morpion revisité intégrant des mécaniques de gameplay inédites (Thème Manga).</li>
+                <li>Développement parallèle d'une application web de gestion logistique et financière pour les colocations.</li>
+            </ul>
+        </div>
+    </section>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Déménageur / Manutentionnaire</h4>
-                    <div class="sub">Movie Express</div>
-                    <ul>
-                        <li>Déménagement de mobilier pour particuliers et entreprises.</li>
-                        <li>Port de charges lourdes, sécurisation du matériel et chargement de camions.</li>
-                    </ul>
+    <section>
+        <h3 class="section-title">Expériences Professionnelles Informatiques</h3>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Concepteur de site Web / Support Technique</span>
+                    <div class="item-subtitle">Auto-entrepreneur</div>
                 </div>
-                <div class="item-right">2025<br><span style="font-size:11px; color:#64748b;">Intérim</span></div>
+                <span class="item-date">2025</span>
             </div>
+            <ul class="item-details">
+                <li>Développement et déploiement de sites internet sur mesure pour des clients professionnels.</li>
+                <li>Gestion de la maintenance applicative, gestion des utilisateurs et support technique de proximité.</li>
+            </ul>
+        </div>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Préparateur de commandes / Magasinier</h4>
-                    <div class="sub">VSM Impavide</div>
-                    <ul>
-                        <li>Prélèvement de produits en usine, constitution des colis et palettisation.</li>
-                        <li>Suivi des cadences imposées et contrôle qualité visuel.</li>
-                    </ul>
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Stagiaire Installateur Réseaux & Surveillance</span>
+                    <div class="item-subtitle">Safety Systems 77, Paris</div>
                 </div>
-                <div class="item-right">2023<br><span style="font-size:11px; color:#64748b;">CDD (2 mois)</span></div>
+                <span class="date">2024 (6 sem.)</span>
             </div>
+            <ul class="item-details">
+                <li>Installation et configuration d'infrastructures réseaux (caméras de surveillance IP et systèmes d'alarme sans fil).</li>
+                <li>Gestion fine de l'adressage IP, ouverture/redirection de ports réseaux, flux vidéo et interfaçage sur l'application client.</li>
+            </ul>
+        </div>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Employé de rayon / Logistique</h4>
-                    <div class="sub">Grandes surfaces (Carrefour, Leader Price)</div>
-                    <ul>
-                        <li>Approvisionnement des rayons (Alimentaire, Électroménager), rotation des stocks.</li>
-                        <li>Déchargement et transport de palettes en réserve.</li>
-                    </ul>
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Stagiaire Réparateur d'outils connectés & Vendeur</span>
+                    <div class="item-subtitle">Momo Phone, Barbès</div>
                 </div>
-                <div class="item-right">2021 - 2022<br><span style="font-size:11px; color:#64748b;">Stages Terrain</span></div>
+                <span class="item-date">2022 (8 sem.)</span>
             </div>
+            <ul class="item-details">
+                <li>Diagnostic matériel/logiciel et réparation technique de smartphones et terminaux connectés.</li>
+            </ul>
+        </div>
+    </section>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Ouvrier auxiliaire du BTP & Installateur</h4>
-                    <div class="sub">Safety Systems 77 & Chantiers de second œuvre</div>
-                    <ul>
-                        <li>Aide à la pose d'outils connectés de sécurité (alarmes, caméras).</li>
-                        <li>Manutention de matériel lourd, perçage, fixation et nettoyage de chantier.</li>
-                    </ul>
+    <section>
+        <h3 class="section-title">Formations</h3>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Licence Professionnelle — Chef de projet dev, sécurité et exploitation</span>
+                    <div class="item-subtitle">CFA CNAM - Stade de France, Paris</div>
                 </div>
-                <div class="item-right">2024<br><span style="font-size:11px; color:#64748b;">Stage (6 sem.)</span></div>
+                <span class="item-date">2025 - 2026</span>
             </div>
+        </div>
 
-            <!-- FORMATIONS -->
-            <div class="section-title">
-                <i class="fa-solid fa-graduation-cap"></i> Formations <span class="title-line"></span>
-            </div>
-
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Licence Professionnelle (Rythme adapté aux jobs étudiants)</h4>
-                    <div class="sub">CFA CNAM, Stade de France / Paris</div>
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">BTS CIEL (Cybersécurité, Informatique et réseaux, Électronique)</span>
+                    <div class="item-subtitle">Lycée Jean-Rostand, Villepinte</div>
                 </div>
-                <div class="item-right">2025 – 2026</div>
+                <span class="item-date">2023 - 2025</span>
             </div>
+        </div>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Brevet Technologique Supérieur (BTS) CIEL</h4>
-                    <div class="sub">Lycée Jean-Rostand, 93420</div>
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Baccalauréat Professionnel — Systèmes Numériques</span>
+                    <div class="item-subtitle">Lycée Voillaume, Aulnay-sous-Bois</div>
                 </div>
-                <div class="item-right">2023 – 2025</div>
+                <span class="item-date">2020 - 2023</span>
             </div>
+        </div>
+    </section>
 
-            <div class="item-row">
-                <div class="item-left">
-                    <h4>Baccalauréat Professionnel Systèmes Numériques</h4>
-                    <div class="sub">Lycée Voillaume, 93600</div>
+    <section>
+        <h3 class="section-title">Expériences Secondaires & Logistique</h3>
+        <div class="item" style="margin-bottom: 5px;">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Missions d'intérim et CDD (Logistique / Commerce)</span>
+                    <div class="item-subtitle">Movie Express, VSM Impavide, Carrefour</div>
                 </div>
-                <div class="item-right">2020 – 2023</div>
+                <span class="item-date">2021 - 2025</span>
             </div>
+            <p class="interests-text" style="padding-left: 15px; font-style: italic;">
+                Déménageur, Préparateur de commandes et Conseiller de vente. Expériences ayant permis de consolider la gestion du stress, la rigueur logistique et un fort esprit d'équipe.
+            </p>
+        </div>
+    </section>
 
-            <!-- CENTRES D'INTÉRÊT -->
-            <div class="section-title">
-                <i class="fa-solid fa-heart"></i> Centres d'intérêt <span class="title-line"></span>
-            </div>
-            <div class="interests-grid">
-                <div class="interest-icon-box"><i class="fa-solid fa-hand-fist"></i>Sports de combat</div>
-                <div class="interest-icon-box"><i class="fa-solid fa-dumbbell"></i>Musculation</div>
-                <div class="interest-icon-box"><i class="fa-solid fa-laptop"></i>Informatique</div>
-                <div class="interest-icon-box"><i class="fa-solid fa-screwdriver-wrench"></i>Bricolage</div>
-            </div>
-
-        </main>
-    </div>
+    <section>
+        <h3 class="section-title">Centres d'intérêt</h3>
+        <p class="interests-text">Sports de combat, Musculation, Veille technologique & Jeux vidéo.</p>
+    </section>
 
 </body>
 </html>

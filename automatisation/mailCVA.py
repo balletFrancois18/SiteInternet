@@ -22,12 +22,12 @@ SMTP_PORT    = 587
 SENDER       = "francois.balletpro@gmail.com"
 APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "nzulavffrcjvduji")
 
-CV_PDF   = Path("CV_Alternance.pdf")
+CV_PDF   = Path("Francois_Ballet_CVA.pdf")
 CSV_FILE = "contacts_alternance.csv"   # colonnes : email, entreprise (+ secteur/code_naf ignorés)
 
 # ══════════════════════════════════════════════════════════════
 #  PARAMÈTRES D'ENVOI  (anti-spam)
-# ══════════════════════════════════════════════════
+# ════════════════════════════════════════════════
 MIN_DELAY   = 60
 MAX_DELAY   = 140
 MAX_PER_DAY = 40
@@ -150,7 +150,7 @@ BODIES = [
 CLOSINGS = [
     (
         "Je reste disponible pour tout échange ou entretien selon vos disponibilités. "
-        "Vous trouverez mon CV en pièce jointe (image et PDF)."
+        "Vous trouverez mon CV en pièce jointe."
         "<br/><br/>Dans l'attente de votre retour, je vous adresse mes sincères salutations."
         "<br/><br/><strong>François Ballet</strong><br/>"
         "Étudiant – Licence Pro Chef de Projet / Informatique | CFA CNAM<br/>"
