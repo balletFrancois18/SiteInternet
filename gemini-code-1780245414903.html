@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - François Ballet</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.5;
+            background-color: #ffffff;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* En-tête */
+        header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-title h1 {
+            font-size: 28px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .header-title h2 {
+            font-size: 16px;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .header-contact {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        .header-contact p {
+            margin-bottom: 3px;
+        }
+
+        .header-contact a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 25px;
+        }
+
+        h3.section-title {
+            font-size: 16px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Compétences (Grille ATS-friendly) */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background-color: var(--bg-light);
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        .skill-category strong {
+            display: block;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .skill-category p {
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+
+        /* Éléments de liste (Expériences, Formations, Projets) */
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .item-subtitle {
+            font-size: 13px;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .item-date {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .item-details {
+            font-size: 13px;
+            padding-left: 15px;
+        }
+
+        .item-details li {
+            margin-bottom: 3px;
+        }
+
+        .tech-tags {
+            font-size: 12px;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        /* Loisirs */
+        .interests-text {
+            font-size: 13px;
+        }
+
+        /* Optimisation pour l'impression PDF */
+        @media print {
+            body {
+                padding: 20px;
+                font-size: 12px;
+            }
+            .skill-category {
+                background-color: #f8f9fa !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>François Ballet</h1>
+            <h2>Étudiant en Licence Pro — Chef de projet dével., sécurité et exploitation</h2>
+        </div>
+        <div class="header-contact">
+            <p>06 27 66 78 65</p>
+            <p><a href="mailto:francois.balletpro@gmail.com">francois.balletpro@gmail.com</a></p>
+            <p>93420 Villepinte</p>
+            <p>GitHub: <a href="https://github.com/balletfrancois18" target="_blank">balletfrancois18</a></p>
+            <p>LinkedIn: <a href="#" target="_blank">Francois Ballet</a></p>
+        </div>
+    </header>
+
+    <section>
+        <h3 class="section-title">Compétences Techniques</h3>
+        <div class="skills-container">
+            <div class="skill-category">
+                <strong>Big Data & DevOps</strong>
+                <p>Hadoop, Docker, Kubernetes</p>
+            </div>
+            <div class="skill-category">
+                <strong>Développement Logiciel & Web</strong>
+                <p>Python, C, PHP, JavaScript, HTML5, CSS3, SQL, Git / GitHub, VS Code</p>
+            </div>
+            <div class="skill-category">
+                <strong>Systèmes & Réseaux</strong>
+                <p>Virtualisation (VMware), Windows Server, Adressage IP, Gestion de flux & ports</p>
+            </div>
+            <div class="skill-category">
+                <strong>Sécurité & Matériels connectés</strong>
+                <p>Caméras IP, Systèmes d'alarmes, Diagnostic & Réparation de terminaux</p>
+            </div>
+            <div class="skill-category">
+                <strong>Gestion de Projet & Outils</strong>
+                <p>Méthodes agiles, Trello, Travail en équipe</p>
+            </div>
+            <div class="skill-category">
+                <strong>Langues</strong>
+                <p>Français (Natif) | Anglais (Niveau B1)</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="section-title">Projets Informatiques</h3>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Gestionnaire de rangement de fichiers automatisé</span>
+                    <div class="item-subtitle">Projet Académique — Licence Professionnelle</div>
+                </div>
+                <span class="item-date">2025 - 2026</span>
+            </div>
+            <ul class="item-details">
+                <li>Conception et développement complet d'une solution d'automatisation de tri et de stockage de fichiers.</li>
+                <li>Création d'une interface graphique complète (GUI) et performante en <strong>Python</strong>.</li>
+                <li>Développement d'un outil complémentaire en ligne de commande (CLI) optimisé en <strong>Langage C</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Easy-Portal — Application Web de Gestion des Utilisateurs</span>
+                    <div class="item-subtitle">Projet de fin d'études BTS CIEL (6 mois)</div>
+                </div>
+                <span class="item-date">2025</span>
+            </div>
+            <ul class="item-details">
+                <li>Développement d'une plateforme web sur mesure destinée à la gestion des utilisateurs d'un établissement scolaire.</li>
+                <li>Modélisation et requêtage de base de données SQL.</li>
+                <div class="tech-tags">Technologies : HTML, CSS, JavaScript, PHP, SQL | Code source disponible sur GitHub</div>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Application de Chiffrement & Déchiffrement</span>
+                    <div class="item-subtitle">Projet Académique BTS CIEL</div>
+                </div>
+                <span class="item-date">2 mois</span>
+            </div>
+            <ul class="item-details">
+                <li>Développement d'une Interface Homme-Machine (IHM) dédiée à la sécurité des données.</li>
+                <li>Implémentation d'algorithmes de cryptage et décryptage de messages textuels.</li>
+                <div class="tech-tags">Technologie : Python</div>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Morpion MANGA Ultimate & Interface Coloc Manager</span>
+                    <div class="item-subtitle">Projets Personnels (Side Projects)</div>
+                </div>
+                <span class="item-date">En cours</span>
+            </div>
+            <ul class="item-details">
+                <li>Création d'un jeu de morpion revisité intégrant des mécaniques de gameplay inédites (Thème Manga).</li>
+                <li>Développement parallèle d'une application web de gestion logistique et financière pour les colocations.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="section-title">Expériences Professionnelles Informatiques</h3>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Concepteur de site Web / Support Technique</span>
+                    <div class="item-subtitle">Auto-entrepreneur</div>
+                </div>
+                <span class="item-date">2025</span>
+            </div>
+            <ul class="item-details">
+                <li>Développement et déploiement de sites internet sur mesure pour des clients professionnels.</li>
+                <li>Gestion de la maintenance applicative, gestion des utilisateurs et support technique de proximité.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Stagiaire Installateur Réseaux & Surveillance</span>
+                    <div class="item-subtitle">Safety Systems 77, Paris</div>
+                </div>
+                <span class="date">2024 (6 sem.)</span>
+            </div>
+            <ul class="item-details">
+                <li>Installation et configuration d'infrastructures réseaux (caméras de surveillance IP et systèmes d'alarme sans fil).</li>
+                <li>Gestion fine de l'adressage IP, ouverture/redirection de ports réseaux, flux vidéo et interfaçage sur l'application client.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Stagiaire Réparateur d'outils connectés & Vendeur</span>
+                    <div class="item-subtitle">Momo Phone, Barbès</div>
+                </div>
+                <span class="item-date">2022 (8 sem.)</span>
+            </div>
+            <ul class="item-details">
+                <li>Diagnostic matériel/logiciel et réparation technique de smartphones et terminaux connectés.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="section-title">Formations</h3>
+        
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Licence Professionnelle — Chef de projet dev, sécurité et exploitation</span>
+                    <div class="item-subtitle">CFA CNAM - Stade de France, Paris</div>
+                </div>
+                <span class="item-date">2025 - 2026</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">BTS CIEL (Cybersécurité, Informatique et réseaux, Électronique)</span>
+                    <div class="item-subtitle">Lycée Jean-Rostand, Villepinte</div>
+                </div>
+                <span class="item-date">2023 - 2025</span>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Baccalauréat Professionnel — Systèmes Numériques</span>
+                    <div class="item-subtitle">Lycée Voillaume, Aulnay-sous-Bois</div>
+                </div>
+                <span class="item-date">2020 - 2023</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="section-title">Expériences Secondaires & Logistique</h3>
+        <div class="item" style="margin-bottom: 5px;">
+            <div class="item-header">
+                <div>
+                    <span class="item-title">Missions d'intérim et CDD (Logistique / Commerce)</span>
+                    <div class="item-subtitle">Movie Express, VSM Impavide, Carrefour</div>
+                </div>
+                <span class="item-date">2021 - 2025</span>
+            </div>
+            <p class="interests-text" style="padding-left: 15px; font-style: italic;">
+                Déménageur, Préparateur de commandes et Conseiller de vente. Expériences ayant permis de consolider la gestion du stress, la rigueur logistique et un fort esprit d'équipe.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h3 class="section-title">Centres d'intérêt</h3>
+        <p class="interests-text">Sports de combat, Musculation, Veille technologique & Jeux vidéo.</p>
+    </section>
+
+</body>
+</html>

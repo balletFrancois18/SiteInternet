@@ -1,11 +1,48 @@
-// SLIDER AUTO
-document.querySelectorAll(".slider").forEach(slider => {
-  const track = slider.querySelector(".slider-track");
-  const slides = slider.querySelectorAll("img");
-  let index = 0;
+/* ============================================
+   SCRIPT GLOBAL — portfolio François Ballet
+   ============================================ */
 
-  setInterval(() => {
-    index = (index + 1) % slides.length;
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }, 3000); // toutes les 3 sec
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---- Burger menu mobile ---- */
+  const burger   = document.getElementById('navBurger');
+  const navLinks = document.getElementById('navLinks');
+
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.textContent = open ? '✕' : '☰';
+    });
+
+    // Ferme le menu si on clique sur un lien
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.textContent = '☰';
+      });
+    });
+  }
+
+  /* ---- Dossier projets (index.html) ---- */
+  const toggleBtn  = document.getElementById('toggleProjets');
+  const projetsList = document.getElementById('projetsList');
+
+  if (toggleBtn && projetsList) {
+    toggleBtn.addEventListener('click', () => {
+      const open = projetsList.classList.toggle('active');
+      toggleBtn.innerHTML = open
+        ? '<i class="fa-solid fa-folder-open"></i> Fermer les projets'
+        : '<i class="fa-solid fa-folder"></i> Projets';
+    });
+  }
+
+  /* ---- Détails de chaque projet ---- */
+  document.querySelectorAll('.details-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const details = btn.parentElement.nextElementSibling; // .proj-details
+      const open = details.classList.toggle('active');
+      btn.textContent = open ? 'Fermer' : 'Voir les détails';
+    });
+  });
+
 });
