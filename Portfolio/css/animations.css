@@ -1,0 +1,121 @@
+/* ============================================================
+   ANIMATIONS CSS — Keyframes & Utility Animations
+   ============================================================ */
+
+/* Ken Burns — zoom lent + déplacement subtil */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.ken-burns {
+  animation: kenBurns 25s ease-in-out infinite;
+}
+
+/* Pulsation douce (badge hero, timeline dots) */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.3);
+  }
+}
+
+/* Scroll indicator bounce */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+/* Glow pulse for accent elements */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
+  }
+}
+
+/* Gradient border rotation */
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-border-animated {
+  background: linear-gradient(90deg, #6c5ce7, #00cec9, #a29bfe, #6c5ce7);
+  background-size: 300% 100%;
+  animation: gradientRotate 4s ease infinite;
+}
+
+/* Float subtle */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Fade in utility */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === REDUCED MOTION — Annule toutes les animations CSS === */
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns,
+  .gradient-border-animated {
+    animation: none;
+  }
+  
+  .scroll-indicator svg {
+    animation: none;
+  }
+  
+  .hero-badge .dot {
+    animation: none;
+  }
+}
