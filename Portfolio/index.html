@@ -3,594 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="François Ballet — Développeur Web & Créateur de Sites Vitrines. Portfolio professionnel présentant mes projets, compétences et prestations. En recherche d'alternance Master Informatique.">
+  <meta name="description" content="François Ballet — Développeur Web & Cybersécurité. Portfolio interactif avec animations TypeShuffle, projets, compétences et contact chatbot.">
   <meta name="author" content="François Ballet">
-  <meta name="keywords" content="développeur web, portfolio, création site vitrine, alternance informatique, François Ballet">
-  <meta property="og:title" content="François Ballet — Développeur Web & Créateur de Sites Vitrines">
-  <meta property="og:description" content="Portfolio professionnel — Projets, compétences techniques et prestations de création de sites web sur mesure.">
+  <meta name="keywords" content="développeur web, cybersécurité, portfolio, alternance, François Ballet, sites vitrines">
+  <meta property="og:title" content="François Ballet — Développeur Web & Cybersécurité">
+  <meta property="og:description" content="Portfolio — Projets, compétences techniques et contact interactif.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0a0a0f">
-  <title>François Ballet — Développeur Web & Créateur de Sites Vitrines</title>
-  
+  <meta name="theme-color" content="#050705">
+  <title>François Ballet — Développeur Web & Cybersécurité</title>
+
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  
+  <link rel="stylesheet" href="css/type-shuffle.css">
+
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-
-  <!-- Grain overlay -->
-  <div class="grain-overlay" aria-hidden="true"></div>
-
-  <!-- Cursor follower -->
-  <div class="cursor-follower" aria-hidden="true"></div>
 
   <!-- ============================================================
        NAVIGATION
        ============================================================ -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation principale">
-    <div class="container">
-      <a href="#hero" class="nav-logo" aria-label="François Ballet — Accueil">FB.</a>
-
-      <div class="nav-links" id="nav-links">
-        <a href="#about">À propos</a>
-        <a href="#skills">Compétences</a>
-        <a href="#projects">Projets</a>
-        <a href="#vitrines">Prestations</a>
-        <a href="#experience">Expérience</a>
-        <a href="#contact" class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;">Contact</a>
-      </div>
-
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <nav class="top-bar" id="navbar">
+    <div class="top-bar-left">
+      <a href="#hero">FB.</a>
+      <span class="nav-sep">|</span>
+      <a href="#projects" class="nav-link">PROJETS</a>
+      <a href="#skills" class="nav-link">SKILLS</a>
+      <a href="#experience" class="nav-link">PARCOURS</a>
+      <a href="#contact" class="nav-link">CONTACT</a>
+    </div>
+    <div class="top-bar-right">
+      <span class="status-badge"><span class="status-dot"></span> DISPONIBLE ALTERNANCE MASTER</span>
     </div>
   </nav>
 
-  <!-- Mobile nav -->
-  <div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Menu mobile">
-    <a href="#about">À propos</a>
-    <a href="#skills">Compétences</a>
-    <a href="#projects">Projets</a>
-    <a href="#vitrines">Prestations</a>
-    <a href="#experience">Expérience</a>
-    <a href="#contact">Contact</a>
-  </div>
-
   <!-- ============================================================
-       HERO
+       SECTION 1 — HERO (TypeShuffle + ASCII Portrait)
        ============================================================ -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <img src="assets/images/hero-bg.png" 
-           alt="" 
-           class="ken-burns parallax-bg" 
-           loading="eager"
-           fetchpriority="high">
-    </div>
-    <div class="hero-overlay"></div>
+  <section id="hero" class="section section--hero">
+    <div class="hero-grid">
+      <!-- Left: Identity -->
+      <div class="hero-content">
+        <div class="hero-row">
+          <span class="label-title">NAME</span>
+          <h1 class="hero-name content" data-effect="fx6">FRANÇOIS BALLET</h1>
+        </div>
 
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="dot"></span>
-        Disponible pour une alternance Master
+        <div class="hero-row">
+          <span class="label-title">ROLE</span>
+          <h2 class="hero-role content" data-effect="fx6">DÉVELOPPEUR WEB & CYBERSÉCURITÉ</h2>
+        </div>
+
+        <div class="hero-row">
+          <span class="label-title">BIO</span>
+          <p class="hero-bio content" data-effect="fx3">ÉTUDIANT EN LICENCE PRO CHEF DE PROJET INFORMATIQUE AU CFA CNAM. DIPLÔMÉ BTS CIEL CYBERSÉCURITÉ. CRÉATEUR DE SITES WEB EN AUTO-ENTREPRENEUR. EN RECHERCHE D'ALTERNANCE MASTER INFORMATIQUE 2026.</p>
+        </div>
+
+        <div class="hero-row hero-cta-row">
+          <span class="label-title"></span>
+          <div class="hero-cta-buttons">
+            <a href="#projects" class="terminal-btn">> VOIR MES PROJETS</a>
+            <a href="#contact" class="terminal-btn terminal-btn--outline">> ME CONTACTER</a>
+          </div>
+        </div>
       </div>
-      
-      <h1 class="hero-title">
-        Développeur Web<br>
-        <span class="text-gradient">& Créateur de Sites Vitrines</span>
-      </h1>
 
-      <p class="hero-subtitle reveal">
-        Étudiant en Licence Pro Chef de Projet Informatique, je conçois des expériences web modernes et performantes pour entreprises et particuliers.
-      </p>
-
-      <div class="hero-cta reveal">
-        <a href="#projects" class="btn-primary">
-          <i class="fas fa-rocket"></i> Voir mes projets
-        </a>
-        <a href="#contact" class="btn-outline">
-          <i class="fas fa-envelope"></i> Me contacter
-        </a>
+      <!-- Right: ASCII Portrait -->
+      <div class="hero-portrait">
+        <div class="ascii-container">
+          <pre class="ascii-art" id="ascii-portrait" aria-label="Portrait ASCII de François Ballet"></pre>
+          <div class="ascii-label">// PORTRAIT.ASC — FRANÇOIS BALLET</div>
+        </div>
       </div>
     </div>
 
-    <div class="scroll-indicator" aria-hidden="true">
-      <span>Scroll</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
+    <!-- Effect buttons (hero only) -->
+    <div class="effects-bar">
+      <button class="effect-btn active" data-effect="fx1">[ effect 1 ]</button>
+      <button class="effect-btn" data-effect="fx3">[ effect 3 ]</button>
+      <button class="effect-btn" data-effect="fx6">[ effect 6 ]</button>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-cue-line"></div>
     </div>
   </section>
 
   <!-- ============================================================
-       À PROPOS
+       SECTION 2 — PROJETS
        ============================================================ -->
-  <section id="about" class="section-dark">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image-wrap reveal">
-          <div class="about-image-glow"></div>
-          <img src="Images/f.jpg" alt="François Ballet" class="about-image">
-        </div>
+  <section id="projects" class="section section--projects">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="label-title">PROJECTS</span>
+        <h2 class="section-title">RÉALISATIONS & PROJETS</h2>
+        <p class="section-subtitle">DES PROJETS CONCRETS — DE LA CONCEPTION AU DÉPLOIEMENT.</p>
+      </div>
 
-        <div class="about-text">
-          <span class="section-label reveal">À propos</span>
-          <h2 class="section-title reveal">Passionné par le <span class="text-gradient">développement</span> et la tech</h2>
-          
-          <p class="section-description reveal">
-            Je suis François Ballet, étudiant en Licence Professionnelle Chef de Projet Informatique au CFA CNAM. 
-            Mon parcours m'a amené du BTS CIEL (Cybersécurité) à l'auto-entrepreneuriat dans la création de sites web, 
-            en passant par des expériences en systèmes & réseaux, sécurité et développement.
-          </p>
-          <p class="section-description reveal" style="margin-top: 1rem;">
-            Curieux, impliqué et autonome, je cherche une alternance en Master Informatique pour continuer à 
-            évoluer tout en apportant mes compétences polyvalentes à une entreprise ambitieuse.
-          </p>
-
-          <div class="about-stats reveal">
-            <div class="stat-item">
-              <div class="stat-number">5+</div>
-              <div class="stat-label">Projets réalisés</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">3+</div>
-              <div class="stat-label">Sites vitrines clients</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">4</div>
-              <div class="stat-label">Années d'études IT</div>
-            </div>
-          </div>
-        </div>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rendered by JS from projects.js data -->
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       COMPÉTENCES
+       SECTION 3 — SKILLS (Horizontal pinned slides)
        ============================================================ -->
-  <section id="skills">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-xl);">
-        <span class="section-label reveal">Compétences</span>
-        <h2 class="section-title reveal">Mon <span class="text-gradient">arsenal technique</span></h2>
-        <p class="section-description reveal" style="margin: 0 auto;">Technologies et outils que je maîtrise pour concevoir des solutions complètes.</p>
-      </div>
+  <section id="skills" class="section section--skills">
+    <div class="skills-wrapper">
+      <div class="skills-track" id="skills-track">
 
-      <div class="skills-grid">
-        <div class="glass-card skill-category reveal">
-          <h4><i class="fas fa-code"></i> Développement Web</h4>
-          <div class="tags-wrap">
-            <span class="tag">HTML5</span>
-            <span class="tag">CSS3</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">PHP</span>
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">C/C++</span>
+        <!-- Slide 1: Dev Web -->
+        <div class="skill-slide">
+          <div class="skill-slide-inner">
+            <span class="skill-slide-number">01</span>
+            <h3 class="skill-slide-title">DÉVELOPPEMENT WEB</h3>
+            <p class="skill-slide-desc">CONCEPTION D'APPLICATIONS ET SITES WEB MODERNES, RESPONSIFS ET PERFORMANTS.</p>
+            <div class="skill-tags">
+              <span class="terminal-tag">HTML5</span>
+              <span class="terminal-tag">CSS3 / SASS</span>
+              <span class="terminal-tag">JAVASCRIPT (ES6+)</span>
+              <span class="terminal-tag">PHP</span>
+              <span class="terminal-tag">PYTHON</span>
+              <span class="terminal-tag">SQL / MYSQL</span>
+              <span class="terminal-tag">MONGODB</span>
+              <span class="terminal-tag">C / C++</span>
+              <span class="terminal-tag">GIT / GITHUB</span>
+              <span class="terminal-tag">REST API</span>
+              <span class="terminal-tag">GSAP / ANIMATIONS</span>
+            </div>
           </div>
         </div>
 
-        <div class="glass-card skill-category reveal">
-          <h4><i class="fas fa-shield-halved"></i> Cybersécurité</h4>
-          <div class="tags-wrap">
-            <span class="tag tag-cyan">Wireshark</span>
-            <span class="tag tag-cyan">HTTPS/TLS</span>
-            <span class="tag tag-cyan">Chiffrement RSA</span>
-            <span class="tag tag-cyan">KeePass</span>
-            <span class="tag tag-cyan">Sécurité réseau</span>
+        <!-- Slide 2: Cybersécurité -->
+        <div class="skill-slide">
+          <div class="skill-slide-inner">
+            <span class="skill-slide-number">02</span>
+            <h3 class="skill-slide-title">CYBERSÉCURITÉ</h3>
+            <p class="skill-slide-desc">PROTECTION DES SYSTÈMES, ANALYSE DE VULNÉRABILITÉS ET PROTOCOLES SÉCURISÉS.</p>
+            <div class="skill-tags">
+              <span class="terminal-tag">WIRESHARK</span>
+              <span class="terminal-tag">HTTPS / TLS</span>
+              <span class="terminal-tag">CHIFFREMENT RSA</span>
+              <span class="terminal-tag">KEEPASS</span>
+              <span class="terminal-tag">SÉCURITÉ RÉSEAU</span>
+              <span class="terminal-tag">PARE-FEU / ACL</span>
+              <span class="terminal-tag">PENTESTING</span>
+            </div>
           </div>
         </div>
 
-        <div class="glass-card skill-category reveal">
-          <h4><i class="fas fa-network-wired"></i> Systèmes & Réseaux</h4>
-          <div class="tags-wrap">
-            <span class="tag">Linux</span>
-            <span class="tag">Docker</span>
-            <span class="tag">VMWare</span>
-            <span class="tag">Configuration IP</span>
-            <span class="tag">Câblage réseau</span>
-            <span class="tag">Raspberry Pi</span>
+        <!-- Slide 3: Systèmes & Réseaux -->
+        <div class="skill-slide">
+          <div class="skill-slide-inner">
+            <span class="skill-slide-number">03</span>
+            <h3 class="skill-slide-title">SYSTÈMES & RÉSEAUX</h3>
+            <p class="skill-slide-desc">ADMINISTRATION, DÉPLOIEMENT ET MAINTENANCE D'INFRASTRUCTURES IT.</p>
+            <div class="skill-tags">
+              <span class="terminal-tag">LINUX / UBUNTU</span>
+              <span class="terminal-tag">DOCKER</span>
+              <span class="terminal-tag">VMWARE</span>
+              <span class="terminal-tag">CONFIGURATION IP</span>
+              <span class="terminal-tag">CÂBLAGE RÉSEAU</span>
+              <span class="terminal-tag">RASPBERRY PI</span>
+              <span class="terminal-tag">NODE-RED</span>
+              <span class="terminal-tag">AGILE / SCRUM</span>
+            </div>
           </div>
         </div>
 
-        <div class="glass-card skill-category reveal">
-          <h4><i class="fas fa-toolbox"></i> Outils & Méthodes</h4>
-          <div class="tags-wrap">
-            <span class="tag tag-cyan">Git / GitHub</span>
-            <span class="tag tag-cyan">VS Code</span>
-            <span class="tag tag-cyan">MySQL</span>
-            <span class="tag tag-cyan">MongoDB</span>
-            <span class="tag tag-cyan">Postman</span>
-            <span class="tag tag-cyan">Agile</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       PROJETS
+       SECTION 4 — EXPÉRIENCE & FORMATION
        ============================================================ -->
-  <section id="projects" class="section-dark">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-xl);">
-        <span class="section-label reveal">Projets</span>
-        <h2 class="section-title reveal">Réalisations <span class="text-gradient">personnelles & académiques</span></h2>
-        <p class="section-description reveal" style="margin: 0 auto;">Des projets concrets qui démontrent ma capacité à mener des solutions de A à Z.</p>
+  <section id="experience" class="section section--experience">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="label-title">PARCOURS</span>
+        <h2 class="section-title">EXPÉRIENCE & FORMATION</h2>
       </div>
 
-      <div class="projects-grid">
-        <!-- Easy-Portal -->
-        <div class="glass-card project-card reveal">
-          <div class="project-icon"><i class="fas fa-users-cog"></i></div>
-          <h3>Easy-Portal</h3>
-          <p>Application web de gestion d'utilisateurs avec système d'authentification sécurisé, CRUD complet et interface d'administration.</p>
-          <div class="tags-wrap">
-            <span class="tag">PHP</span>
-            <span class="tag">SQL</span>
-            <span class="tag">MySQL</span>
-            <span class="tag tag-cyan">HTTPS</span>
-          </div>
-        </div>
-
-        <!-- Morpion Manga Ultimate -->
-        <div class="glass-card project-card reveal">
-          <div class="project-icon"><i class="fas fa-gamepad"></i></div>
-          <h3>Morpion Manga Ultimate</h3>
-          <p>Jeu de morpion revisité avec un thème manga, animations dynamiques et mode multijoueur local. Interface responsive et ludique.</p>
-          <div class="tags-wrap">
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML/CSS</span>
-            <span class="tag tag-cyan">Game Design</span>
-          </div>
-        </div>
-
-        <!-- CoLoc Manager -->
-        <div class="glass-card project-card reveal">
-          <div class="project-icon"><i class="fas fa-house-user"></i></div>
-          <h3>CoLoc Manager</h3>
-          <p>Application de gestion de colocation : suivi des dépenses partagées, planning des tâches et communication entre colocataires.</p>
-          <div class="tags-wrap">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag tag-cyan">UX/UI</span>
-          </div>
-        </div>
-
-        <!-- App Chiffrement -->
-        <div class="glass-card project-card reveal">
-          <div class="project-icon"><i class="fas fa-lock"></i></div>
-          <h3>Application de Chiffrement</h3>
-          <p>Logiciel de cryptage/décryptage avec interface graphique Python. Implémentation du chiffrement RSA et formation KeePass intégrée.</p>
-          <div class="tags-wrap">
-            <span class="tag">Python</span>
-            <span class="tag tag-cyan">RSA</span>
-            <span class="tag tag-cyan">KeePass</span>
-          </div>
-        </div>
-
-        <!-- Gestionnaire de fichiers -->
-        <div class="glass-card project-card reveal">
-          <div class="project-icon"><i class="fas fa-folder-tree"></i></div>
-          <h3>Gestionnaire de Fichiers Automatisé</h3>
-          <p>Outil de gestion automatisée des fichiers avec interface graphique Python (GUI) et version ligne de commande en C. Tri, renommage et organisation intelligente.</p>
-          <div class="tags-wrap">
-            <span class="tag">Python</span>
-            <span class="tag">C</span>
-            <span class="tag tag-cyan">CLI</span>
-            <span class="tag tag-cyan">GUI</span>
-          </div>
-        </div>
-
-        <!-- Portail Parking -->
-        <div class="glass-card project-card reveal">
-          <div class="project-icon"><i class="fas fa-car"></i></div>
-          <h3>Automatisation Portail Parking</h3>
-          <p>Automatisation d'un portail de parking avec application mobile de contrôle. Utilisation de Raspberry Pi et Node-RED pour l'IoT.</p>
-          <div class="tags-wrap">
-            <span class="tag">Android Studio</span>
-            <span class="tag">Raspberry Pi</span>
-            <span class="tag tag-cyan">Node-RED</span>
-          </div>
-        </div>
+      <div class="experience-grid" id="experience-grid">
+        <!-- Rendered by JS from experience.js data -->
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       PRESTATIONS / VITRINES CLIENTS
+       SECTION 5 — CONTACT (Chatbot)
        ============================================================ -->
-  <section id="vitrines">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-xl);">
-        <span class="section-label reveal">Prestations</span>
-        <h2 class="section-title reveal">Sites vitrines <span class="text-gradient">pour mes clients</span></h2>
-        <p class="section-description reveal" style="margin: 0 auto;">En auto-entrepreneur, je conçois des sites web sur mesure, modernes et performants pour professionnels et particuliers.</p>
+  <section id="contact" class="section section--contact">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="label-title">CONTACT</span>
+        <h2 class="section-title">TRAVAILLONS ENSEMBLE</h2>
+        <p class="section-subtitle">ALTERNANCE, PROJET FREELANCE OU SIMPLE QUESTION — LE TERMINAL EST OUVERT.</p>
       </div>
 
-      <div class="vitrines-grid">
-        <!-- Client 1 -->
-        <div class="glass-card vitrine-card reveal" 
-             data-modal-title="Site Vitrine Client" 
-             data-modal-url="www.exemple-client.fr"
-             data-modal-description="Site vitrine professionnel conçu sur mesure avec design responsive, formulaire de contact et optimisation SEO."
-             onclick="openProjectModal(this)">
-          <div class="vitrine-mockup">
-            <div class="vitrine-mockup-bar">
-              <span class="dot-r"></span>
-              <span class="dot-y"></span>
-              <span class="dot-g"></span>
-              <span class="url-bar">www.exemple-client.fr</span>
-            </div>
-            <div style="height: 200px; background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary)); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-globe" style="font-size: 3rem; color: var(--accent-primary); opacity: 0.3;"></i>
-            </div>
-          </div>
-          <div class="vitrine-info">
-            <h3>Site Vitrine Professionnel</h3>
-            <p>Création complète — Design, développement, déploiement et support technique dédié.</p>
-            <div class="tags-wrap" style="margin-top: 12px;">
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag tag-cyan">Responsive</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Offre de service -->
-        <div class="glass-card vitrine-card reveal" style="cursor: default;">
-          <div style="padding: var(--space-xl) var(--space-lg); text-align: center; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div style="width: 64px; height: 64px; border-radius: var(--radius-full); background: rgba(108, 92, 231, 0.15); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-md);">
-              <i class="fas fa-plus" style="font-size: 1.5rem; color: var(--accent-glow);"></i>
-            </div>
-            <h3>Votre projet ici ?</h3>
-            <p style="color: var(--text-secondary); margin-top: 8px; margin-bottom: var(--space-md);">
-              Je crée des sites vitrines modernes, responsives et optimisés pour vos besoins professionnels.
-            </p>
-            <a href="#contact" class="btn-primary" style="font-size: 0.85rem; padding: 10px 24px;">
-              <i class="fas fa-envelope"></i> Discutons de votre projet
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       EXPÉRIENCE
-       ============================================================ -->
-  <section id="experience" class="section-dark">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-xl);">
-        <span class="section-label reveal">Parcours</span>
-        <h2 class="section-title reveal">Formation & <span class="text-gradient">Expérience professionnelle</span></h2>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);">
-        
-        <!-- Formation -->
-        <div>
-          <h3 class="reveal" style="margin-bottom: var(--space-lg); display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-graduation-cap" style="color: var(--accent-primary);"></i> Formation
-          </h3>
-          <div class="timeline">
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2025 — 2026</div>
-              <div class="timeline-title">Licence Pro Chef de Projet Dév, Sécu & Exploit</div>
-              <div class="timeline-place">CFA CNAM — En cours</div>
-              <div class="timeline-desc">Gestion de projet agile, développement, sécurité et exploitation de systèmes informatiques.</div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2023 — 2025</div>
-              <div class="timeline-title">BTS CIEL Option A : Cybersécurité</div>
-              <div class="timeline-place">Systèmes & réseaux approfondis, bases de programmation front/backend</div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2021 — 2023</div>
-              <div class="timeline-title">Bac Pro Systèmes Numériques — Réseaux</div>
-              <div class="timeline-place">Câblage réseau, systèmes, bases du développement web</div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2020</div>
-              <div class="timeline-title">Brevet — Mention Bien</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Expérience pro -->
-        <div>
-          <h3 class="reveal" style="margin-bottom: var(--space-lg); display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-briefcase" style="color: var(--accent-cyan);"></i> Expérience
-          </h3>
-          <div class="timeline">
-            <div class="timeline-item reveal">
-              <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 206, 201, 0.5);"></div>
-              <div class="timeline-date">2025</div>
-              <div class="timeline-title">Concepteur de Sites Web</div>
-              <div class="timeline-place">Auto-entrepreneur</div>
-              <div class="timeline-desc">
-                <ul>
-                  <li>Création de sites vitrines sur mesure pour clients professionnels</li>
-                  <li>Support technique et accompagnement personnalisé</li>
-                  <li>Gestion complète du projet (design, dev, déploiement)</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 206, 201, 0.5);"></div>
-              <div class="timeline-date">2024</div>
-              <div class="timeline-title">Installateur Réseaux & Outils Connectés</div>
-              <div class="timeline-place">Safety Systems 77, Paris — Stage 6 semaines</div>
-              <div class="timeline-desc">
-                <ul>
-                  <li>Installation caméras de surveillance et systèmes d'alarme</li>
-                  <li>Configuration IP, ports et flux caméra</li>
-                  <li>Déploiement d'applications mobiles clients</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 206, 201, 0.5);"></div>
-              <div class="timeline-date">2022</div>
-              <div class="timeline-title">Réparateur Outils Connectés</div>
-              <div class="timeline-place">Momo Phone, Barbès — Stage 8 semaines</div>
-              <div class="timeline-desc">Réparation de smartphones et assistance client en boutique.</div>
-            </div>
-
-            <div class="timeline-item reveal">
-              <div class="timeline-dot" style="background: var(--accent-cyan); box-shadow: 0 0 15px rgba(0, 206, 201, 0.5);"></div>
-              <div class="timeline-date">2021</div>
-              <div class="timeline-title">Assistant Rayon Électroménager</div>
-              <div class="timeline-place">Carrefour, Sevran — Stage 6 semaines</div>
-              <div class="timeline-desc">Conseil client et gestion de rayon électroménager/bureautique.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       CONTACT
-       ============================================================ -->
-  <section id="contact">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: var(--space-xl);">
-        <span class="section-label reveal">Contact</span>
-        <h2 class="section-title reveal">Travaillons <span class="text-gradient">ensemble</span></h2>
-        <p class="section-description reveal" style="margin: 0 auto;">Que ce soit pour une alternance, un projet de site vitrine ou une collaboration, n'hésitez pas à me contacter.</p>
-      </div>
-
-      <div class="contact-grid">
-        <form class="contact-form glass-card reveal" id="contact-form" action="#" method="POST">
-          <div class="form-group">
-            <label for="contact-name">Nom complet</label>
-            <input type="text" id="contact-name" name="name" placeholder="Votre nom" required autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="contact-email">Adresse email</label>
-            <input type="email" id="contact-email" name="email" placeholder="votre@email.com" required autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" placeholder="Décrivez votre projet ou votre proposition..." required></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="align-self: flex-start;">
-            <i class="fas fa-paper-plane"></i> Envoyer le message
-          </button>
-        </form>
-
-        <div class="contact-info reveal">
-          <a href="https://github.com/balletFrancois18" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <i class="fab fa-github"></i>
-            <div>
-              <strong>GitHub</strong>
-              <span>balletFrancois18</span>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/fran%C3%A7ois-ballet-5b2a83342/" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <i class="fab fa-linkedin"></i>
-            <div>
-              <strong>LinkedIn</strong>
-              <span>François Ballet</span>
-            </div>
-          </a>
-
-          <div class="contact-link">
-            <i class="fas fa-map-marker-alt"></i>
-            <div>
-              <strong>Localisation</strong>
-              <span>Île-de-France, France</span>
-            </div>
-          </div>
-
-          <div class="contact-link">
-            <i class="fas fa-graduation-cap"></i>
-            <div>
-              <strong>Statut</strong>
-              <span>En recherche d'alternance — Master Informatique</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="chatbot-container" class="chatbot-container"></div>
     </div>
   </section>
 
   <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <p class="footer-copy">&copy; 2026 François Ballet. Tous droits réservés.</p>
-        <div class="footer-links">
-          <a href="https://github.com/balletFrancois18" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/fran%C3%A7ois-ballet-5b2a83342/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span>© 2026 FRANÇOIS BALLET — TOUS DROITS RÉSERVÉS</span>
+      <div class="footer-links">
+        <a href="https://github.com/balletFrancois18" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/fran%C3%A7ois-ballet-5b2a83342/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </footer>
 
   <!-- ============================================================
-       MODAL (Project Preview)
-       ============================================================ -->
-  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-label="Aperçu du projet">
-    <div class="modal-content">
-      <button class="modal-close" id="modal-close" aria-label="Fermer l'aperçu">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="modal-browser-bar">
-        <span class="dot-r"></span>
-        <span class="dot-y"></span>
-        <span class="dot-g"></span>
-        <span class="modal-url" id="modal-url">www.example.com</span>
-      </div>
-      <div class="modal-body" id="modal-body">
-        <!-- Dynamic content injected by JS -->
-      </div>
-      <div class="modal-actions">
-        <a href="#" class="btn-primary" id="modal-visit-link" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-external-link-alt"></i> Visiter le site
-        </a>
-        <button class="btn-outline" onclick="closeProjectModal()">
-          <i class="fas fa-times"></i> Fermer
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================================
        SCRIPTS
        ============================================================ -->
-  <!-- GSAP Core + Plugins via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
-  
-  <!-- App Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/projects.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+  <!-- Data -->
+  <script src="js/data/projects.js"></script>
+  <script src="js/data/experience.js"></script>
+  <script src="js/ascii-portrait.js"></script>
+
+  <!-- Core -->
+  <script src="js/type-shuffle.js"></script>
+
+  <!-- Sections -->
+  <script src="js/sections/chatbot.js"></script>
+
+  <!-- Main init -->
+  <script src="js/main.js"></script>
 </body>
 </html>

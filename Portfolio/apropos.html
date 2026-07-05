@@ -3,59 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>À propos – François Ballet</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
+  <title>À propos — François Ballet</title>
+  <link rel="stylesheet" href="css/type-shuffle.css">
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar">
-    <span class="nav-brand">FB</span>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html"     class="nav-link">Accueil</a>
-      <a href="cv-etudes.html" class="nav-link">Études</a>
-      <a href="cv-travail.html"class="nav-link">Expériences</a>
-      <a href="interets.html"  class="nav-link">Centres d'intérêt</a>
-      <a href="apropos.html"   class="nav-link active">À propos</a>
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <a href="index.html" class="type-shuffle">FRANÇOIS BALLET</a>
+      <span style="opacity: 0.4;">|</span>
+      <a href="index.html#about" class="type-shuffle">[ À PROPOS ]</a>
+      <a href="cv-etudes.html" class="type-shuffle">[ ÉTUDES ]</a>
+      <a href="cv-travail.html" class="type-shuffle">[ EXPÉRIENCES ]</a>
+      <a href="interets.html" class="type-shuffle">[ INTÉRÊTS ]</a>
     </div>
-    <button class="nav-burger" id="navBurger">☰</button>
-  </nav>
-
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <h1>À <span>propos</span></h1>
-    <p class="hero-sub">Découvrez qui je suis, mon parcours et mes valeurs.</p>
-  </section>
-
-  <!-- ========== CONTENU ========== -->
-  <div class="section-h">🧑‍💼 Mon histoire</div>
-
-  <div class="about-wrap">
-    <div class="about-box">
-      <p>
-        Bonjour, je m'appelle <strong style="color:#FFD700">François Ballet</strong>, étudiant passionné
-        par le développement web, la cybersécurité et les nouvelles technologies. Je suis à la recherche
-        d'un emploi, d'une alternance ou d'une mission intérim pour mettre en pratique mes compétences
-        et continuer à apprendre.
-      </p>
-      <p>
-        Mon parcours m'a permis de travailler sur divers projets web, en programmation et en
-        administration réseau. Curieux, impliqué et autonome, j'aime relever des défis techniques
-        stimulants — notamment dans le domaine de l'intelligence artificielle, en pleine expansion.
-      </p>
-      <p>
-        En dehors du travail, je suis passionné par la musique, le sport et les jeux vidéo.
-      </p>
-      <p>
-        Ce portfolio est constamment mis à jour pour mettre en avant mes dernières réalisations
-        et compétences. N'hésitez pas à me contacter pour toute opportunité ou collaboration.
-      </p>
+    <div class="top-bar-right">
+      <span>[ SYSTEM: ONLINE ] ↗</span>
     </div>
-  </div>
+  </header>
 
-  <footer>© 2025 François Ballet · Portfolio</footer>
+  <main class="layout-container" style="min-height: calc(100vh - 160px);">
+    <div class="terminal-main" style="width: 100%;">
+      
+      <section class="terminal-section">
+        <div class="label-title type-shuffle">HISTOIRE</div>
+        <div class="label-content">
+          <h2 class="type-shuffle" style="margin-bottom: 1rem;">> MON PARCOURS & MES VALEURS</h2>
+          <p class="type-shuffle">
+            BONJOUR, JE M'APPELLE FRANÇOIS BALLET, ÉTUDIANT PASSIONNÉ PAR LE DÉVELOPPEMENT WEB, LA CYBERSÉCURITÉ ET LES NOUVELLES TECHNOLOGIES.
+          </p>
+          <p class="type-shuffle">
+            MON PARCOURS M'A PERMIS DE TRAVAILLER SUR DIVERS PROJETS WEB, EN PROGRAMMATION ET EN ADMINISTRATION RÉSEAU. CURIEUX, IMPLIQUÉ ET AUTONOME, J'AIME RELEVER DES DÉFIS TECHNIQUES STIMULANTS.
+          </p>
+          <p class="type-shuffle">
+            EN DEHORS DU TRAVAIL, JE SUIS PASSIONNÉ PAR LA MUSIQUE, LE SPORT ET LES JEUX VIDÉO.
+          </p>
+        </div>
+      </section>
 
+      <section class="terminal-section">
+        <div class="label-title type-shuffle">NAVIGATION</div>
+        <div class="label-content">
+          <div class="item-tag-list">
+            <a href="index.html" class="terminal-tag type-shuffle"><i class="fas fa-arrow-left"></i> RETOUR AU PORTFOLIO PRINCIPAL</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bottom-effects-bar">
+    <button class="effect-btn active" data-effect="1">[ effect 1 ]</button>
+    <button class="effect-btn" data-effect="2">[ effect 2 ]</button>
+    <button class="effect-btn" data-effect="3">[ effect 3 ]</button>
+    <button class="effect-btn" data-effect="4">[ effect 4 ]</button>
+    <button class="effect-btn" data-effect="5">[ effect 5 ]</button>
+    <button class="effect-btn" data-effect="6">[ effect 6 ]</button>
+  </footer>
+
+  <script src="js/type-shuffle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.TypeShuffleEngine) window.TypeShuffleEngine.init('.type-shuffle');
+    });
+  </script>
 </body>
 </html>

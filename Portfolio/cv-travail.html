@@ -3,145 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expériences Professionnelles – François Ballet</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
+  <title>Expériences Professionnelles — François Ballet</title>
+  <link rel="stylesheet" href="css/type-shuffle.css">
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar">
-    <span class="nav-brand">FB</span>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html"     class="nav-link">Accueil</a>
-      <a href="cv-etudes.html" class="nav-link">Études</a>
-      <a href="cv-travail.html"class="nav-link active">Expériences</a>
-      <a href="interets.html"  class="nav-link">Centres d'intérêt</a>
-      <a href="apropos.html"   class="nav-link">À propos</a>
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <a href="index.html" class="type-shuffle">FRANÇOIS BALLET</a>
+      <span style="opacity: 0.4;">|</span>
+      <a href="index.html" class="type-shuffle">[ ACCUEIL ]</a>
+      <a href="cv-etudes.html" class="type-shuffle">[ ÉTUDES ]</a>
+      <a href="cv-travail.html" class="type-shuffle">[ EXPÉRIENCES ]</a>
+      <a href="interets.html" class="type-shuffle">[ INTÉRÊTS ]</a>
     </div>
-    <button class="nav-burger" id="navBurger">☰</button>
-  </nav>
+    <div class="top-bar-right">
+      <span>[ PARCOURS PRO ] ↗</span>
+    </div>
+  </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <h1>Expériences <span>Professionnelles</span></h1>
-    <p class="hero-sub">Mon parcours en entreprise, stages et missions.</p>
-  </section>
-
-  <!-- ========== EXPÉRIENCES ========== -->
-  <div class="section-h">💼 Expériences professionnelles</div>
-
-  <div class="timeline">
-
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-body">
-        <div class="tl-head">
-          <span class="tl-title">Conception de site Web</span>
-          <span class="tl-year">2025</span>
+  <main class="layout-container" style="min-height: calc(100vh - 160px);">
+    <div class="terminal-main" style="width: 100%;">
+      
+      <section class="terminal-section">
+        <div class="label-title type-shuffle">EXPÉRIENCES</div>
+        <div class="label-content">
+          <h2 class="type-shuffle" style="margin-bottom: 1rem;">> EXPÉRIENCES PROFESSIONNELLES</h2>
+          <ul>
+            <li class="type-shuffle">
+              <strong>2025 : CONCEPTEUR DE SITES WEB (AUTO-ENTREPRENEUR)</strong><br>
+              CRÉATION DE SITES VITRINES ET SUPPORT TECHNIQUE DÉDIÉ POUR MES CLIENTS.
+            </li>
+            <li class="type-shuffle">
+              <strong>2024 : INSTALLATEUR RÉSEAUX & OUTILS CONNECTÉS — SAFETY SYSTEMS 77 (6 SEMAINES)</strong><br>
+              INSTALLATION CAMÉRAS DE SURVEILLANCE & ALARMES, CONFIGURATION IP, FLUX ET APPS.
+            </li>
+            <li class="type-shuffle">
+              <strong>2022 : RÉPARATEUR OUTILS CONNECTÉS — MOMO PHONE BARBÈS (8 SEMAINES)</strong><br>
+              RÉPARATION DE SMARTPHONES ET CONSEIL CLIENTS.
+            </li>
+            <li class="type-shuffle">
+              <strong>2021 : ASSISTANT RAYON ÉLECTROMÉNAGER — CARREFOUR SEVRAN (6 SEMAINES)</strong><br>
+              CONSEIL CLIENT ET GESTION DU RAYON ÉLECTROMÉNAGER ET BUREAUTIQUE.
+            </li>
+          </ul>
         </div>
-        <p class="tl-place">Auto-entrepreneur</p>
-        <ul class="tl-list">
-          <li>Support technique dédié aux demandes du site web.</li>
-          <li>Accompagnement client pour répondre à ses besoins spécifiques.</li>
-          <li>Gestion des utilisateurs.</li>
-        </ul>
-      </div>
-    </div>
+      </section>
 
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-body">
-        <div class="tl-head">
-          <span class="tl-title">Déménageur / Assistant déménageur</span>
-          <span class="tl-year">2025</span>
+      <section class="terminal-section">
+        <div class="label-title type-shuffle">NAVIGATION</div>
+        <div class="label-content">
+          <div class="item-tag-list">
+            <a href="index.html" class="terminal-tag type-shuffle">← RETOUR AU PORTFOLIO PRINCIPAL</a>
+          </div>
         </div>
-        <p class="tl-place">Movie Express (intérim)</p>
-        <ul class="tl-list">
-          <li>Mission courte d'une semaine — manutention et logistique.</li>
-        </ul>
-      </div>
+      </section>
+
     </div>
+  </main>
 
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-body">
-        <div class="tl-head">
-          <span class="tl-title">Installateur réseaux &amp; outils connectés</span>
-          <span class="tl-year">2024</span>
-        </div>
-        <p class="tl-place">Safety Systems 77, Paris</p>
-        <ul class="tl-list">
-          <li>Installation et configuration de caméras de surveillance et systèmes d'alarme.</li>
-          <li>Configuration IP / ports / flux caméra.</li>
-          <li>Mise en place d'applications mobiles pour les clients.</li>
-          <li>Stage de 6 semaines.</li>
-        </ul>
-      </div>
-    </div>
+  <footer class="bottom-effects-bar">
+    <button class="effect-btn active" data-effect="1">[ effect 1 ]</button>
+    <button class="effect-btn" data-effect="2">[ effect 2 ]</button>
+    <button class="effect-btn" data-effect="3">[ effect 3 ]</button>
+    <button class="effect-btn" data-effect="4">[ effect 4 ]</button>
+    <button class="effect-btn" data-effect="5">[ effect 5 ]</button>
+    <button class="effect-btn" data-effect="6">[ effect 6 ]</button>
+  </footer>
 
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-body">
-        <div class="tl-head">
-          <span class="tl-title">Préparateur de commandes</span>
-          <span class="tl-year">2023</span>
-        </div>
-        <p class="tl-place">VSM Impavide, Villepinte</p>
-        <ul class="tl-list">
-          <li>CDD de 2 mois — organisation, respect des délais et rigueur.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-body">
-        <div class="tl-head">
-          <span class="tl-title">Assistant vendeur / Réparateur outils connectés</span>
-          <span class="tl-year">2022</span>
-        </div>
-        <p class="tl-place">Momo Phone, Barbès</p>
-        <ul class="tl-list">
-          <li>Stage de 8 semaines — réparation de smartphones et assistance client.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tl-item fade-in">
-      <div class="tl-dot"></div>
-      <div class="tl-body">
-        <div class="tl-head">
-          <span class="tl-title">Assistant rayon électroménager / bureautique</span>
-          <span class="tl-year">2021</span>
-        </div>
-        <p class="tl-place">Carrefour, Sevran Beaudottes</p>
-        <ul class="tl-list">
-          <li>Stage de 6 semaines — conseil client et gestion de rayon.</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ========== COMPÉTENCES ========== -->
-  <div class="section-h">⚙️ Compétences professionnelles</div>
-
-  <div class="skills-wrap">
-    <div class="chips-box">
-      <span class="chip">Développement Web</span>
-      <span class="chip">Réseaux &amp; Sécurité</span>
-      <span class="chip">Config IP / Caméras</span>
-      <span class="chip">Service client</span>
-      <span class="chip">Logistique</span>
-      <span class="chip">Réparation mobile</span>
-      <span class="chip">Gestion utilisateurs</span>
-      <span class="chip">Communication client</span>
-    </div>
-  </div>
-
-  <footer>© 2025 François Ballet · Portfolio</footer>
-
+  <script src="js/type-shuffle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.TypeShuffleEngine) window.TypeShuffleEngine.init('.type-shuffle');
+    });
+  </script>
 </body>
 </html>

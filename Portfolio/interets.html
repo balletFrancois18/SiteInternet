@@ -3,106 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centres d'intérêt – François Ballet</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <script src="https://kit.fontawesome.com/a2d04b38e5.js" crossorigin="anonymous"></script>
+  <title>Centres d'Intérêt — François Ballet</title>
+  <link rel="stylesheet" href="css/type-shuffle.css">
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar">
-    <span class="nav-brand">FB</span>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html"     class="nav-link">Accueil</a>
-      <a href="cv-etudes.html" class="nav-link">Études</a>
-      <a href="cv-travail.html"class="nav-link">Expériences</a>
-      <a href="interets.html"  class="nav-link active">Centres d'intérêt</a>
-      <a href="apropos.html"   class="nav-link">À propos</a>
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <a href="index.html" class="type-shuffle">FRANÇOIS BALLET</a>
+      <span style="opacity: 0.4;">|</span>
+      <a href="index.html" class="type-shuffle">[ ACCUEIL ]</a>
+      <a href="cv-etudes.html" class="type-shuffle">[ ÉTUDES ]</a>
+      <a href="cv-travail.html" class="type-shuffle">[ EXPÉRIENCES ]</a>
+      <a href="interets.html" class="type-shuffle">[ INTÉRÊTS ]</a>
     </div>
-    <button class="nav-burger" id="navBurger">☰</button>
-  </nav>
-
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <h1>Centres d'<span>intérêt</span></h1>
-    <p class="hero-sub">Mes passions et activités qui reflètent ma personnalité.</p>
-  </section>
-
-  <!-- ========== CARTES ========== -->
-  <div class="section-h">🎨 Mes centres d'intérêt</div>
-
-  <div class="interests">
-
-    <div class="interest-card fade-in">
-      <div class="card-img-wrap">
-        <img src="images/Rickgrimes.gif" alt="Animé / Série">
-      </div>
-      <div class="card-body">
-        <div class="icon"><i class="fas fa-tv"></i></div>
-        <h3>Animé / Série</h3>
-        <p>Passionné par les séries et manga d'action.</p>
-      </div>
+    <div class="top-bar-right">
+      <span>[ CENTRES D'INTÉRÊT ] ↗</span>
     </div>
+  </header>
 
-    <div class="interest-card fade-in">
-      <div class="card-img-wrap">
-        <img src="images/bo3.gif" alt="Jeux Vidéo">
-      </div>
-      <div class="card-body">
-        <div class="icon"><i class="fas fa-gamepad"></i></div>
-        <h3>Jeux Vidéo</h3>
-        <p>Grand fan de FPS, Battle Royale et jeux d'affrontement.</p>
-      </div>
+  <main class="layout-container" style="min-height: calc(100vh - 160px);">
+    <div class="terminal-main" style="width: 100%;">
+      
+      <section class="terminal-section">
+        <div class="label-title type-shuffle">PASSIONS</div>
+        <div class="label-content">
+          <h2 class="type-shuffle" style="margin-bottom: 1rem;">> CENTRES D'INTÉRÊT & PASSIONS</h2>
+          <ul>
+            <li class="type-shuffle">
+              <strong>CYBERSÉCURITÉ & INTELLIGENCE ARTIFICIELLE</strong><br>
+              VEILLE TECHNOLOGIQUE, ALGORITHMES D'APPRENTISSAGE ET CRYPTOGRAPHIE.
+            </li>
+            <li class="type-shuffle">
+              <strong>JEUX VIDÉO & GAME DESIGN</strong><br>
+              PASSIONNÉ DE JEUX DE STRATÉGIE ET DE CONCEPTION DE MECANIQUES INTERACTIVES.
+            </li>
+            <li class="type-shuffle">
+              <strong>MUSIQUE & PRATIQUE DU PIANO / GUITARE</strong><br>
+              CRÉATIVITÉ MUSICALE ET DISCIPLINE TECHNIQUE.
+            </li>
+            <li class="type-shuffle">
+              <strong>SPORT & RANDONNÉE</strong><br>
+              DÉPASSEMENT DE SOI ET EXPLORATION EN PLEINE NATURE.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="terminal-section">
+        <div class="label-title type-shuffle">NAVIGATION</div>
+        <div class="label-content">
+          <div class="item-tag-list">
+            <a href="index.html" class="terminal-tag type-shuffle">← RETOUR AU PORTFOLIO PRINCIPAL</a>
+          </div>
+        </div>
+      </section>
+
     </div>
+  </main>
 
-    <div class="interest-card fade-in">
-      <div class="card-img-wrap">
-        <img src="images/mu.jpg" alt="Sport">
-      </div>
-      <div class="card-body">
-        <div class="icon"><i class="fas fa-dumbbell"></i></div>
-        <h3>Sport</h3>
-        <p>Street-Workout · Kickboxing · Boxe Anglaise · Muay Thai.</p>
-      </div>
-    </div>
+  <footer class="bottom-effects-bar">
+    <button class="effect-btn active" data-effect="1">[ effect 1 ]</button>
+    <button class="effect-btn" data-effect="2">[ effect 2 ]</button>
+    <button class="effect-btn" data-effect="3">[ effect 3 ]</button>
+    <button class="effect-btn" data-effect="4">[ effect 4 ]</button>
+    <button class="effect-btn" data-effect="5">[ effect 5 ]</button>
+    <button class="effect-btn" data-effect="6">[ effect 6 ]</button>
+  </footer>
 
-    <div class="interest-card fade-in">
-      <div class="card-img-wrap">
-        <img src="images/m.jpeg" alt="Photographie">
-      </div>
-      <div class="card-body">
-        <div class="icon"><i class="fas fa-camera"></i></div>
-        <h3>Photographie</h3>
-        <p>Capturer des moments uniques et développer un œil créatif.</p>
-      </div>
-    </div>
-
-    <div class="interest-card fade-in">
-      <div class="card-img-wrap">
-        <img src="images/kaaris.gif" alt="Musique">
-      </div>
-      <div class="card-body">
-        <div class="icon"><i class="fas fa-music"></i></div>
-        <h3>Musique</h3>
-        <p>Rap.</p>
-      </div>
-    </div>
-
-    <div class="interest-card fade-in">
-      <div class="card-img-wrap">
-        <img src="images/QTCK.gif" alt="Voyager">
-      </div>
-      <div class="card-body">
-        <div class="icon"><i class="fas fa-plane"></i></div>
-        <h3>Voyager</h3>
-        <p>Découvrir de nouveaux paysages et horizons.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>© 2025 François Ballet · Portfolio</footer>
-
+  <script src="js/type-shuffle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.TypeShuffleEngine) window.TypeShuffleEngine.init('.type-shuffle');
+    });
+  </script>
 </body>
 </html>
