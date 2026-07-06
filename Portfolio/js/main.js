@@ -9,13 +9,7 @@
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  /* -------------------------------------------------------
-     ASCII PORTRAIT
-     ------------------------------------------------------- */
-  const asciiEl = document.getElementById('ascii-portrait');
-  if (asciiEl && typeof ASCII_PORTRAIT !== 'undefined') {
-    asciiEl.textContent = ASCII_PORTRAIT;
-  }
+  /* (ASCII Portrait removed, replaced by GTA Avatar) */
 
   /* -------------------------------------------------------
      TYPE SHUFFLE — Hero content
@@ -44,6 +38,274 @@
       typeshuffles.forEach(ts => ts.trigger(effect));
     });
   });
+
+  /* -------------------------------------------------------
+     3D AVATAR (Three.js) & PARALLAX TILT CARD
+     ------------------------------------------------------- */
+  const tiltCard = document.getElementById('tilt-card');
+  const avatarContainer = document.querySelector('.gta-avatar-container');
+  const glare = document.getElementById('card-glare');
+  const canvasContainer = document.getElementById('avatar-3d-canvas');
+  const loader = document.getElementById('avatar-loader');
+
+  let avatarModel = null;
+  let mixer = null;
+  let targetRotationX = 0;
+  let targetRotationY = 0;
+
+  if (canvasContainer && typeof THREE !== 'undefined') {
+    // 1. Scene Setup
+    const scene = new THREE.Scene();
+    
+    // 2. Camera Setup
+    const camera = new THREE.PerspectiveCamera(45, canvasContainer.clientWidth / canvasContainer.clientHeight, 0.1, 100);
+    camera.position.set(0, 1.2, 3); // Positioned to see the upper body / full body
+
+    // 3. Renderer Setup
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    canvasContainer.appendChild(renderer.domElement);
+
+    // 4. Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(2, 5, 5);
+    scene.add(directionalLight);
+
+    const fillLight = new THREE.DirectionalLight(0xaaccff, 0.5);
+    fillLight.position.set(-2, 2, 2);
+    scene.add(fillLight);
+
+    // 5. Load GLB Model
+    const gltfLoader = new THREE.GLTFLoader();
+    gltfLoader.load(
+      'Images/model.glb',
+      (gltf) => {
+        avatarModel = gltf.scene;
+        
+        // Auto-center and scale the model
+        const box = new THREE.Box3().setFromObject(avatarModel);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+
+        // Center the model at origin
+        avatarModel.position.x = -center.x;
+        avatarModel.position.y = -center.y;
+        avatarModel.position.z = -center.z;
+        
+        // Move camera back enough to see the entire model (size.y is the height)
+        camera.position.set(0, 0, size.y * 1.2);
+        
+        scene.add(avatarModel);
+
+        // Hide loader
+        if (loader) loader.style.display = 'none';
+
+        // Play Animation
+        if (gltf.animations && gltf.animations.length > 0) {
+          mixer = new THREE.AnimationMixer(avatarModel);
+          const action = mixer.clipAction(gltf.animations[0]);
+          action.play();
+        }
+      },
+      (xhr) => {
+        // Progress
+        if (loader) {
+          const percent = Math.round((xhr.loaded / xhr.total) * 100);
+          if(percent) loader.innerText = `CHARGEMENT... ${percent}%`;
+        }
+      },
+      (error) => {
+        console.error('Erreur chargement modèle 3D:', error);
+        if (loader) loader.innerText = "ERREUR DE CHARGEMENT";
+      }
+    );
+
+    // Easter Egg: Load Alternate Models (Boxe & Musculation)
+    const btnLoadBoxe = document.getElementById('btn-load-boxe');
+    const btnLoadTrain = document.getElementById('btn-load-train');
+
+    const loadAlternateModel = (filename, loadingText) => {
+      if (loader) {
+        loader.style.display = 'block';
+        loader.innerText = loadingText;
+      }
+      
+      // Remove old model
+      if (avatarModel) {
+        scene.remove(avatarModel);
+        avatarModel = null;
+      }
+
+      // Load new model
+      gltfLoader.load(
+        `Images/${filename}`,
+        (gltf) => {
+          avatarModel = gltf.scene;
+          
+          // Adjust position and scale
+          const box = new THREE.Box3().setFromObject(avatarModel);
+          const size = box.getSize(new THREE.Vector3());
+          const center = box.getCenter(new THREE.Vector3());
+          avatarModel.position.x += (avatarModel.position.x - center.x);
+          avatarModel.position.y += (avatarModel.position.y - center.y);
+          avatarModel.position.z += (avatarModel.position.z - center.z);
+          camera.position.set(0, 0, size.y * 1.2);
+          
+          scene.add(avatarModel);
+          if (loader) loader.style.display = 'none';
+
+          // Play Animation
+          if (gltf.animations && gltf.animations.length > 0) {
+            mixer = new THREE.AnimationMixer(avatarModel);
+            const action = mixer.clipAction(gltf.animations[0]);
+            
+            // Speed up pushup animation specifically
+            if (filename === 'train.glb') {
+              action.timeScale = 2.5; // 2.5x faster
+            }
+            
+            action.play();
+          }
+        },
+        undefined,
+        (error) => {
+          console.error(`Erreur ${filename}:`, error);
+          if (loader) loader.innerText = `${filename} INTROUVABLE`;
+        }
+      );
+    };
+
+    if (btnLoadBoxe) {
+      btnLoadBoxe.addEventListener('click', () => loadAlternateModel('boxe.glb', 'CHARGEMENT BOXE...'));
+    }
+    if (btnLoadTrain) {
+      btnLoadTrain.addEventListener('click', () => loadAlternateModel('train.glb', 'CHARGEMENT ENTRAINEMENT...'));
+    }
+
+
+    // 6. Resize Handler
+    window.addEventListener('resize', () => {
+      if (!canvasContainer) return;
+      camera.aspect = canvasContainer.clientWidth / canvasContainer.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
+    });
+
+    // 7. Render Loop
+    const clock = new THREE.Clock();
+    const animate = function () {
+      requestAnimationFrame(animate);
+
+      const delta = clock.getDelta();
+      if (mixer) mixer.update(delta);
+
+      // Smoothly rotate the avatar to look at mouse
+      if (avatarModel) {
+        avatarModel.rotation.y += (targetRotationY - avatarModel.rotation.y) * 0.1;
+        avatarModel.rotation.x += (targetRotationX - avatarModel.rotation.x) * 0.1;
+      }
+
+      renderer.render(scene, camera);
+    };
+    animate();
+  }
+
+  // Mouse Tracking for Tilt Card + Avatar Rotation
+  if (avatarContainer && glare) {
+    avatarContainer.addEventListener('mousemove', (e) => {
+      const rect = avatarContainer.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      // Card Tilt (-15 to 15 deg)
+      const rotateX = ((y - centerY) / centerY) * -15; 
+      const rotateY = ((x - centerX) / centerX) * 15;
+
+      // Avatar Head/Body Rotation target
+      targetRotationY = ((x - centerX) / centerX) * 0.5; // radians
+      targetRotationX = ((y - centerY) / centerY) * 0.2;
+
+      // Glare Position
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+
+      gsap.to(avatarContainer, {
+        rotateX: rotateX,
+        rotateY: rotateY,
+        duration: 0.5,
+        ease: 'power2.out'
+      });
+
+      gsap.to(glare, {
+        opacity: 1,
+        background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.15) 0%, transparent 60%)`,
+        duration: 0.2
+      });
+    });
+
+    avatarContainer.addEventListener('mouseleave', () => {
+      // Reset card
+      gsap.to(avatarContainer, {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 0.8,
+        ease: 'elastic.out(1, 0.5)'
+      });
+      // Reset glare
+      gsap.to(glare, {
+        opacity: 0,
+        duration: 0.5
+      });
+      // Reset avatar rotation
+      targetRotationY = 0;
+      targetRotationX = 0;
+    });
+  }
+
+  // RPG Connected Side Panel Logic
+  const btnShowStats = document.getElementById('btn-show-stats');
+  const btnCloseStats = document.getElementById('btn-close-stats');
+  const statsSidePanel = document.getElementById('stats-side-panel');
+  const statsConnector = document.getElementById('stats-connector');
+  const statFills = document.querySelectorAll('.stat-fill');
+
+  const openStatsModal = () => {
+    if (statsSidePanel) statsSidePanel.classList.add('is-active');
+    if (statsConnector) statsConnector.style.width = '50px';
+    
+    // Animate stat bars after a small delay
+    setTimeout(() => {
+      statFills.forEach(fill => {
+        const width = fill.getAttribute('data-width');
+        fill.style.width = width + '%';
+      });
+    }, 200);
+  };
+
+  const closeStatsModal = () => {
+    if (statsSidePanel) statsSidePanel.classList.remove('is-active');
+    if (statsConnector) statsConnector.style.width = '0';
+    
+    // Reset stat bars
+    setTimeout(() => {
+      statFills.forEach(fill => {
+        fill.style.width = '0%';
+      });
+    }, 400); // Wait for panel to slide out
+  };
+
+  if (btnShowStats && btnCloseStats && statsSidePanel) {
+    btnShowStats.addEventListener('click', openStatsModal);
+    btnCloseStats.addEventListener('click', closeStatsModal);
+  }
 
   /* -------------------------------------------------------
      NAVIGATION — Smooth scroll + active state
@@ -105,7 +367,7 @@
 
       if (reduceMotion) {
         // Show everything immediately
-        gsap.set('.section-header, .project-card, .experience-item, .skill-slide', {
+        gsap.set('.section-header, .project-card, .experience-item, .skill-card', {
           autoAlpha: 1, y: 0
         });
         return;
@@ -134,28 +396,24 @@
       gsap.set('.project-card', { autoAlpha: 0, y: isDesktop ? 50 : 30 });
 
       /* -------------------------------------------------------
-         SKILLS — Horizontal pinned scroll (desktop only)
+         SKILLS — Render grid cards + animate
          ------------------------------------------------------- */
-      if (isDesktop) {
-        const track = document.getElementById('skills-track');
-        if (track) {
-          const slides = gsap.utils.toArray('.skill-slide');
-          const totalWidth = slides.length * 100; // vw
-
-          gsap.to(track, {
-            xPercent: -(totalWidth - 100),
-            ease: 'none',
-            scrollTrigger: {
-              trigger: '#skills',
-              pin: true,
-              scrub: 1,
-              start: 'top top',
-              end: () => '+=' + (track.scrollWidth - window.innerWidth),
-              invalidateOnRefresh: true,
-            },
+      ScrollTrigger.batch('.skill-card', {
+        onEnter: (elements) => {
+          gsap.to(elements, {
+            autoAlpha: 1,
+            y: 0,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: 'power2.out',
+            overwrite: true,
           });
-        }
-      }
+        },
+        start: 'top 85%',
+        once: true,
+      });
+
+      gsap.set('.skill-card', { autoAlpha: 0, y: 30 });
 
       /* -------------------------------------------------------
          EXPERIENCE — Render from data + reveal

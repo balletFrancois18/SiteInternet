@@ -68,21 +68,83 @@
         </div>
       </div>
 
-      <!-- Right: ASCII Portrait -->
+      <!-- Right: GTA Avatar Parallax Card & HUD -->
       <div class="hero-portrait">
-        <div class="ascii-container">
-          <pre class="ascii-art" id="ascii-portrait" aria-label="Portrait ASCII de François Ballet"></pre>
-          <div class="ascii-label">// PORTRAIT.ASC — FRANÇOIS BALLET</div>
+        
+        <div class="tilt-wrapper" id="tilt-card">
+          <!-- Connected HUD Panel -->
+          <div class="stats-connector" id="stats-connector"></div>
+          <div class="stats-side-panel" id="stats-side-panel">
+            <button id="btn-close-stats" class="btn-close">X</button>
+            <div class="stats-panel">
+              <h3 class="stats-title">// Statistiques_Francois_Ballet</h3>
+              
+              <div class="stat-group">
+                <div class="stat-item">
+                  <div class="stat-info"><span>DÉVELOPPEMENT FRONT-END</span><span class="stat-percent">90%</span></div>
+                  <div class="stat-bar"><div class="stat-fill" data-width="90"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info"><span>DÉVELOPPEMENT BACK-END</span><span class="stat-percent">80%</span></div>
+                  <div class="stat-bar"><div class="stat-fill" data-width="80"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info"><span>RÉSEAUX & CYBERSÉCURITÉ</span><span class="stat-percent">60%</span></div>
+                  <div class="stat-bar"><div class="stat-fill" data-width="60"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info"><span>BIG DATA</span><span class="stat-percent">50%</span></div>
+                  <div class="stat-bar"><div class="stat-fill" data-width="50"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info"><span>ANGLAIS (Niveau B2)</span><span class="stat-percent">50%</span></div>
+                  <div class="stat-bar"><div class="stat-fill" data-width="50"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info"><span>FRANÇAIS</span><span class="stat-percent">MAX</span></div>
+                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+                </div>
+              </div>
+
+              <h3 class="stats-title stats-title--small">// ACTIVITÉS</h3>
+              <div class="stat-group">
+                <div class="stat-item">
+                  <div class="stat-info">
+                    <span>SPORTS DE COMBAT</span>
+                    <button id="btn-load-boxe" class="btn-boxe">> VOIR FRANÇOIS BOXER</button>
+                    <span class="stat-percent">MAX</span>
+                  </div>
+                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info"><span>CODER</span><span class="stat-percent">MAX</span></div>
+                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-info">
+                    <span>MUSCULATION</span>
+                    <button id="btn-load-train" class="btn-boxe">> VOIR S'ENTRAINER</button>
+                    <span class="stat-percent">MAX</span>
+                  </div>
+                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="gta-avatar-container">
+            <div class="glare" id="card-glare"></div>
+            <div id="avatar-loader" class="avatar-loader">CHARGEMENT DU MODÈLE 3D...</div>
+            <div id="avatar-3d-canvas" class="gta-avatar"></div>
+            <div class="gta-label">// 3D_MODEL.GLB — FRANÇOIS BALLET</div>
+          </div>
         </div>
+        
+        <button id="btn-show-stats" class="btn-show-stats-outside">> VOIR STATS</button>
       </div>
     </div>
 
-    <!-- Effect buttons (hero only) -->
-    <div class="effects-bar">
-      <button class="effect-btn active" data-effect="fx1">[ effect 1 ]</button>
-      <button class="effect-btn" data-effect="fx3">[ effect 3 ]</button>
-      <button class="effect-btn" data-effect="fx6">[ effect 6 ]</button>
-    </div>
+
 
     <div class="scroll-cue" aria-hidden="true">
       <span>SCROLL</span>
@@ -108,15 +170,21 @@
   </section>
 
   <!-- ============================================================
-       SECTION 3 — SKILLS (Horizontal pinned slides)
+       SECTION 3 — SKILLS
        ============================================================ -->
   <section id="skills" class="section section--skills">
-    <div class="skills-wrapper">
-      <div class="skills-track" id="skills-track">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="label-title">SKILLS</span>
+        <h2 class="section-title">COMPÉTENCES TECHNIQUES</h2>
+        <p class="section-subtitle">DÉVELOPPEMENT, SÉCURITÉ ET INFRASTRUCTURE.</p>
+      </div>
+
+      <div class="skills-grid" id="skills-grid">
 
         <!-- Slide 1: Dev Web -->
-        <div class="skill-slide">
-          <div class="skill-slide-inner">
+        <div class="skill-card glass-card">
+          <div class="skill-card-inner">
             <span class="skill-slide-number">01</span>
             <h3 class="skill-slide-title">DÉVELOPPEMENT WEB</h3>
             <p class="skill-slide-desc">CONCEPTION D'APPLICATIONS ET SITES WEB MODERNES, RESPONSIFS ET PERFORMANTS.</p>
@@ -133,12 +201,49 @@
               <span class="terminal-tag">REST API</span>
               <span class="terminal-tag">GSAP / ANIMATIONS</span>
             </div>
+
+            <!-- 3D Monitor (Pure CSS) -->
+            <div class="monitor-container" aria-hidden="true">
+              <div class="monitor-3d" id="dev-monitor">
+                <!-- Stand -->
+                <div class="monitor-stand">
+                  <div class="stand-front"></div>
+                  <div class="stand-back"></div>
+                  <div class="stand-left"></div>
+                  <div class="stand-right"></div>
+                  <div class="stand-bottom"></div>
+                </div>
+                <div class="monitor-base">
+                  <div class="base-top"></div>
+                </div>
+                <!-- Screen Body -->
+                <div class="monitor-screen-body">
+                  <div class="screen-back"></div>
+                  <div class="screen-left"></div>
+                  <div class="screen-right"></div>
+                  <div class="screen-top"></div>
+                  <div class="screen-bottom"></div>
+                  <div class="screen-front">
+                    <!-- Screen Display -->
+                    <div class="screen-display">
+                      <div class="code-lines">
+                        <span>const dev = new Developer();</span>
+                        <span>dev.skills = ['HTML', 'CSS', 'JS'];</span>
+                        <span>dev.buildWebsite();</span>
+                        <span>>> STATUS: ONLINE</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <!-- Slide 2: Cybersécurité -->
-        <div class="skill-slide">
-          <div class="skill-slide-inner">
+        <div class="skill-card glass-card">
+          <div class="skill-card-inner">
             <span class="skill-slide-number">02</span>
             <h3 class="skill-slide-title">CYBERSÉCURITÉ</h3>
             <p class="skill-slide-desc">PROTECTION DES SYSTÈMES, ANALYSE DE VULNÉRABILITÉS ET PROTOCOLES SÉCURISÉS.</p>
@@ -151,12 +256,46 @@
               <span class="terminal-tag">PARE-FEU / ACL</span>
               <span class="terminal-tag">PENTESTING</span>
             </div>
+
+            <!-- 3D Server Rack (Pure CSS) - Enlarged -->
+            <div class="server-rack-container enlarged" aria-hidden="true">
+              <div class="server-rack" id="cyber-server">
+                <!-- Unit 1 -->
+                <div class="server-unit unit-1">
+                  <div class="server-face server-front"><div class="led-group"><span class="led blink-1"></span><span class="led blink-2"></span></div></div>
+                  <div class="server-face server-back"></div>
+                  <div class="server-face server-left"></div>
+                  <div class="server-face server-right"></div>
+                  <div class="server-face server-top"></div>
+                  <div class="server-face server-bottom"></div>
+                </div>
+                <!-- Unit 2 -->
+                <div class="server-unit unit-2">
+                  <div class="server-face server-front"><div class="led-group"><span class="led blink-3"></span><span class="led blink-1"></span></div></div>
+                  <div class="server-face server-back"></div>
+                  <div class="server-face server-left"></div>
+                  <div class="server-face server-right"></div>
+                  <div class="server-face server-top"></div>
+                  <div class="server-face server-bottom"></div>
+                </div>
+                <!-- Unit 3 -->
+                <div class="server-unit unit-3">
+                  <div class="server-face server-front"><div class="led-group"><span class="led blink-2"></span><span class="led blink-3"></span></div></div>
+                  <div class="server-face server-back"></div>
+                  <div class="server-face server-left"></div>
+                  <div class="server-face server-right"></div>
+                  <div class="server-face server-top"></div>
+                  <div class="server-face server-bottom"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <!-- Slide 3: Systèmes & Réseaux -->
-        <div class="skill-slide">
-          <div class="skill-slide-inner">
+        <div class="skill-card glass-card">
+          <div class="skill-card-inner">
             <span class="skill-slide-number">03</span>
             <h3 class="skill-slide-title">SYSTÈMES & RÉSEAUX</h3>
             <p class="skill-slide-desc">ADMINISTRATION, DÉPLOIEMENT ET MAINTENANCE D'INFRASTRUCTURES IT.</p>
@@ -170,6 +309,43 @@
               <span class="terminal-tag">NODE-RED</span>
               <span class="terminal-tag">AGILE / SCRUM</span>
             </div>
+
+            <!-- 3D Laptop (Pure CSS) -->
+            <div class="laptop-container" aria-hidden="true">
+              <div class="laptop-3d" id="sys-laptop">
+                <!-- Bottom Base -->
+                <div class="laptop-base">
+                  <div class="base-top">
+                    <!-- Keyboard -->
+                    <div class="laptop-keyboard">
+                      <div class="keyboard-inner"></div>
+                      <div class="trackpad"></div>
+                    </div>
+                  </div>
+                  <div class="base-bottom"></div>
+                  <div class="base-front"></div>
+                  <div class="base-back"></div>
+                  <div class="base-left"></div>
+                  <div class="base-right"></div>
+                </div>
+                <!-- Lid (Screen) -->
+                <div class="laptop-lid">
+                  <div class="lid-front">
+                    <div class="lid-screen">
+                      <i class="fas fa-terminal"></i>
+                      <span>root@server:~# _</span>
+                    </div>
+                  </div>
+                  <div class="lid-back">
+                    <div class="lid-logo"><i class="fab fa-linux"></i></div>
+                  </div>
+                  <div class="lid-left"></div>
+                  <div class="lid-right"></div>
+                  <div class="lid-top"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -200,8 +376,8 @@
     <div class="section-container">
       <div class="section-header">
         <span class="label-title">CONTACT</span>
-        <h2 class="section-title">TRAVAILLONS ENSEMBLE</h2>
-        <p class="section-subtitle">ALTERNANCE, PROJET FREELANCE OU SIMPLE QUESTION — LE TERMINAL EST OUVERT.</p>
+        <h2 class="section-title">CADRONS VOTRE PROJET</h2>
+        <p class="section-subtitle">SITE VITRINE, E-COMMERCE OU SUR-MESURE — RÉPONDEZ À QUELQUES QUESTIONS ET RECEVEZ UN RÉCAPITULATIF STRUCTURÉ.</p>
       </div>
 
       <div id="chatbot-container" class="chatbot-container"></div>
@@ -224,9 +400,11 @@
   <!-- ============================================================
        SCRIPTS
        ============================================================ -->
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP & Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
   <!-- Data -->
   <script src="js/data/projects.js"></script>
@@ -235,6 +413,9 @@
 
   <!-- Core -->
   <script src="js/type-shuffle.js"></script>
+
+  <!-- Data -->
+  <script src="js/data/chatbot-questions.js"></script>
 
   <!-- Sections -->
   <script src="js/sections/chatbot.js"></script>

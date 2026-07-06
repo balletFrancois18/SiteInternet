@@ -1,0 +1,5 @@
+# Interdire l'accès direct aux fichiers PHP depuis le web
+# (sauf generate_recap.php qui est appelé par le chatbot)
+<Files "rate_limits.json">
+    Require all denied
+</Files>

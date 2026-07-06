@@ -1,0 +1,3 @@
+# Interdire tout accès direct aux récapitulatifs depuis le web
+# Ces fichiers ne sont consultables que depuis le serveur
+Require all denied
