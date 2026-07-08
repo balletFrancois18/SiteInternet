@@ -466,8 +466,8 @@ const CHATBOT_LABELS = {
    ============================================================ */
 
 const RECRUITER_SECTIONS = [
-  { id: 'R1', label: 'ENTREPRISE',   icon: 'fa-building'      },
-  { id: 'R2', label: 'CONTRAT',      icon: 'fa-file-contract' },
+  { id: 'R1', label: 'VOTRE STRUCTURE', icon: 'fa-building'      },
+  { id: 'R2', label: 'PROPOSITION',    icon: 'fa-file-contract' },
   { id: 'R3', label: 'PROFIL',       icon: 'fa-user-tie'      },
   { id: 'R4', label: 'COORDONNÉES',  icon: 'fa-address-card'  },
 ];
@@ -479,8 +479,26 @@ function getRecruiterSections() {
 const RECRUITER_QUESTIONS = [
 
   /* ========================
-     SECTION R1 — Entreprise
+     SECTION R1 — Votre structure
      ======================== */
+  {
+    id: 'r_purpose',
+    section: 'R1',
+    type: 'single_choice',
+    question: 'QUEL EST LE BUT DE VOTRE VISITE ?',
+    options: [
+      'Je recrute pour une entreprise (Alternance/Emploi)',
+      'Je représente une école (Admission Master)',
+      'Autre demande / Échanger'
+    ],
+    required: true,
+    next: function (answer) {
+      if (answer === 'Je représente une école (Admission Master)') {
+        return 'r_school_name';
+      }
+      return 'r_company';
+    }
+  },
   {
     id: 'r_company',
     section: 'R1',
@@ -498,6 +516,46 @@ const RECRUITER_QUESTIONS = [
     placeholder: 'EX: TECH, FINANCE, SANTÉ, INDUSTRIE...',
     required: true,
     next: function () { return 'r_contract_type'; }
+  },
+
+  /* ========================
+     SECTION R1 / R2 / R3 — Branche École
+     ======================== */
+  {
+    id: 'r_school_name',
+    section: 'R1',
+    type: 'text',
+    question: 'QUEL EST LE NOM DE VOTRE ÉCOLE / ÉTABLISSEMENT ?',
+    placeholder: 'NOM DE L\'ÉCOLE',
+    required: true,
+    next: function () { return 'r_master_program'; }
+  },
+  {
+    id: 'r_master_program',
+    section: 'R2',
+    type: 'text',
+    question: 'QUEL PROGRAMME DE MASTER M\'EST PROPOSÉ ?',
+    placeholder: 'EX: MASTER INFORMATIQUE, EXPERT IT...',
+    required: true,
+    next: function () { return 'r_school_location'; }
+  },
+  {
+    id: 'r_school_location',
+    section: 'R2',
+    type: 'text',
+    question: 'OÙ SE SITUE LE CAMPUS PRINCIPAL ?',
+    placeholder: 'VILLE OU RÉGION',
+    required: true,
+    next: function () { return 'r_school_note'; }
+  },
+  {
+    id: 'r_school_note',
+    section: 'R3',
+    type: 'text',
+    question: 'UN DÉTAIL SUR L\'ADMISSION OU UNE INFO SUPPLÉMENTAIRE ? (OPTIONNEL)',
+    placeholder: 'DÉTAILS SUR LES DATES, LE CONCOURS...',
+    required: false,
+    next: function () { return 'r_contact_name'; }
   },
 
   /* ========================
@@ -604,8 +662,13 @@ const RECRUITER_QUESTIONS = [
 ];
 
 const RECRUITER_LABELS = {
+  r_purpose:        'Objectif de la visite',
   r_company:        'Entreprise',
   r_sector:         'Secteur d\'activité',
+  r_school_name:    'École',
+  r_master_program: 'Programme Master proposé',
+  r_school_location:'Campus / Ville',
+  r_school_note:    'Infos Admission',
   r_contract_type:  'Type de contrat',
   r_rhythm:         'Rythme d\'alternance',
   r_start_date:     'Date de début',

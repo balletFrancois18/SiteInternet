@@ -91,6 +91,11 @@ file_put_contents($RATE_LIMIT_FILE, json_encode($rateLimits), LOCK_EX);
 // WHITELIST & VALIDATION
 // ============================================================
 $whitelist = [
+    'r_purpose' => [
+        'Je recrute pour une entreprise (Alternance/Emploi)',
+        'Je représente une école (Admission Master)',
+        'Autre demande / Échanger'
+    ],
     'r_contract_type' => [
         'Apprentissage (Master)',
         'Contrat de professionnalisation',
@@ -119,6 +124,10 @@ $multiChoiceWhitelist = [
 $textFields = [
     'r_company',
     'r_sector',
+    'r_school_name',
+    'r_master_program',
+    'r_school_location',
+    'r_school_note',
     'r_start_date',
     'r_mission',
     'r_contact_name',
@@ -201,8 +210,13 @@ if (!filter_var($clean['r_contact_email'], FILTER_VALIDATE_EMAIL)) {
 // LABELS
 // ============================================================
 $labels = [
+    'r_purpose'        => 'Objectif de la visite',
     'r_company'        => 'Entreprise',
     'r_sector'         => 'Secteur d\'activité',
+    'r_school_name'    => 'École',
+    'r_master_program' => 'Programme Master proposé',
+    'r_school_location'=> 'Campus / Ville',
+    'r_school_note'    => 'Infos Admission',
     'r_contract_type'  => 'Type de contrat',
     'r_rhythm'         => 'Rythme d\'alternance',
     'r_start_date'     => 'Date de début',
@@ -219,7 +233,7 @@ $labels = [
 $timestamp = date('Y-m-d H:i:s');
 $contactName = $clean['r_contact_name'] ?? 'Recruteur';
 $contactEmail = $clean['r_contact_email'] ?? '';
-$company = $clean['r_company'] ?? 'Non renseigné';
+$company = $clean['r_school_name'] ?? ($clean['r_company'] ?? 'Non renseigné');
 
 $htmlRecap = '<!DOCTYPE html><html lang="fr"><head>';
 $htmlRecap .= '<meta charset="UTF-8">';
