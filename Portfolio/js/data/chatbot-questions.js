@@ -460,3 +460,158 @@ const CHATBOT_LABELS = {
   contact_email:       'Email',
   contact_phone:       'Téléphone',
 };
+
+/* ============================================================
+   RECRUITER MODE — Questions & Sections
+   ============================================================ */
+
+const RECRUITER_SECTIONS = [
+  { id: 'R1', label: 'ENTREPRISE',   icon: 'fa-building'      },
+  { id: 'R2', label: 'CONTRAT',      icon: 'fa-file-contract' },
+  { id: 'R3', label: 'PROFIL',       icon: 'fa-user-tie'      },
+  { id: 'R4', label: 'COORDONNÉES',  icon: 'fa-address-card'  },
+];
+
+function getRecruiterSections() {
+  return RECRUITER_SECTIONS;
+}
+
+const RECRUITER_QUESTIONS = [
+
+  /* ========================
+     SECTION R1 — Entreprise
+     ======================== */
+  {
+    id: 'r_company',
+    section: 'R1',
+    type: 'text',
+    question: 'QUEL EST LE NOM DE VOTRE ENTREPRISE / ORGANISATION ?',
+    placeholder: 'NOM DE L\'ENTREPRISE',
+    required: true,
+    next: function () { return 'r_sector'; }
+  },
+  {
+    id: 'r_sector',
+    section: 'R1',
+    type: 'text',
+    question: 'DANS QUEL SECTEUR D\'ACTIVITÉ ÊTES-VOUS ?',
+    placeholder: 'EX: TECH, FINANCE, SANTÉ, INDUSTRIE...',
+    required: true,
+    next: function () { return 'r_contract_type'; }
+  },
+
+  /* ========================
+     SECTION R2 — Contrat
+     ======================== */
+  {
+    id: 'r_contract_type',
+    section: 'R2',
+    type: 'single_choice',
+    question: 'QUEL TYPE DE CONTRAT PROPOSEZ-VOUS ?',
+    options: [
+      'Apprentissage (Master)',
+      'Contrat de professionnalisation',
+      'Stage alterné',
+      'Je souhaite simplement échanger'
+    ],
+    required: true,
+    next: function () { return 'r_rhythm'; }
+  },
+  {
+    id: 'r_rhythm',
+    section: 'R2',
+    type: 'single_choice',
+    question: 'QUEL RYTHME D\'ALTERNANCE RECHERCHEZ-VOUS ?',
+    options: [
+      '3 jours entreprise / 2 jours école',
+      '1 semaine entreprise / 1 semaine école',
+      '3 semaines entreprise / 1 semaine école',
+      'Flexible / à définir'
+    ],
+    required: true,
+    next: function () { return 'r_start_date'; }
+  },
+  {
+    id: 'r_start_date',
+    section: 'R2',
+    type: 'text',
+    question: 'DATE DE DÉBUT SOUHAITÉE ?',
+    placeholder: 'EX: SEPTEMBRE 2026',
+    required: false,
+    next: function () { return 'r_profile'; }
+  },
+
+  /* ========================
+     SECTION R3 — Profil recherché
+     ======================== */
+  {
+    id: 'r_profile',
+    section: 'R3',
+    type: 'multi_choice',
+    question: 'QUEL(S) PROFIL(S) RECHERCHEZ-VOUS ?',
+    options: [
+      'Développement Fullstack',
+      'DevOps / Cloud',
+      'Réseaux & Cybersécurité',
+      'Data / Big Data',
+      'Chefferie de Projet / Agile'
+    ],
+    required: true,
+    next: function () { return 'r_mission'; }
+  },
+  {
+    id: 'r_mission',
+    section: 'R3',
+    type: 'text',
+    question: 'POUVEZ-VOUS DÉCRIRE BRIÈVEMENT LA MISSION OU LE POSTE ?',
+    placeholder: 'DÉCRIVEZ LE POSTE OU COLLEZ UN LIEN VERS L\'OFFRE...',
+    required: false,
+    next: function () { return 'r_contact_name'; }
+  },
+
+  /* ========================
+     SECTION R4 — Coordonnées
+     ======================== */
+  {
+    id: 'r_contact_name',
+    section: 'R4',
+    type: 'text',
+    question: 'VOTRE NOM COMPLET ?',
+    placeholder: 'PRÉNOM NOM',
+    required: true,
+    next: function () { return 'r_contact_email'; }
+  },
+  {
+    id: 'r_contact_email',
+    section: 'R4',
+    type: 'text',
+    question: 'VOTRE ADRESSE EMAIL PROFESSIONNELLE ?',
+    placeholder: 'VOTRE@EMAIL.COM',
+    inputType: 'email',
+    required: true,
+    next: function () { return 'r_contact_phone'; }
+  },
+  {
+    id: 'r_contact_phone',
+    section: 'R4',
+    type: 'text',
+    question: 'VOTRE NUMÉRO DE TÉLÉPHONE ? (OPTIONNEL)',
+    placeholder: '06 XX XX XX XX',
+    inputType: 'tel',
+    required: false,
+    next: function () { return null; } // Fin → récapitulatif
+  },
+];
+
+const RECRUITER_LABELS = {
+  r_company:        'Entreprise',
+  r_sector:         'Secteur d\'activité',
+  r_contract_type:  'Type de contrat',
+  r_rhythm:         'Rythme d\'alternance',
+  r_start_date:     'Date de début',
+  r_profile:        'Profil(s) recherché(s)',
+  r_mission:        'Description de la mission',
+  r_contact_name:   'Nom du contact',
+  r_contact_email:  'Email',
+  r_contact_phone:  'Téléphone',
+};

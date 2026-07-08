@@ -72,66 +72,6 @@
       <div class="hero-portrait">
         
         <div class="tilt-wrapper" id="tilt-card">
-          <!-- Connected HUD Panel -->
-          <div class="stats-connector" id="stats-connector"></div>
-          <div class="stats-side-panel" id="stats-side-panel">
-            <button id="btn-close-stats" class="btn-close">X</button>
-            <div class="stats-panel">
-              <h3 class="stats-title">// Statistiques_Francois_Ballet</h3>
-              
-              <div class="stat-group">
-                <div class="stat-item">
-                  <div class="stat-info"><span>DÉVELOPPEMENT FRONT-END</span><span class="stat-percent">90%</span></div>
-                  <div class="stat-bar"><div class="stat-fill" data-width="90"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info"><span>DÉVELOPPEMENT BACK-END</span><span class="stat-percent">80%</span></div>
-                  <div class="stat-bar"><div class="stat-fill" data-width="80"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info"><span>RÉSEAUX & CYBERSÉCURITÉ</span><span class="stat-percent">60%</span></div>
-                  <div class="stat-bar"><div class="stat-fill" data-width="60"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info"><span>BIG DATA</span><span class="stat-percent">50%</span></div>
-                  <div class="stat-bar"><div class="stat-fill" data-width="50"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info"><span>ANGLAIS (Niveau B2)</span><span class="stat-percent">50%</span></div>
-                  <div class="stat-bar"><div class="stat-fill" data-width="50"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info"><span>FRANÇAIS</span><span class="stat-percent">MAX</span></div>
-                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
-                </div>
-              </div>
-
-              <h3 class="stats-title stats-title--small">// ACTIVITÉS</h3>
-              <div class="stat-group">
-                <div class="stat-item">
-                  <div class="stat-info">
-                    <span>SPORTS DE COMBAT</span>
-                    <button id="btn-load-boxe" class="btn-boxe">> VOIR FRANÇOIS BOXER</button>
-                    <span class="stat-percent">MAX</span>
-                  </div>
-                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info"><span>CODER</span><span class="stat-percent">MAX</span></div>
-                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-info">
-                    <span>MUSCULATION</span>
-                    <button id="btn-load-train" class="btn-boxe">> VOIR S'ENTRAINER</button>
-                    <span class="stat-percent">MAX</span>
-                  </div>
-                  <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
-                </div>
-              </div>
-
-            </div>
-          </div>
           <div class="gta-avatar-container">
             <div class="glare" id="card-glare"></div>
             <div id="avatar-loader" class="avatar-loader">CHARGEMENT DU MODÈLE 3D...</div>
@@ -419,6 +359,85 @@
 
   <!-- Sections -->
   <script src="js/sections/chatbot.js"></script>
+
+  <!-- Project Preview Modal -->
+  <div class="project-modal-overlay" id="project-modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-url" id="modal-url">aperçu du projet</span>
+        <button class="modal-close-btn" id="modal-close" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="project-link" id="modal-visit-link" style="display:none;">
+          <i class="fas fa-external-link-alt"></i> VISITER LE SITE
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Modal Logic -->
+  <script src="js/projects.js"></script>
+
+  <!-- Stats Modal Overlay -->
+  <div class="stats-modal-overlay" id="stats-modal">
+    <div class="stats-modal-content">
+      <button id="btn-close-stats" class="btn-close-modal">X</button>
+      
+      <!-- Left: 3D Viewer Area -->
+      <div class="modal-3d-area" id="modal-3d-container">
+        <!-- The canvas will be moved here by JS -->
+      </div>
+
+      <!-- Right: Stats Panel -->
+      <div class="modal-stats-area">
+        <h3 class="stats-title">// Statistiques_Francois_Ballet</h3>
+        
+        <div class="stat-group">
+          <div class="stat-item">
+            <div class="stat-info"><span>DÉVELOPPEMENT FRONT-END</span><span class="stat-percent">90%</span></div>
+            <div class="stat-bar"><div class="stat-fill" data-width="90"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>DÉVELOPPEMENT BACK-END</span><span class="stat-percent">80%</span></div>
+            <div class="stat-bar"><div class="stat-fill" data-width="80"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>RÉSEAUX & CYBERSÉCURITÉ</span><span class="stat-percent">60%</span></div>
+            <div class="stat-bar"><div class="stat-fill" data-width="60"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>BIG DATA</span><span class="stat-percent">50%</span></div>
+            <div class="stat-bar"><div class="stat-fill" data-width="50"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>ANGLAIS (Niveau B2)</span><span class="stat-percent">50%</span></div>
+            <div class="stat-bar"><div class="stat-fill" data-width="50"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>FRANÇAIS</span><span class="stat-percent">MAX</span></div>
+            <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+          </div>
+        </div>
+
+        <h3 class="stats-title stats-title--small">// ACTIVITÉS</h3>
+        <div class="stat-group">
+          <div class="stat-item">
+            <div class="stat-info"><span>SPORTS DE COMBAT</span><span class="stat-percent">MAX</span></div>
+            <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>CODER</span><span class="stat-percent">MAX</span></div>
+            <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-info"><span>MUSCULATION</span><span class="stat-percent">MAX</span></div>
+            <div class="stat-bar"><div class="stat-fill stat-fill--max" data-width="100"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Main init -->
   <script src="js/main.js"></script>

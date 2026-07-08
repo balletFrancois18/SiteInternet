@@ -191,9 +191,34 @@
     this.history = [];        // pile des questionId pour le retour arrière
     this.currentQuestionId = null;
     this.screen = 'intro';    // 'intro' | 'chat' | 'recap' | 'success'
+    this.mode = 'client';     // 'client' | 'recruiter'
 
     this.init();
   }
+
+  /* -------------------------------------------------------
+     MODE HELPERS
+     ------------------------------------------------------- */
+  CadrageBot.prototype.getQuestions = function () {
+    return this.mode === 'recruiter' ? RECRUITER_QUESTIONS : CHATBOT_QUESTIONS;
+  };
+
+  CadrageBot.prototype.getLabels = function () {
+    return this.mode === 'recruiter' ? RECRUITER_LABELS : CHATBOT_LABELS;
+  };
+
+  CadrageBot.prototype.getSections = function () {
+    if (this.mode === 'recruiter') return getRecruiterSections();
+    return getApplicableSections(this.answers);
+  };
+
+  CadrageBot.prototype.getQuestionById = function (id) {
+    return this.getQuestions().find(function (q) { return q.id === id; });
+  };
+
+  CadrageBot.prototype.getBackendUrl = function () {
+    return this.mode === 'recruiter' ? 'php/submit_recruiter.php' : BACKEND_URL;
+  };
 
   /* -------------------------------------------------------
      INITIALISATION
@@ -205,18 +230,45 @@
 
   /** Construit la structure HTML principale */
   CadrageBot.prototype.buildShell = function () {
+    var self = this;
     this.container.innerHTML =
       '<div class="cadrage-window">' +
         '<div class="cadrage-header">' +
-          '<span class="cadrage-title">' +
-            '<i class="fas fa-terminal"></i> CADRAGE_PROJET.EXE' +
-          '</span>' +
+          '<div class="cadrage-tabs">' +
+            '<button class="cadrage-tab cadrage-tab--active" data-mode="client">' +
+              '<i class="fas fa-terminal"></i> CADRAGE_PROJET.EXE' +
+            '</button>' +
+            '<button class="cadrage-tab" data-mode="recruiter">' +
+              '<i class="fas fa-user-tie"></i> ACCUEIL_RECRUTEUR.EXE' +
+            '</button>' +
+          '</div>' +
           '<span class="cadrage-status">[ ONLINE ]</span>' +
         '</div>' +
         '<div class="cadrage-body" id="cadrage-body"></div>' +
       '</div>';
 
     this.body = this.container.querySelector('#cadrage-body');
+
+    // Attach tab events
+    var tabs = this.container.querySelectorAll('.cadrage-tab');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var newMode = tab.getAttribute('data-mode');
+        if (newMode === self.mode) return;
+
+        // Switch active tab
+        tabs.forEach(function (t) { t.classList.remove('cadrage-tab--active'); });
+        tab.classList.add('cadrage-tab--active');
+
+        // Reset and switch mode
+        self.mode = newMode;
+        self.answers = {};
+        self.history = [];
+        self.currentQuestionId = null;
+        self.clearProgress();
+        self.showIntro();
+      });
+    });
   };
 
   /* -------------------------------------------------------
@@ -225,25 +277,33 @@
   CadrageBot.prototype.showIntro = function () {
     this.screen = 'intro';
     var saved = this.loadProgress();
-    var hasProgress = saved && Object.keys(saved.answers).length > 0;
+    var hasProgress = saved && Object.keys(saved.answers).length > 0 && saved.mode === this.mode;
+
+    var isRecruiter = this.mode === 'recruiter';
+    var icon = isRecruiter ? 'fa-user-tie' : 'fa-project-diagram';
+    var title = isRecruiter ? 'BIENVENUE, RECRUTEUR' : 'CADRONS VOTRE PROJET ENSEMBLE';
+    var desc = isRecruiter
+      ? 'Vous cherchez un alternant en Master Informatique ? ' +
+        'Remplissez ce court formulaire et François vous recontactera rapidement.'
+      : 'Répondez à quelques questions ciblées pour que je comprenne ' +
+        'précisément votre besoin. À la fin, vous recevrez un récapitulatif ' +
+        'structuré de votre demande.';
+    var time = isRecruiter ? '2 À 3 MINUTES' : '5 À 10 MINUTES SELON VOTRE PROJET';
+    var btnText = isRecruiter ? '> DÉMARRER LE CONTACT' : '> COMMENCER LE CADRAGE';
 
     var html =
       '<div class="cadrage-intro">' +
         '<div class="cadrage-intro-icon">' +
-          '<i class="fas fa-project-diagram"></i>' +
+          '<i class="fas ' + icon + '"></i>' +
         '</div>' +
-        '<h3 class="cadrage-intro-title">CADRONS VOTRE PROJET ENSEMBLE</h3>' +
-        '<p class="cadrage-intro-desc">' +
-          'Répondez à quelques questions ciblées pour que je comprenne ' +
-          'précisément votre besoin. À la fin, vous recevrez un récapitulatif ' +
-          'structuré de votre demande.' +
-        '</p>' +
+        '<h3 class="cadrage-intro-title">' + title + '</h3>' +
+        '<p class="cadrage-intro-desc">' + desc + '</p>' +
         '<p class="cadrage-intro-time">' +
-          '<i class="far fa-clock"></i> 5 À 10 MINUTES SELON VOTRE PROJET' +
+          '<i class="far fa-clock"></i> ' + time +
         '</p>' +
         '<div class="cadrage-intro-actions">' +
           '<button class="terminal-btn cadrage-start-btn" id="cadrage-start">' +
-            '> COMMENCER LE CADRAGE' +
+            btnText +
           '</button>';
 
     if (hasProgress) {
@@ -272,7 +332,7 @@
       self.clearProgress();
       self.answers = {};
       self.history = [];
-      self.startChat(CHATBOT_QUESTIONS[0].id);
+      self.startChat(self.getQuestions()[0].id);
     });
 
     var resumeBtn = document.getElementById('cadrage-resume');
@@ -300,7 +360,7 @@
       return;
     }
 
-    var q = getQuestionById(questionId);
+    var q = this.getQuestionById(questionId);
     if (!q) {
       this.showRecap();
       return;
@@ -310,7 +370,7 @@
     this.saveProgress();
 
     var self = this;
-    var sections = getApplicableSections(this.answers);
+    var sections = this.getSections();
     var currentSectionIndex = sections.findIndex(function (s) { return s.id === q.section; });
 
     // Construction du HTML
@@ -355,7 +415,13 @@
       html += '<div class="cadrage-options">';
       for (var j = 0; j < q.options.length; j++) {
         var opt = q.options[j];
-        var selectedClass = (this.answers[q.id] === opt) ? ' cadrage-option--selected' : '';
+        var isSelected = false;
+        if (q.type === 'multi_choice' && this.answers[q.id]) {
+          isSelected = this.answers[q.id].split(', ').indexOf(opt) !== -1;
+        } else {
+          isSelected = (this.answers[q.id] === opt);
+        }
+        var selectedClass = isSelected ? ' cadrage-option--selected' : '';
         html +=
           '<button class="chatbot-option-btn cadrage-option' + selectedClass + '" ' +
             'data-value="' + escapeHTML(opt) + '">' +
@@ -363,6 +429,14 @@
           '</button>';
       }
       html += '</div>';
+      
+      if (q.type === 'multi_choice') {
+        html += '<div style="margin-top: 1rem; text-align: right;">' +
+                  '<button class="chatbot-submit-btn" id="multi-choice-submit">' +
+                    (q.required ? '[ VALIDER ]' : '[ VALIDER / PASSER ]') +
+                  '</button>' +
+                '</div>';
+      }
     } else if (q.type === 'text') {
       var inputType = q.inputType || 'text';
       var prevValue = this.answers[q.id] || '';
@@ -475,6 +549,33 @@
           }, 200);
         });
       });
+    } else if (q.type === 'multi_choice') {
+      var options = this.body.querySelectorAll('.cadrage-option');
+      options.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btn.classList.toggle('cadrage-option--selected');
+        });
+      });
+
+      var submitBtn = document.getElementById('multi-choice-submit');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          var selected = [];
+          self.body.querySelectorAll('.cadrage-option--selected').forEach(function (b) {
+            selected.push(b.getAttribute('data-value'));
+          });
+
+          if (q.required && selected.length === 0) {
+            submitBtn.classList.add('cadrage-input-error');
+            gsap.from(submitBtn, { x: -8, duration: 0.08, repeat: 5, yoyo: true, ease: 'power2.inOut' });
+            return;
+          }
+
+          var val = selected.join(', ');
+          self.answers[q.id] = val;
+          self.advanceToNext(q, val);
+        });
+      }
     } else if (q.type === 'text') {
       var form = document.getElementById('cadrage-text-form');
       var input = form.querySelector('.cadrage-text-input');
@@ -564,10 +665,10 @@
     html += '</h3>';
 
     // Tableau des réponses par section
-    var sections = getApplicableSections(this.answers);
+    var sections = this.getSections();
     for (var i = 0; i < sections.length; i++) {
       var sec = sections[i];
-      var sectionQuestions = CHATBOT_QUESTIONS.filter(function (q) {
+      var sectionQuestions = this.getQuestions().filter(function (q) {
         return q.section === sec.id && self.answers.hasOwnProperty(q.id);
       });
 
@@ -580,7 +681,7 @@
 
       for (var j = 0; j < sectionQuestions.length; j++) {
         var sq = sectionQuestions[j];
-        var label = CHATBOT_LABELS[sq.id] || sq.id;
+        var label = this.getLabels()[sq.id] || sq.id;
         var value = this.answers[sq.id] || '(non renseigné)';
 
         html +=
@@ -652,10 +753,10 @@
   /** Reconstruit la pile history jusqu'à la question ciblée (excluant celle-ci) */
   CadrageBot.prototype.rebuildHistoryUpTo = function (targetId) {
     var newHistory = [];
-    var qId = CHATBOT_QUESTIONS[0].id;
+    var qId = this.getQuestions()[0].id;
 
     while (qId && qId !== targetId) {
-      var q = getQuestionById(qId);
+      var q = this.getQuestionById(qId);
       if (!q) break;
       newHistory.push(qId);
       var answer = this.answers[q.id];
@@ -684,7 +785,7 @@
       timestamp: new Date().toISOString(),
     };
 
-    fetch(BACKEND_URL, {
+    fetch(this.getBackendUrl(), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -860,6 +961,7 @@
         answers: this.answers,
         history: this.history,
         currentQuestionId: this.currentQuestionId,
+        mode: this.mode,
         timestamp: Date.now(),
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));

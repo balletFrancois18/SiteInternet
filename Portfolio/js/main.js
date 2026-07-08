@@ -125,67 +125,8 @@
       }
     );
 
-    // Easter Egg: Load Alternate Models (Boxe & Musculation)
-    const btnLoadBoxe = document.getElementById('btn-load-boxe');
-    const btnLoadTrain = document.getElementById('btn-load-train');
-
-    const loadAlternateModel = (filename, loadingText) => {
-      if (loader) {
-        loader.style.display = 'block';
-        loader.innerText = loadingText;
-      }
-      
-      // Remove old model
-      if (avatarModel) {
-        scene.remove(avatarModel);
-        avatarModel = null;
-      }
-
-      // Load new model
-      gltfLoader.load(
-        `Images/${filename}`,
-        (gltf) => {
-          avatarModel = gltf.scene;
-          
-          // Adjust position and scale
-          const box = new THREE.Box3().setFromObject(avatarModel);
-          const size = box.getSize(new THREE.Vector3());
-          const center = box.getCenter(new THREE.Vector3());
-          avatarModel.position.x += (avatarModel.position.x - center.x);
-          avatarModel.position.y += (avatarModel.position.y - center.y);
-          avatarModel.position.z += (avatarModel.position.z - center.z);
-          camera.position.set(0, 0, size.y * 1.2);
-          
-          scene.add(avatarModel);
-          if (loader) loader.style.display = 'none';
-
-          // Play Animation
-          if (gltf.animations && gltf.animations.length > 0) {
-            mixer = new THREE.AnimationMixer(avatarModel);
-            const action = mixer.clipAction(gltf.animations[0]);
-            
-            // Speed up pushup animation specifically
-            if (filename === 'train.glb') {
-              action.timeScale = 2.5; // 2.5x faster
-            }
-            
-            action.play();
-          }
-        },
-        undefined,
-        (error) => {
-          console.error(`Erreur ${filename}:`, error);
-          if (loader) loader.innerText = `${filename} INTROUVABLE`;
-        }
-      );
-    };
-
-    if (btnLoadBoxe) {
-      btnLoadBoxe.addEventListener('click', () => loadAlternateModel('boxe.glb', 'CHARGEMENT BOXE...'));
-    }
-    if (btnLoadTrain) {
-      btnLoadTrain.addEventListener('click', () => loadAlternateModel('train.glb', 'CHARGEMENT ENTRAINEMENT...'));
-    }
+    // Note: Easter egg models (boxe.glb, train.glb) were removed for performance.
+    // We now just spin the base model when the modal is active.
 
 
     // 6. Resize Handler
@@ -204,10 +145,18 @@
       const delta = clock.getDelta();
       if (mixer) mixer.update(delta);
 
-      // Smoothly rotate the avatar to look at mouse
+      // Smoothly rotate the avatar to look at mouse OR spin in modal
       if (avatarModel) {
-        avatarModel.rotation.y += (targetRotationY - avatarModel.rotation.y) * 0.1;
-        avatarModel.rotation.x += (targetRotationX - avatarModel.rotation.x) * 0.1;
+        const modal = document.getElementById('stats-modal');
+        if (modal && modal.classList.contains('is-active')) {
+          // Spin like a kebab skewer
+          avatarModel.rotation.y += 0.02;
+          // Slowly reset X rotation so he stands straight
+          avatarModel.rotation.x += (0 - avatarModel.rotation.x) * 0.1;
+        } else {
+          avatarModel.rotation.y += (targetRotationY - avatarModel.rotation.y) * 0.1;
+          avatarModel.rotation.x += (targetRotationX - avatarModel.rotation.x) * 0.1;
+        }
       }
 
       renderer.render(scene, camera);
@@ -270,39 +219,54 @@
     });
   }
 
-  // RPG Connected Side Panel Logic
+  // Stats Modal Logic
   const btnShowStats = document.getElementById('btn-show-stats');
   const btnCloseStats = document.getElementById('btn-close-stats');
-  const statsSidePanel = document.getElementById('stats-side-panel');
-  const statsConnector = document.getElementById('stats-connector');
+  const statsModal = document.getElementById('stats-modal');
+  const modal3dContainer = document.getElementById('modal-3d-container');
+  const originalAvatarContainer = document.querySelector('.gta-avatar-container');
   const statFills = document.querySelectorAll('.stat-fill');
 
   const openStatsModal = () => {
-    if (statsSidePanel) statsSidePanel.classList.add('is-active');
-    if (statsConnector) statsConnector.style.width = '50px';
+    if (statsModal) statsModal.classList.add('is-active');
     
+    // Move canvas to modal
+    if (canvasContainer && modal3dContainer) {
+      modal3dContainer.appendChild(canvasContainer);
+      // Trigger resize for Three.js
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    }
+
     // Animate stat bars after a small delay
     setTimeout(() => {
       statFills.forEach(fill => {
         const width = fill.getAttribute('data-width');
         fill.style.width = width + '%';
       });
-    }, 200);
+    }, 300);
   };
 
   const closeStatsModal = () => {
-    if (statsSidePanel) statsSidePanel.classList.remove('is-active');
-    if (statsConnector) statsConnector.style.width = '0';
-    
+    if (statsModal) statsModal.classList.remove('is-active');
+
+
+    // Move canvas back to original container
+    if (canvasContainer && originalAvatarContainer) {
+      const label = originalAvatarContainer.querySelector('.gta-label');
+      originalAvatarContainer.insertBefore(canvasContainer, label);
+      // Trigger resize for Three.js
+      setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+    }
+
     // Reset stat bars
     setTimeout(() => {
       statFills.forEach(fill => {
         fill.style.width = '0%';
       });
-    }, 400); // Wait for panel to slide out
+    }, 400); // Wait for modal to fade out
   };
 
-  if (btnShowStats && btnCloseStats && statsSidePanel) {
+  if (btnShowStats && btnCloseStats && statsModal) {
     btnShowStats.addEventListener('click', openStatsModal);
     btnCloseStats.addEventListener('click', closeStatsModal);
   }
@@ -480,7 +444,8 @@
     if (!grid || typeof PROJECTS === 'undefined') return;
 
     grid.innerHTML = PROJECTS.map(project => `
-      <div class="project-card glass-card" id="project-${project.id}">
+      <div class="project-card glass-card" id="project-${project.id}"
+        ${project.links && project.links.preview ? `data-modal-title="${project.title}" data-modal-screenshot="${project.links.preview}" data-modal-description="${project.description}"` : ''}>
         <div class="project-card-header">
           <div class="project-icon"><i class="fas ${project.icon}"></i></div>
           <div class="project-status ${project.status === 'En cours' ? 'status--active' : ''}">${project.status || 'Terminé'}</div>
@@ -491,6 +456,7 @@
         <div class="project-tags">
           ${project.tags.map(t => `<span class="terminal-tag">${t}</span>`).join('')}
         </div>
+        ${project.links && project.links.preview ? `<button class="project-link project-link--preview" onclick="openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> APERÇU</button>` : ''}
         ${project.links && project.links.live ? `<a href="${project.links.live}" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fas fa-external-link-alt"></i> VOIR LE SITE</a>` : ''}
         ${project.links && project.links.github ? `<a href="${project.links.github}" target="_blank" rel="noopener noreferrer" class="project-link"><i class="fab fa-github"></i> GITHUB</a>` : ''}
       </div>

@@ -25,13 +25,13 @@ const PROJECTS = [
   },
   {
     id: 'grappling-france',
-    title: 'Refonte Front-End Grappling France',
+    title: 'Refonte Complète Grappling France',
     subtitle: 'Fédération Française de Grappling',
     description: 'Redesign complet de l\'interface front-end pour la Fédération Française de Grappling. Modernisation du design, responsive et optimisation des parcours utilisateurs.',
     tags: ['HTML/CSS', 'JavaScript', 'Responsive', 'UI/UX'],
     icon: 'fa-globe',
     status: 'En cours',
-    links: { live: 'https://grappling-france.com' }
+    links: { preview: 'Images/loginmma.png' }
   },
   {
     id: 'file-organizer',
