@@ -611,8 +611,7 @@ const RECRUITER_QUESTIONS = [
       'Développement Fullstack',
       'DevOps / Cloud',
       'Réseaux & Cybersécurité',
-      'Data / Big Data',
-      'Chefferie de Projet / Agile'
+      'Data / Big Data'
     ],
     required: true,
     next: function () { return 'r_mission'; }

@@ -7,7 +7,7 @@ const EXPERIENCE = [
     title: 'Licence Pro Chef de Projet Dév, Sécu & Exploit',
     place: 'CFA CNAM',
     type: 'formation',
-    description: 'Gestion de projet agile, développement, sécurité et exploitation de systèmes informatiques.',
+    description: 'Gestion de projet, développement, sécurité et exploitation de systèmes informatiques.',
     status: 'En cours'
   },
   {

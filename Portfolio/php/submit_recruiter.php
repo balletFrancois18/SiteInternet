@@ -117,7 +117,6 @@ $multiChoiceWhitelist = [
         'DevOps / Cloud',
         'Réseaux & Cybersécurité',
         'Data / Big Data',
-        'Chefferie de Projet / Agile',
     ],
 ];
 
