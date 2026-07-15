@@ -4,6 +4,36 @@
  */
 const PROJECTS = [
   {
+    id: 'saas-prospection',
+    title: 'SaaS de Prospection Automatisée',
+    subtitle: 'Scraping Google Maps, Email & SMS',
+    description: 'Création d\'un SaaS permettant d\'automatiser la prospection B2B : extraction de données via scraping Google Maps, et orchestration de campagnes d\'envoi d\'emails et de SMS automatisées.',
+    tags: ['Automatisation', 'Scraping', 'API', 'Python'],
+    icon: 'fa-robot',
+    status: 'En cours',
+    links: {}
+  },
+  {
+    id: 'ecommerce-beaute',
+    title: 'E-commerce Beauté & Cosmétiques',
+    subtitle: 'Site e-commerce pour une créatrice',
+    description: 'Conception et développement d\'un site e-commerce sur-mesure pour le lancement d\'une marque de produits de beauté. Design épuré, gestion du catalogue et tunnel de vente optimisé.',
+    tags: ['E-commerce', 'UI/UX', 'Web Design'],
+    icon: 'fa-spa',
+    status: 'En cours',
+    links: {}
+  },
+  {
+    id: 'grappling-france',
+    title: 'Refonte Complète Grappling France',
+    subtitle: 'Fédération Française de Grappling',
+    description: 'Redesign complet de l\'interface front-end pour la Fédération Française de Grappling. Modernisation du design, responsive et optimisation des parcours utilisateurs.',
+    tags: ['HTML/CSS', 'JavaScript', 'Responsive', 'UI/UX'],
+    icon: 'fa-globe',
+    status: 'En cours',
+    links: {}
+  },
+  {
     id: 'coloc-manager',
     title: 'CoLoc Manager',
     subtitle: 'App de réservation entre colocataires',
@@ -22,16 +52,6 @@ const PROJECTS = [
     icon: 'fa-gamepad',
     status: 'Terminé',
     links: {}
-  },
-  {
-    id: 'grappling-france',
-    title: 'Refonte Complète Grappling France',
-    subtitle: 'Fédération Française de Grappling',
-    description: 'Redesign complet de l\'interface front-end pour la Fédération Française de Grappling. Modernisation du design, responsive et optimisation des parcours utilisateurs.',
-    tags: ['HTML/CSS', 'JavaScript', 'Responsive', 'UI/UX'],
-    icon: 'fa-globe',
-    status: 'En cours',
-    links: { preview: 'Images/loginmma.png' }
   },
   {
     id: 'file-organizer',

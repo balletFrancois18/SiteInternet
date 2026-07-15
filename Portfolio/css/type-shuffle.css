@@ -1076,8 +1076,15 @@ h1, h2, h3, h4 {
   transform-style: preserve-3d;
 }
 
-.laptop-base .base-top {
+.laptop-base > div {
   position: absolute;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
+.laptop-base .base-top {
+  top: -60px;
+  left: 0;
   width: 200px;
   height: 130px;
   background: #111;
@@ -1087,6 +1094,47 @@ h1, h2, h3, h4 {
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
+}
+
+.laptop-base .base-bottom {
+  top: -60px;
+  left: 0;
+  width: 200px;
+  height: 130px;
+  background: #050505;
+  transform: rotateX(-90deg) translateZ(5px);
+}
+
+.laptop-base .base-front {
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 10px;
+  transform: translateZ(65px);
+}
+
+.laptop-base .base-back {
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 10px;
+  transform: rotateY(180deg) translateZ(65px);
+}
+
+.laptop-base .base-left {
+  top: 0;
+  left: 35px;
+  width: 130px;
+  height: 10px;
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.laptop-base .base-right {
+  top: 0;
+  left: 35px;
+  width: 130px;
+  height: 10px;
+  transform: rotateY(90deg) translateZ(100px);
 }
 
 .laptop-keyboard {
@@ -1109,14 +1157,6 @@ h1, h2, h3, h4 {
   border: 1px solid #222;
 }
 
-.laptop-base .base-front {
-  position: absolute;
-  width: 200px;
-  height: 10px;
-  background: #0a0a0a;
-  transform: translateZ(65px);
-}
-
 .laptop-lid {
   position: absolute;
   bottom: 25px; /* Aligned with base-top back edge */
@@ -1128,9 +1168,17 @@ h1, h2, h3, h4 {
   transform: translateZ(-65px) rotateX(-15deg); /* Open lid */
 }
 
-.lid-front {
+.laptop-lid > div {
   position: absolute;
-  inset: 0;
+  background: #111;
+  border: 1px solid #222;
+}
+
+.lid-front {
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 130px;
   background: #0a0a0a;
   border: 2px solid #222;
   border-radius: 4px 4px 0 0;
@@ -1154,8 +1202,10 @@ h1, h2, h3, h4 {
 }
 
 .lid-back {
-  position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 130px;
   background: #111;
   border: 1px solid #333;
   border-radius: 4px 4px 0 0;
@@ -1163,6 +1213,30 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.lid-left {
+  top: 0;
+  left: 98px;
+  width: 4px;
+  height: 130px;
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.lid-right {
+  top: 0;
+  left: 98px;
+  width: 4px;
+  height: 130px;
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.lid-top {
+  top: 63px;
+  left: 0;
+  width: 200px;
+  height: 4px;
+  transform: rotateX(90deg) translateZ(65px);
 }
 
 .lid-logo {

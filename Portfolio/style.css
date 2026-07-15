@@ -599,3 +599,48 @@ footer {
   .hero { padding: 3rem 1.2rem 2.5rem; }
   .interests { grid-template-columns: 1fr; }
 }
+
+/* ============================================
+   INTERACTIVE BACKGROUND & CURSOR
+   ============================================ */
+#interactive-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0; 
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#cursor-dot, #cursor-follower {
+  position: fixed;
+  top: 0; left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+#cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+#cursor-follower {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  background-color: rgba(255, 215, 0, 0.05);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+body {
+  cursor: none;
+}
+
+a, button, .card, .stat-item, .nav-link, .terminal-btn, .details-btn {
+  cursor: none;
+}

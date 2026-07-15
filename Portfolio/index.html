@@ -25,6 +25,11 @@
 
 <body>
 
+  <!-- GSAP Custom Cursor & Interactive Background -->
+  <div id="interactive-bg"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-follower"></div>
+
   <!-- ============================================================
        NAVIGATION
        ============================================================ -->
@@ -328,9 +333,8 @@
     <div class="section-container">
       <div class="section-header">
         <span class="label-title">CONTACT</span>
-        <h2 class="section-title">CADRONS VOTRE PROJET</h2>
-        <p class="section-subtitle">SITE VITRINE, E-COMMERCE OU SUR-MESURE — RÉPONDEZ À QUELQUES QUESTIONS ET RECEVEZ UN
-          RÉCAPITULATIF STRUCTURÉ.</p>
+        <h2 class="section-title">VOUS RECRUTEZ ?</h2>
+        <p class="section-subtitle">VOUS CHERCHEZ UN ALTERNANT OU VOUS REPRÉSENTEZ UNE ÉCOLE ? RÉPONDEZ À QUELQUES QUESTIONS POUR INITIER LE CONTACT.</p>
       </div>
 
       <div id="chatbot-container" class="chatbot-container"></div>
@@ -379,7 +383,6 @@
   <div class="project-modal-overlay" id="project-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="modal-url" id="modal-url">aperçu du projet</span>
         <button class="modal-close-btn" id="modal-close" aria-label="Fermer">&times;</button>
       </div>
       <div class="modal-body" id="modal-body"></div>
@@ -475,6 +478,7 @@
 
   <!-- Main init -->
   <script src="js/main.js"></script>
+  <script src="js/interactive.js"></script>
 </body>
 
 </html>

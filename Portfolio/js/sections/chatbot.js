@@ -191,7 +191,7 @@
     this.history = [];        // pile des questionId pour le retour arrière
     this.currentQuestionId = null;
     this.screen = 'intro';    // 'intro' | 'chat' | 'recap' | 'success'
-    this.mode = 'client';     // 'client' | 'recruiter'
+    this.mode = 'recruiter';     // 'client' | 'recruiter'
 
     this.init();
   }
@@ -230,16 +230,12 @@
 
   /** Construit la structure HTML principale */
   CadrageBot.prototype.buildShell = function () {
-    var self = this;
     this.container.innerHTML =
       '<div class="cadrage-window">' +
         '<div class="cadrage-header">' +
           '<div class="cadrage-tabs">' +
-            '<button class="cadrage-tab cadrage-tab--active" data-mode="client">' +
-              '<i class="fas fa-terminal"></i> CADRAGE_PROJET.EXE' +
-            '</button>' +
-            '<button class="cadrage-tab" data-mode="recruiter">' +
-              '<i class="fas fa-user-tie"></i> ACCUEIL_RECRUTEUR.EXE' +
+            '<button class="cadrage-tab cadrage-tab--active" style="cursor:default;">' +
+              '<i class="fas fa-user-tie"></i> TERMINAL_RECRUTEMENT.EXE' +
             '</button>' +
           '</div>' +
           '<span class="cadrage-status">[ ONLINE ]</span>' +
@@ -248,27 +244,6 @@
       '</div>';
 
     this.body = this.container.querySelector('#cadrage-body');
-
-    // Attach tab events
-    var tabs = this.container.querySelectorAll('.cadrage-tab');
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var newMode = tab.getAttribute('data-mode');
-        if (newMode === self.mode) return;
-
-        // Switch active tab
-        tabs.forEach(function (t) { t.classList.remove('cadrage-tab--active'); });
-        tab.classList.add('cadrage-tab--active');
-
-        // Reset and switch mode
-        self.mode = newMode;
-        self.answers = {};
-        self.history = [];
-        self.currentQuestionId = null;
-        self.clearProgress();
-        self.showIntro();
-      });
-    });
   };
 
   /* -------------------------------------------------------
@@ -306,11 +281,8 @@
             btnText +
           '</button>';
 
-    if (hasProgress) {
-      html +=
-          '<button class="terminal-btn terminal-btn--outline cadrage-resume-btn" id="cadrage-resume">' +
-            '> REPRENDRE LÀ OÙ J\'EN ÉTAIS' +
-          '</button>';
+    if (false) { // Button removed per user request
+      html += '';
     }
 
     html +=
@@ -335,14 +307,7 @@
       self.startChat(self.getQuestions()[0].id);
     });
 
-    var resumeBtn = document.getElementById('cadrage-resume');
-    if (resumeBtn) {
-      resumeBtn.addEventListener('click', function () {
-        self.answers = saved.answers;
-        self.history = saved.history || [];
-        self.startChat(saved.currentQuestionId);
-      });
-    }
+    // Resume button logic removed
   };
 
   /* -------------------------------------------------------
