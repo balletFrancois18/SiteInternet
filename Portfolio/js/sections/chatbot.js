@@ -814,9 +814,15 @@
           'Le serveur n\'est pas disponible pour le moment, mais vous pouvez ' +
           'télécharger votre récapitulatif et me l\'envoyer directement par email.';
     } else {
-      html +=
-          'Votre demande de cadrage a bien été enregistrée. ' +
-          'Je reviendrai vers vous sous 24 à 48h avec une première analyse.';
+      if (this.mode === 'recruiter') {
+        html +=
+            'Votre message a bien été envoyé. ' +
+            'Je vous recontacterai dans les plus brefs délais.';
+      } else {
+        html +=
+            'Votre demande de cadrage a bien été enregistrée. ' +
+            'Je reviendrai vers vous sous 24 à 48h avec une première analyse.';
+      }
     }
 
     html +=
@@ -826,7 +832,7 @@
             '<i class="fas fa-download"></i> TÉLÉCHARGER MON RÉCAPITULATIF' +
           '</button>' +
           '<button class="terminal-btn terminal-btn--outline" id="cadrage-restart">' +
-            '<i class="fas fa-redo"></i> NOUVEAU CADRAGE' +
+            '<i class="fas fa-redo"></i> ' + (this.mode === 'recruiter' ? 'NOUVEAU MESSAGE' : 'NOUVEAU CADRAGE') +
           '</button>' +
         '</div>' +
       '</div>';

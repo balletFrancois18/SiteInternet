@@ -14,7 +14,7 @@
 // CONFIGURATION
 // ============================================================
 
-$DEST_EMAIL = 'votre@email.com';
+$DEST_EMAIL = 'francois.balletpro@gmail.com';
 $RECAPS_DIR = __DIR__ . '/../recaps/recruiters';
 $RATE_LIMIT_MAX = 5;
 $RATE_LIMIT_FILE = __DIR__ . '/rate_limits_recruiter.json';
@@ -93,8 +93,7 @@ file_put_contents($RATE_LIMIT_FILE, json_encode($rateLimits), LOCK_EX);
 $whitelist = [
     'r_purpose' => [
         'Je recrute pour une entreprise (Alternance/Emploi)',
-        'Je représente une école (Admission Master)',
-        'Autre demande / Échanger'
+        'Je représente une école (Admission Master)'
     ],
     'r_contract_type' => [
         'Apprentissage (Master)',

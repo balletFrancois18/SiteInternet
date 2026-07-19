@@ -30,7 +30,7 @@
 // ============================================================
 
 // Adresse email de destination (À MODIFIER)
-$DEST_EMAIL = 'votre@email.com';
+$DEST_EMAIL = 'francois.balletpro@gmail.com';
 
 // Dossier de stockage des récapitulatifs
 $RECAPS_DIR = __DIR__ . '/../recaps';

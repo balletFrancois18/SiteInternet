@@ -488,8 +488,7 @@ const RECRUITER_QUESTIONS = [
     question: 'QUEL EST LE BUT DE VOTRE VISITE ?',
     options: [
       'Je recrute pour une entreprise (Alternance/Emploi)',
-      'Je représente une école (Admission Master)',
-      'Autre demande / Échanger'
+      'Je représente une école (Admission Master)'
     ],
     required: true,
     next: function (answer) {
