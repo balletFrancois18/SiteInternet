@@ -3,12 +3,21 @@
  */
 const EXPERIENCE = [
   {
+    year: '2026 – 2027',
+    title: 'Master Cybersécurité',
+    place: 'ESGI',
+    type: 'formation',
+    description: 'Mastère en alternance (1 semaine de cours / 3 semaines en entreprise). Audits, tests d\'intrusion, analyse de malwares et investigation numérique. Gouvernance ISO 27001 et EBIOS. Titre RNCP niveau 7 : Expert en architectures systèmes-réseaux et en sécurité informatique.',
+    status: 'En recherche urgente d\'alternance',
+    statusVariant: 'urgent'
+  },
+  {
     year: '2025 – 2026',
     title: 'Licence Pro Chef de Projet Dév, Sécu & Exploit',
     place: 'CFA CNAM',
     type: 'formation',
     description: 'Gestion de projet, développement, sécurité et exploitation de systèmes informatiques.',
-    status: 'En cours d\'obtention'
+    status: 'Diplômé'
   },
   {
     year: '2025',

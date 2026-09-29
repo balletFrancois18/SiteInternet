@@ -399,7 +399,7 @@
 
       if (reduceMotion) {
         // Show everything immediately
-        gsap.set('.section-header, .project-card, .experience-item, .skill-card', {
+        gsap.set('.section-header, .project-card, .experience-item, .skill-card, .saas-featured, .saas-module, .projects-more-header', {
           autoAlpha: 1, y: 0
         });
         return;
@@ -409,6 +409,47 @@
          PROJECTS — Render cards from data + animate
          ------------------------------------------------------- */
       renderProjects();
+
+      gsap.from('.saas-featured', {
+        autoAlpha: 0,
+        y: isDesktop ? 50 : 30,
+        duration: 0.7,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.saas-featured',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+
+      ScrollTrigger.batch('.saas-module', {
+        onEnter: (elements) => {
+          gsap.to(elements, {
+            autoAlpha: 1,
+            y: 0,
+            stagger: 0.08,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: true,
+          });
+        },
+        start: 'top 90%',
+        once: true,
+      });
+
+      gsap.set('.saas-module', { autoAlpha: 0, y: 16 });
+
+      gsap.from('.projects-more-header', {
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects-more-header',
+          start: 'top 90%',
+          once: true,
+        },
+      });
       
       ScrollTrigger.batch('.project-card', {
         onEnter: (elements) => {
@@ -545,7 +586,7 @@
         <div class="exp-content">
           <h4 class="exp-title">${item.title}</h4>
           ${item.place ? `<span class="exp-place">${item.place}</span>` : ''}
-          ${item.status ? `<span class="exp-status">${item.status}</span>` : ''}
+          ${item.status ? `<span class="exp-status${item.statusVariant === 'urgent' ? ' exp-status--urgent' : ''}">${item.status}</span>` : ''}
           ${item.description ? `<p class="exp-desc">${item.description}</p>` : ''}
         </div>
       </div>
